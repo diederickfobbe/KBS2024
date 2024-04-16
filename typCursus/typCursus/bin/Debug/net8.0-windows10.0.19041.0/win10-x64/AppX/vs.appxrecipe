@@ -29,7 +29,7 @@
     <AppXManifest Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-04-16T10:39:20.147</Modified>
+      <Modified>2024-04-16T10:46:53.906</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\typCursus.dll">
       <PackagePath>typCursus.dll</PackagePath>
-      <Modified>2024-04-16T10:39:19.343</Modified>
+      <Modified>2024-04-16T10:46:53.343</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>typCursus.exe</PackagePath>
-      <Modified>2024-04-16T10:39:19.349</Modified>
+      <Modified>2024-04-16T10:46:53.346</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
@@ -81,209 +81,209 @@
       <PackagePath>OpenSans-Semibold.ttf</PackagePath>
       <Modified>2024-04-16T10:38:37.731</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
-      <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2024-04-16T10:39:19.048</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
-      <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.934</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
-      <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.904</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
-      <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.886</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
+      <PackagePath>appicon.ico</PackagePath>
+      <Modified>2024-04-16T10:39:18.485</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
       <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
       <Modified>2024-04-16T10:39:18.868</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
-      <PackagePath>appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.852</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
+      <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.886</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
-      <PackagePath>appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.800</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
+      <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.904</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
-      <PackagePath>appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.780</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
+      <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.934</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
-      <PackagePath>appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.766</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
-      <PackagePath>appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.756</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
-      <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.747</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
-      <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.721</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
-      <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.709</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
-      <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.698</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
-      <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.690</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
-      <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.684</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
-      <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.671</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
-      <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.664</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
-      <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.658</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
-      <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.653</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
-      <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.647</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
-      <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.638</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
-      <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.632</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
-      <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.627</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
-      <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.622</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
-      <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.616</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
-      <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.605</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
-      <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.599</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
-      <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.595</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
+      <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
+      <Modified>2024-04-16T10:39:19.048</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
       <Modified>2024-04-16T10:39:18.590</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
-      <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.585</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
+      <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.595</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
-      <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.574</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
+      <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.616</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
-      <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.569</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
+      <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.599</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
-      <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.564</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
+      <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.605</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-16.png</PackagePath>
       <Modified>2024-04-16T10:39:18.559</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
-      <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.554</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
+      <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.564</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
-      <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.543</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
+      <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.585</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
-      <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.539</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
+      <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.569</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
-      <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.534</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
-      <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.530</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
-      <PackagePath>appiconLogo.scale-400.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.523</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
-      <PackagePath>appiconLogo.scale-200.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.514</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
-      <PackagePath>appiconLogo.scale-150.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.507</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
-      <PackagePath>appiconLogo.scale-125.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.501</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
+      <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.574</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
       <PackagePath>appiconLogo.scale-100.png</PackagePath>
       <Modified>2024-04-16T10:39:18.497</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
-      <PackagePath>appicon.ico</PackagePath>
-      <Modified>2024-04-16T10:39:18.485</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
+      <PackagePath>appiconLogo.scale-125.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.501</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
-      <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.587</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
+      <PackagePath>appiconLogo.scale-150.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.507</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
-      <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.522</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
+      <PackagePath>appiconLogo.scale-200.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.514</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
-      <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.502</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
+      <PackagePath>appiconLogo.scale-400.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.523</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
+      <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.530</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
+      <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.534</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
+      <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.554</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
+      <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.539</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
+      <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.543</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
+      <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.690</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
+      <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.698</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
+      <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.709</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
+      <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.721</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
+      <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.747</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
+      <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.653</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
+      <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.658</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
+      <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.664</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
+      <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.671</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
+      <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.684</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
+      <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.622</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
+      <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.627</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
+      <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.632</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
+      <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.638</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
+      <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.647</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
+      <PackagePath>appiconWideTile.scale-100.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.756</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
+      <PackagePath>appiconWideTile.scale-125.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.766</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
+      <PackagePath>appiconWideTile.scale-150.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.780</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
+      <PackagePath>appiconWideTile.scale-200.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.800</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
+      <PackagePath>appiconWideTile.scale-400.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.852</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
+      <PackagePath>dotnet_bot.scale-100.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.481</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
       <PackagePath>dotnet_bot.scale-125.png</PackagePath>
       <Modified>2024-04-16T10:39:18.490</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
-      <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2024-04-16T10:39:18.481</Modified>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
+      <PackagePath>dotnet_bot.scale-150.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.502</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
+      <PackagePath>dotnet_bot.scale-200.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.522</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
+      <PackagePath>dotnet_bot.scale-400.png</PackagePath>
+      <Modified>2024-04-16T10:39:18.587</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Diederick Fobbe\Documents\GitHub\KBS2024\typCursus\typCursus\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\typCursus.deps.json">
       <PackagePath>typCursus.deps.json</PackagePath>
