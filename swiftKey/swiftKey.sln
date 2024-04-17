@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "swiftKey", "swiftKey\swiftKey.csproj", "{D5C633FC-849B-45B6-8624-1B2E2CB56434}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwiftKey.DataAccess", "SwiftKey.DataAccess", "{2F1DC315-312B-4C33-B79D-D74EB44139CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwiftKey.UI", "SwiftKey.UI", "{EE982431-10CE-43D8-885B-FEDD60FF3CBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwiftKey.logic", "SwiftKey.logic", "{39397A4A-5614-4F09-82ED-8F1A4A6F9D68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business_Logic", "SwiftKey_Logic\Business_Logic.csproj", "{14E6A0F7-CF65-42D5-A1D0-6AF8FAF57BC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data_Access", "SwiftKey_DataAccess\Data_Access.csproj", "{3A5D25B8-6B54-4355-A649-00564FEFD85A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User_Interface", "User_Interface\User_Interface.csproj", "{6677B547-49FA-494B-B680-303014801484}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +21,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D5C633FC-849B-45B6-8624-1B2E2CB56434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5C633FC-849B-45B6-8624-1B2E2CB56434}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5C633FC-849B-45B6-8624-1B2E2CB56434}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{D5C633FC-849B-45B6-8624-1B2E2CB56434}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5C633FC-849B-45B6-8624-1B2E2CB56434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14E6A0F7-CF65-42D5-A1D0-6AF8FAF57BC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14E6A0F7-CF65-42D5-A1D0-6AF8FAF57BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14E6A0F7-CF65-42D5-A1D0-6AF8FAF57BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14E6A0F7-CF65-42D5-A1D0-6AF8FAF57BC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A5D25B8-6B54-4355-A649-00564FEFD85A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A5D25B8-6B54-4355-A649-00564FEFD85A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A5D25B8-6B54-4355-A649-00564FEFD85A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A5D25B8-6B54-4355-A649-00564FEFD85A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6677B547-49FA-494B-B680-303014801484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6677B547-49FA-494B-B680-303014801484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6677B547-49FA-494B-B680-303014801484}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6677B547-49FA-494B-B680-303014801484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6677B547-49FA-494B-B680-303014801484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6677B547-49FA-494B-B680-303014801484}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14E6A0F7-CF65-42D5-A1D0-6AF8FAF57BC9} = {39397A4A-5614-4F09-82ED-8F1A4A6F9D68}
+		{3A5D25B8-6B54-4355-A649-00564FEFD85A} = {2F1DC315-312B-4C33-B79D-D74EB44139CD}
+		{6677B547-49FA-494B-B680-303014801484} = {EE982431-10CE-43D8-885B-FEDD60FF3CBC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC35AA65-F587-46A6-B76E-7A31FDD9B3E7}
 	EndGlobalSection
 EndGlobal
