@@ -3,11 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="User_Interface.Loginscherm">
 
-    <StackLayout>
-        <Entry Placeholder="Gebruikersnaam" x:Name="UsernameEntry"/>
-        <Entry Placeholder="Wachtwoord" x:Name="PasswordEntry"/>
-        
-        <Button Text="Inloggen" Clicked="Button_OnClicked"/>
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="20">
+        <Image Source="swiftkey.png" HeightRequest="100" WidthRequest="300" HorizontalOptions="Center"/>
+
+        <Entry Placeholder="Gebruikersnaam" x:Name="UsernameEntry" FontSize="20"/>
+        <Entry Placeholder="Wachtwoord" x:Name="PasswordEntry" FontSize="20" IsPassword="True"/>
+
+        <Button Text="Inloggen" Clicked="Button_OnLoginClicked" FontSize="20"/>
+        <Button Text="Account registreren" Clicked="Button_OnRegisterClicked" FontSize="20"/>
     </StackLayout>
 
 </ContentPage>
