@@ -16,34 +16,55 @@ namespace User_Interface
         {
             InitializeComponent();
             targetText = OefenschermMethods.GenerateNewTargetText();
-            targetTextList = new List<char>();
             targetTextList = targetText.ToList();
             InstructionsLabel.Text = targetText;
             Device.StartTimer(TimeSpan.FromSeconds(1), UpdateTimer);
             Build();
+
+            TextInputEntry.TextChanged += TextInputEntry_TextChanged;
         }
+
 
         private bool UpdateTimer()
         {
             TimerLabel.Text = stopwatch.Elapsed.ToString(@"hh\:mm\:ss");
             return true; // Return true to keep the timer running.
         }
+        
+        private void TextInputEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string enteredText = e.NewTextValue ?? "";
 
+            for (int i = 0; i < labelList.Count; i++)
+            {
+                if (i < enteredText.Length && enteredText[i] == targetText[i])
+                {
+                    labelList[i].BackgroundColor = Colors.Green;
+                }
+                else
+                {
+                    labelList[i].BackgroundColor = Colors.LightGray; // Reset color if incorrect or incomplete
+                }
+            }
+        }
+
+        
         private void TextInputEntry_Completed(object sender, EventArgs e)
         {
             stopwatch.Stop();
-
             string enteredText = TextInputEntry.Text.Trim();
             CalculateAndDisplayResults(enteredText);
 
-            //hello
             TextInputEntry.Text = "";
             targetText = OefenschermMethods.GenerateNewTargetText();
             InstructionsLabel.Text = targetText;
 
+            Build(); // Rebuild the labels for the new text
+
             stopwatch.Reset();
             stopwatch.Start(); // Restart the stopwatch for a new measurement
         }
+
 
 
         private void CalculateAndDisplayResults(string enteredText)
@@ -64,27 +85,33 @@ namespace User_Interface
             ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
         }
 
+        private List<Label> labelList = new List<Label>();
+
         private void Build()
         {
-            for (int i = 0; i < targetTextList.Count; i++)
+            Sentence.Children.Clear();
+            labelList.Clear();
+
+            foreach (char letter in targetText)
             {
                 Label letterLabel = new Label
                 {
-                    Text = targetTextList[i].ToString(),
+                    Text = letter.ToString(),
                     FontSize = 36,
                     WidthRequest = 40,
                     HeightRequest = 60,
                     VerticalTextAlignment = TextAlignment.Center,
                     HorizontalTextAlignment = TextAlignment.Center,
                     Padding = new Thickness(6, 4, 6, 4),
-                    //BackgroundColor = Color.FromArgb("#F1F1F1"),
-                    BackgroundColor = Color.FromArgb("#66FF66"),
                     TextColor = Colors.Black,
-                    Margin = 2
+                    Margin = 2,
+                    BackgroundColor = Colors.LightGray // Default color
                 };
                 Sentence.Children.Add(letterLabel);
+                labelList.Add(letterLabel);
             }
         }
+
 
         protected override void OnAppearing()
         {
