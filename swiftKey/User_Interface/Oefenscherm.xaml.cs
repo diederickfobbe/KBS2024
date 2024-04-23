@@ -35,18 +35,29 @@ namespace User_Interface
         {
             string enteredText = e.NewTextValue ?? "";
 
+            // Iterate through all labels
             for (int i = 0; i < labelList.Count; i++)
             {
-                if (i < enteredText.Length && enteredText[i] == targetText[i])
+                if (i < enteredText.Length)
                 {
-                    labelList[i].BackgroundColor = Colors.Green;
+                    // Change color based on whether the entered character matches the target
+                    if (enteredText[i] == targetText[i])
+                    {
+                        labelList[i].BackgroundColor = Colors.Green;
+                    }
+                    else
+                    {
+                        labelList[i].BackgroundColor = Colors.Red;
+                    }
                 }
                 else
                 {
-                    labelList[i].BackgroundColor = Colors.LightGray; // Reset color if incorrect or incomplete
+                    // No character entered in this position yet, reset to default
+                    labelList[i].BackgroundColor = Colors.LightGray;
                 }
             }
         }
+
 
         
         private void TextInputEntry_Completed(object sender, EventArgs e)
