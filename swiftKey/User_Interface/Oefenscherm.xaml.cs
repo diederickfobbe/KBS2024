@@ -1,4 +1,5 @@
 using System.Diagnostics;
+//using Android.OS;
 using SwiftKey_Logic;
 
 namespace User_Interface
@@ -6,15 +7,20 @@ namespace User_Interface
     public partial class Oefenscherm : ContentPage
     {
         private string targetText = "";
-        
+        private List<char> targetTextList;
+
+
         private Stopwatch stopwatch = new Stopwatch();
 
         public Oefenscherm()
         {
             InitializeComponent();
             targetText = OefenschermMethods.GenerateNewTargetText();
+            targetTextList = new List<char>();
+            targetTextList = targetText.ToList();
             InstructionsLabel.Text = targetText;
             Device.StartTimer(TimeSpan.FromSeconds(1), UpdateTimer);
+            Build();
         }
 
         private bool UpdateTimer()
@@ -30,6 +36,7 @@ namespace User_Interface
             string enteredText = TextInputEntry.Text.Trim();
             CalculateAndDisplayResults(enteredText);
 
+            //hello
             TextInputEntry.Text = "";
             targetText = OefenschermMethods.GenerateNewTargetText();
             InstructionsLabel.Text = targetText;
@@ -57,12 +64,36 @@ namespace User_Interface
             ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
         }
 
+        private void Build()
+        {
+            for (int i = 0; i < targetTextList.Count; i++)
+            {
+                Label letterLabel = new Label
+                {
+                    Text = targetTextList[i].ToString(),
+                    FontSize = 36,
+                    WidthRequest = 40,
+                    HeightRequest = 60,
+                    VerticalTextAlignment = TextAlignment.Center,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    Padding = new Thickness(6, 4, 6, 4),
+                    //BackgroundColor = Color.FromArgb("#F1F1F1"),
+                    BackgroundColor = Color.FromArgb("#66FF66"),
+                    TextColor = Colors.Black,
+                    Margin = 2
+                };
+                Sentence.Children.Add(letterLabel);
+            }
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
             TextInputEntry.Focus();
             stopwatch.Start();
         }
 
     }
 }
+
