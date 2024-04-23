@@ -4,13 +4,21 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:User_Interface"
-    Shell.FlyoutBehavior="Disabled"
-    Title="User_Interface">
-
-    <ShellContent
-        Title="Home"
+    Shell.FlyoutBehavior="Flyout"
+    Title="SwiftKey">
+    
+    <FlyoutItem Title="Loginscherm" >
+        <ShellContent
+        
+        ContentTemplate="{DataTemplate local:Loginscherm}"
+        Route="ResultPage" />
+    </FlyoutItem>
+    <FlyoutItem Title="Oefeningscherm">
+        <ShellContent
+        
         ContentTemplate="{DataTemplate local:Oefenscherm}"
-        Route="MainPage" />
+        Route="ResultPage" />
+    </FlyoutItem>
 
 </Shell>
 
