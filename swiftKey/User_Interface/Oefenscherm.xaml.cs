@@ -50,7 +50,7 @@ namespace User_Interface
             double accuracy = OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText);
 
             // Display results
-            ResultsLabel.Text = $"Typing speed: {typingSpeed} WPM\nAccuracy: {accuracy:F2}%";
+            ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
         }
 
         protected override void OnAppearing()
@@ -59,5 +59,6 @@ namespace User_Interface
             TextInputEntry.Focus();
             stopwatch.Start();
         }
+
     }
 }
