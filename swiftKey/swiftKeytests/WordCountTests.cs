@@ -1,4 +1,6 @@
 using NUnit.Framework;
+using Business_Logic;
+using SwiftKey_Logic;
 
 [TestFixture]
 public class WordCountTests
@@ -10,7 +12,7 @@ public class WordCountTests
         var text = "Hello, world! This is a test.";
 
         // Act
-        var count = StringUtility.GetWordCount(text);
+        var count = OefenschermMethods.GetWordCount(text);
 
         // Assert
         Assert.AreEqual(6, count);
@@ -23,7 +25,7 @@ public class WordCountTests
         var text = "Hello    world  !  This   is a test.";
 
         // Act
-        var count = StringUtility.GetWordCount(text);
+        var count = OefenschermMethods.GetWordCount(text);
 
         // Assert
         Assert.AreEqual(6, count);
@@ -36,7 +38,7 @@ public class WordCountTests
         var text = "Hello, world! This, is a test.";
 
         // Act
-        var count = StringUtility.GetWordCount(text);
+        var count = OefenschermMethods.GetWordCount(text);
 
         // Assert
         Assert.AreEqual(6, count);
@@ -49,7 +51,7 @@ public class WordCountTests
         var text = "";
 
         // Act
-        var count = StringUtility.GetWordCount(text);
+        var count = OefenschermMethods.GetWordCount(text);
 
         // Assert
         Assert.AreEqual(0, count);
@@ -62,7 +64,7 @@ public class WordCountTests
         var text = " , ! ? . ,";
 
         // Act
-        var count = StringUtility.GetWordCount(text);
+        var count = OefenschermMethods.GetWordCount(text);
 
         // Assert
         Assert.AreEqual(0, count);
@@ -75,16 +77,8 @@ public class WordCountTests
         string text = null;
 
         // Act & Assert
-        var ex = Assert.Throws<System.ArgumentNullException>(() => StringUtility.GetWordCount(text));
+        var ex = Assert.Throws<System.ArgumentNullException>(() => OefenschermMethods.GetWordCount(text));
         Assert.That(ex.ParamName, Is.EqualTo("text"));
     }
 }
 
-public static class StringUtility
-{
-    public static int GetWordCount(string text)
-    {
-        if (text == null) throw new ArgumentNullException(nameof(text));
-        return text.Split(new char[] { ' ', '.', ',', '!', '?' }, StringSplitOptions.RemoveEmptyEntries).Length;
-    }
-}
