@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:userInterface="clr-namespace:User_Interface"
              x:Class="User_Interface.Oefenscherm">
-    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Label x:Name="InstructionsLabel" Text="Type de text hieronder." HorizontalOptions="Center"/>
-        <Entry x:Name="TextInputEntry" Placeholder="Type hier..." HorizontalOptions="CenterAndExpand" Completed="TextInputEntry_Completed"/>
-        <Label x:Name="ResultsLabel" Text="" HorizontalOptions="Center"/>
+    
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="20">
+        <Label x:Name="InstructionsLabel" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold"/>
+        <Entry x:Name="TextInputEntry" Placeholder="Type de tekst hier en klik enter als je klaar bent." HorizontalOptions="CenterAndExpand" Completed="TextInputEntry_Completed" FontSize="18" WidthRequest="300" HeightRequest="40" />
+        <Label x:Name="ResultsLabel" Text="" HorizontalOptions="Center" FontSize="18" TextColor="#007ACC"/>
     </StackLayout>
 </ContentPage>

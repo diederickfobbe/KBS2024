@@ -71,4 +71,8 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\SwiftKey_Logic\Business_Logic.csproj" />
+	</ItemGroup>
+
 </Project>
