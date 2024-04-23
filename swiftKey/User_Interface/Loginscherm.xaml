@@ -6,7 +6,7 @@
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Spacing="20">
         <Image Source="swiftkey.png" HeightRequest="100" WidthRequest="300" HorizontalOptions="Center"/>
 
-        <Entry Placeholder="Gebruikersnaam" x:Name="UsernameEntry" FontSize="20"/>
+        <Entry Placeholder="Email" x:Name="EmailEntry" FontSize="20"/>
         <Entry Placeholder="Wachtwoord" x:Name="PasswordEntry" FontSize="20" IsPassword="True"/>
 
         <Button Text="Inloggen" Clicked="Button_OnLoginClicked" FontSize="20"/>

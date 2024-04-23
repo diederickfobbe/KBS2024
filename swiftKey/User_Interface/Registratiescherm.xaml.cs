@@ -1,10 +1,16 @@
+using Business_Logic;
 using Microsoft.Maui.Controls;
 using System;
+using System.Net.Http.Headers;
 
 namespace User_Interface
 {
     public partial class Registratiescherm : ContentPage
     {
+        
+        private UserManager userManager = new UserManager();
+
+
         public Registratiescherm()
         {
             InitializeComponent();
@@ -16,6 +22,8 @@ namespace User_Interface
             string email = EmailEntry.Text;
             string password = PasswordEntry.Text;
             string repeatPassword = RepeatPasswordEntry.Text;
+
+            
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(repeatPassword))
             {
@@ -31,11 +39,21 @@ namespace User_Interface
                 return;
             }
 
-            // Registratielogica hier
-            // Hier zou je de gebruikersgegevens kunnen opslaan in een database of ergens anders
+            try
+            {
+                // Probeer een nieuwe gebruiker te maken
+                string hashedPassword = Business_Logic.RegisterChecks.HashPassword(password);
+               
+                userManager.CreateUser(username, email, hashedPassword);
+                // Toon een melding na succesvolle registratie
+                DisplayAlert("Succes", "Account succesvol geregistreerd voor " + username, "OK");
 
-            // Voorbeeld: Toon een melding na succesvolle registratie
-            DisplayAlert("Succes", "Account succesvol geregistreerd voor " + username, "OK");
+            }
+            catch (Exception ex)
+            {
+                // Als er een fout optreedt tijdens het maken van de gebruiker, toon dan een foutmelding
+                DisplayAlert("Fout", ex.Message, "OK");
+            }
         }
     }
 }
