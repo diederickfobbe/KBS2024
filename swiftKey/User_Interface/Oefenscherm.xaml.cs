@@ -1,7 +1,4 @@
-using Microsoft.Maui.Controls;
-using System;
 using System.Diagnostics;
-using System.Linq;
 using SwiftKey_Logic;
 
 namespace User_Interface
@@ -9,6 +6,7 @@ namespace User_Interface
     public partial class Oefenscherm : ContentPage
     {
         private string targetText = "";
+        
         private Stopwatch stopwatch = new Stopwatch();
 
         public Oefenscherm()
@@ -16,24 +14,30 @@ namespace User_Interface
             InitializeComponent();
             targetText = OefenschermMethods.GenerateNewTargetText();
             InstructionsLabel.Text = targetText;
+            Device.StartTimer(TimeSpan.FromSeconds(1), UpdateTimer);
         }
-        
+
+        private bool UpdateTimer()
+        {
+            TimerLabel.Text = stopwatch.Elapsed.ToString(@"hh\:mm\:ss");
+            return true; // Return true to keep the timer running.
+        }
 
         private void TextInputEntry_Completed(object sender, EventArgs e)
         {
             stopwatch.Stop();
-            string enteredText = TextInputEntry.Text.Trim();
 
-            // Calculate typing speed, accuracy, and display results
+            string enteredText = TextInputEntry.Text.Trim();
             CalculateAndDisplayResults(enteredText);
 
-            // Clear input
             TextInputEntry.Text = "";
-
-            // Generate new target text
             targetText = OefenschermMethods.GenerateNewTargetText();
             InstructionsLabel.Text = targetText;
+
+            stopwatch.Reset();
+            stopwatch.Start(); // Restart the stopwatch for a new measurement
         }
+
 
         private void CalculateAndDisplayResults(string enteredText)
         {

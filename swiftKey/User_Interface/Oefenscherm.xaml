@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:userInterface="clr-namespace:User_Interface"
              x:Class="User_Interface.Oefenscherm">
-    
-    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="20">
-        <Label x:Name="InstructionsLabel" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold"/>
-        <Entry x:Name="TextInputEntry" Placeholder="Type de tekst hier en klik enter als je klaar bent." HorizontalOptions="CenterAndExpand" Completed="TextInputEntry_Completed" FontSize="18" WidthRequest="300" HeightRequest="40" />
-        <Label x:Name="ResultsLabel" Text="" HorizontalOptions="Center" FontSize="18" TextColor="#007ACC"/>
+
+    <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="25">
+        <Label x:Name="TimerLabel" Text="00:00:00" HorizontalOptions="Center" FontSize="25" TextColor="#007ACC"/>
+        <Label x:Name="InstructionsLabel" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold"/>
+        <Entry x:Name="TextInputEntry" Placeholder="Type de tekst hier en klik enter als je klaar bent."
+               HorizontalOptions="CenterAndExpand" Completed="TextInputEntry_Completed"
+               FontSize="22" WidthRequest="500" HeightRequest="50" />
+        <Label x:Name="ResultsLabel" Text="" HorizontalOptions="Center" FontSize="25" TextColor="#007ACC"/>
     </StackLayout>
 </ContentPage>
