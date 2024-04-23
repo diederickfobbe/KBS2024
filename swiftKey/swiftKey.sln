@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwiftKey.UI", "SwiftKey.UI"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SwiftKey.logic", "SwiftKey.logic", "{39397A4A-5614-4F09-82ED-8F1A4A6F9D68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business_Logic", "SwiftKey_Logic\Business_Logic.csproj", "{14E6A0F7-CF65-42D5-A1D0-6AF8FAF57BC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business_Logic", "SwiftKey_Logic\Business_Logic.csproj", "{14E6A0F7-CF65-42D5-A1D0-6AF8FAF57BC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data_Access", "SwiftKey_DataAccess\Data_Access.csproj", "{3A5D25B8-6B54-4355-A649-00564FEFD85A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data_Access", "SwiftKey_DataAccess\Data_Access.csproj", "{3A5D25B8-6B54-4355-A649-00564FEFD85A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User_Interface", "User_Interface\User_Interface.csproj", "{6677B547-49FA-494B-B680-303014801484}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User_Interface", "User_Interface\User_Interface.csproj", "{6677B547-49FA-494B-B680-303014801484}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
