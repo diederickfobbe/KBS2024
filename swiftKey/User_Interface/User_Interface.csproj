@@ -67,13 +67,35 @@
 	  <MauiXaml Update="NewPage1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Registratiescherm.xaml">
+	  <MauiXaml Update="Schermen\Loginscherm.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Schermen\Oefenscherm.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Schermen\Registratiescherm.xaml">
+	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\SwiftKey_Logic\Business_Logic.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Schermen\Loginscherm.xaml.cs">
+	    <DependentUpon>Loginscherm.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Schermen\Oefenscherm.xaml.cs">
+	    <DependentUpon>Oefenscherm.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Schermen\Registratiescherm.xaml.cs">
+	    <DependentUpon>Registratiescherm.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
 	</ItemGroup>
 
 </Project>
