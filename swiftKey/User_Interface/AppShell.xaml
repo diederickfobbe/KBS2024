@@ -5,11 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:User_Interface"
     Shell.FlyoutBehavior="Disabled"
-    Title="User_Interface">
+    Title="SwiftKey">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:Oefenscherm}"
+        ContentTemplate="{DataTemplate local:Loginscherm}"
         Route="MainPage" />
 
 </Shell>
