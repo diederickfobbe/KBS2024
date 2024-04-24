@@ -2,7 +2,7 @@ using Business_Logic;
 using Microsoft.Maui.Controls;
 using System;
 using System.Net.Http.Headers;
-
+using Data_Access;
 namespace User_Interface
 {
     public partial class Registratiescherm : ContentPage
@@ -45,6 +45,9 @@ namespace User_Interface
                 string hashedPassword = Business_Logic.RegisterChecks.HashPassword(password);
                
                 userManager.CreateUser(username, email, hashedPassword);
+                Data_Access.RegisterUser.InsertUser(username, email, password);
+               
+
                 // Toon een melding na succesvolle registratie
                 DisplayAlert("Succes", "Account succesvol geregistreerd voor " + username, "OK");
 
