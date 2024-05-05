@@ -31,7 +31,8 @@ namespace User_Interface
 		{
 			Wpm.Text=$"type snelheid:{typeSpeed}";
 			Time.Text = $"Tijd:{timeTaken}";
-			Ratio.Text = $"Goed/Fout ratio:{accuracy}%";
+            accuracy = Math.Round(accuracy, 2);
+            Ratio.Text = $"Goed/Fout ratio:{accuracy}%";
 			Mistakes.Text = $"Fouten:{mistakes}";
 
 		}
