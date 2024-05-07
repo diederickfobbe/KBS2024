@@ -9,7 +9,7 @@ namespace User_Interface
     {
         public Loginscherm()
         {
-            new RegisterUser();
+            new RegisterHandler();
             InitializeComponent();
         }
 
