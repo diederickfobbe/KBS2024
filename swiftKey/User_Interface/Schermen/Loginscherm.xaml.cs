@@ -1,5 +1,6 @@
 ﻿using Microsoft.Maui.Controls;
 using Microsoft.Maui.Platform;
+using User_Interface.Schermen;
 
 namespace User_Interface
 {
@@ -24,7 +25,7 @@ namespace User_Interface
             else if (email.Equals("admin") && password.Equals("admin"))
             {
                 // Inloggen als admin
-                Navigation.PushAsync(new Oefenscherm());
+                Navigation.PushAsync(new SelecterenOefening());
             }
             else
             {
