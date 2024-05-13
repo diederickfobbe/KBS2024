@@ -24,7 +24,7 @@
         <ListView x:Name="SelectOefeningen"
               SeparatorColor="Grey"
               SeparatorVisibility="Default"
-              WidthRequest="700"
+              WidthRequest="1500"
               >
         <ListView.ItemTemplate>
             <DataTemplate>

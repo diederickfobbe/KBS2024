@@ -65,15 +65,6 @@ namespace User_Interface
             stopwatch.Stop();
             string enteredText = TextInputEntry.Text.Trim();
             CalculateAndDisplayResults(enteredText);
-
-            TextInputEntry.Text = "";
-            targetText = OefenschermMethods.GenerateNewTargetText();
-            InstructionsLabel.Text = targetText;
-
-            Build(); // Rebuild the labels for the new text
-
-            stopwatch.Reset();
-            stopwatch.Start(); // Restart the stopwatch for a new measurement
         }
 
 
