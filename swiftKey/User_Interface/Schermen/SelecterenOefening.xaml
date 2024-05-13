@@ -63,9 +63,5 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
-
     </HorizontalStackLayout>
-
-
-
 </ContentPage>

@@ -4,11 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:User_Interface"
+    xmlns:schermen="clr-namespace:User_Interface.Schermen"
     Shell.FlyoutBehavior="Disabled"
     Title="SwiftKey">
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:Loginscherm}"
+        ContentTemplate="{DataTemplate schermen:SelecterenOefening}"
         Route="MainPage" />
 
 </Shell>
