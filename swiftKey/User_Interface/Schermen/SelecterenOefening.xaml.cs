@@ -1,9 +1,9 @@
+using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
 
 namespace User_Interface.Schermen
 {
@@ -13,17 +13,27 @@ namespace User_Interface.Schermen
         {
             InitializeComponent();
             InitializeOefeningen();
+            SelectOefeningen.ItemTapped += SelectOefeningen_ItemTapped;
         }
 
         private void InitializeOefeningen()
         {
-            List<Oefening> Games = new List<Oefening>()
+            List<Oefening> oefeningen = new List<Oefening>()
             {
                 new Oefening{Name="game1", Difficulty="Hard", ImageLocation="swiftkey.png"},
-                new Oefening{Name="game2", Difficulty="Easy",ImageLocation="ukimage.png"},
-                new Oefening{Name="game3", Difficulty="medium",ImageLocation="ukimage.png"}
+                new Oefening{Name="game2", Difficulty="Easy",ImageLocation="swiftkey.png"},
+                new Oefening{Name="game3", Difficulty="medium",ImageLocation="swiftkey.png"}
             };
-            SelectOefeningen.ItemsSource = Games;
+            SelectOefeningen.ItemsSource = oefeningen;
+        }
+
+        private async void SelectOefeningen_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item is Oefening selectedOefening)
+            {
+                // Open new Oefenscherm with the selected Oefening's text
+                await Navigation.PushAsync(new Oefenscherm(selectedOefening.Name));
+            }
         }
     }
 

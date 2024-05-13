@@ -17,12 +17,12 @@
                 <ColumnDefinition Width="200" />
             </Grid.ColumnDefinitions>
             <Button Text="Home" Grid.Row="0"/>
-            <Button Text="Click me" Grid.Row="1"/>
+            <Button Text="Leaderboard" Grid.Row="1"/>
             <Button Text="Account" Grid.Row="3"/>
             <Button Text="Uitloggen" Grid.Row="4"/>
         </Grid>
         <ListView x:Name="SelectOefeningen"
-              SeparatorColor="Red"
+              SeparatorColor="Grey"
               SeparatorVisibility="Default"
               WidthRequest="700"
               >

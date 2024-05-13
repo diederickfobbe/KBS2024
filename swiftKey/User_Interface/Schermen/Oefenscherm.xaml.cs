@@ -12,10 +12,10 @@ namespace User_Interface
 
         private Stopwatch stopwatch = new Stopwatch();
 
-        public Oefenscherm()
+        public Oefenscherm(string oefeningText)
         {
             InitializeComponent();
-            targetText = OefenschermMethods.GenerateNewTargetText();
+            targetText = oefeningText;
             targetTextList = targetText.ToList();
             InstructionsLabel.Text = targetText;
             Device.StartTimer(TimeSpan.FromSeconds(1), UpdateTimer);
