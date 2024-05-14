@@ -95,6 +95,7 @@ namespace User_Interface
 
             // Toon de resultaten
             ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
+            Navigation.PushAsync(new Resultscherm(typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
         }
 
 
