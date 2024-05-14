@@ -23,7 +23,6 @@ namespace User_Interface
             InstructionsLabel.Text = targetText;
             Device.StartTimer(TimeSpan.FromSeconds(1), UpdateTimer);
             Build();
-
             TextInputEntry.TextChanged += TextInputEntry_TextChanged;
         }
 
@@ -64,10 +63,13 @@ namespace User_Interface
 
         
         private void TextInputEntry_Completed(object sender, EventArgs e)
-        {
-            stopwatch.Stop();
-            string enteredText = TextInputEntry.Text.Trim();
-            CalculateAndDisplayResults(enteredText);
+        {   
+            if (TextInputEntry.Text != null)
+            {
+                stopwatch.Stop();
+                string enteredText = TextInputEntry.Text.Trim();
+                CalculateAndDisplayResults(enteredText);
+            }
         }
 
 
@@ -130,6 +132,8 @@ namespace User_Interface
                 labelList.Add(letterLabel);
             }
         }
+
+        //het inputveld wordt in focus gebracht
         private void OnEntryLoaded(object sender, EventArgs e)
         {
             TextInputEntry.Focus();
@@ -139,7 +143,6 @@ namespace User_Interface
         {
             
             base.OnAppearing();
-            TextInputEntry.Focus();
             stopwatch.Start();
         }
 
