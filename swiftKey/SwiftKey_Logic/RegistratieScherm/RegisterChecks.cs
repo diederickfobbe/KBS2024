@@ -27,10 +27,10 @@ namespace Business_Logic
             }
         }
 
-        public static bool VerifyPassword(string userInput, string hashedPassword)
+/*        public static bool VerifyPassword(string userInput, string hashedPassword)
         {
             string userInputHashed = HashPassword(userInput);
             return userInputHashed.Equals(hashedPassword, StringComparison.OrdinalIgnoreCase);
-        }
+        }*/
     }
 }

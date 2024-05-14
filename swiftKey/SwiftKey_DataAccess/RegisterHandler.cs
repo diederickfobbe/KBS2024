@@ -20,7 +20,7 @@ namespace Data_Access
                     try
                     {
                         // Insert query with parameters to prevent SQL injection
-                        string insertQuery = "INSERT INTO User (Username, Email, Password) VALUES (@username, @email, @password)";
+                        string insertQuery = "INSERT INTO Users (Username, Email, Password) VALUES (@username, @email, @password)";
 
                         using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
                         {

@@ -20,8 +20,9 @@ namespace User_Interface
 
             string email = EmailEntry.Text;
             string password = PasswordEntry.Text;
+            string hashedPassword = Business_Logic.RegisterChecks.HashPassword(password);
 
-            if (Business_Logic.LoginChecks.CheckLogin(email, password))
+            if (Data_Access.LoginHandler.CheckLogin(email, hashedPassword))
             {
                 // Gebruiker heeft juiste gebruikersnaam en wachtwoord ingevoerd
                 Navigation.PushAsync(new SelecterenOefening());
