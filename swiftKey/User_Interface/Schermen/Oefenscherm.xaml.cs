@@ -1,4 +1,6 @@
 using System.Diagnostics;
+using System.Linq;
+
 //using Android.OS;
 using SwiftKey_Logic;
 
@@ -72,8 +74,8 @@ namespace User_Interface
         private void CalculateAndDisplayResults(string enteredText)
         {
             // Splits de doeltekst en de ingevoerde tekst in woorden
-            string[] targetWords = targetText.Split(' ');
-            string[] enteredWords = enteredText.Split(' ');
+            char[] targetWords = targetText.ToCharArray();
+            char[] enteredWords = enteredText.ToCharArray();
 
             int correctWordCount = 0;
 
@@ -96,6 +98,7 @@ namespace User_Interface
             // Toon de resultaten
             ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
             Navigation.PushAsync(new Resultscherm(typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
+            stopwatch.Reset();
         }
 
 
