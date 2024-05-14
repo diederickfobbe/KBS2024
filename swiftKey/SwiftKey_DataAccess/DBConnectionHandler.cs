@@ -22,8 +22,8 @@ namespace Data_Access
             string sshUsername = "student",
             string sshPassword = "groep 3",
             string sqlHost = "localhost",
-            string sqlUsername = "sql1",
-            string sqlPassword = "kbsgroep3",
+            string sqlUsername = "sa",
+            string sqlPassword = "KBSgroep3",
             string initialCatalog = "SwiftKey")
         {
             // SSH-verbinding instellen
