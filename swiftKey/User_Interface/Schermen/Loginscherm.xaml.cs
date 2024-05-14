@@ -24,7 +24,7 @@ namespace User_Interface
             if (Business_Logic.LoginChecks.CheckLogin(email, password))
             {
                 // Gebruiker heeft juiste gebruikersnaam en wachtwoord ingevoerd
-                Navigation.PushAsync(new Oefenscherm());
+                Navigation.PushAsync(new SelecterenOefening());
                 
             }
             else
