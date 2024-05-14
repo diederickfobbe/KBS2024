@@ -25,7 +25,7 @@ namespace Data_Access
                         {
                             string hashedPasswordFromDB = reader.GetString(0);
                             // Hash het ingevoerde wachtwoord met SHA256 en vergelijk met het gehashte wachtwoord in de database
-                            string hashedPassword = RegisterChecks.HashPassword(password);
+                            string hashedPassword = password;
                             if (hashedPassword == hashedPasswordFromDB)
                             {
                                 return true;
@@ -35,7 +35,9 @@ namespace Data_Access
                     }
                 }
             }
+
         }
+
     }
 
 }
