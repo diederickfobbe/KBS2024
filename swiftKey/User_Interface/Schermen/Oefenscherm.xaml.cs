@@ -78,33 +78,22 @@ namespace User_Interface
 
         private void CalculateAndDisplayResults(string enteredText)
         {
-            // Splits de doeltekst en de ingevoerde tekst in woorden
-            string[] targetWords = targetText.Split(' ');
-            string[] enteredWords = enteredText.Split(' ');
+            int enteredWordCount = OefenschermMethods.GetWordCount(enteredText);
+            int targetWordCount = OefenschermMethods.GetWordCount(targetText);
 
-            int correctWordCount = 0;
-
-            // Vergelijk woord voor woord en tel alleen correct overgetypte woorden
-            for (int i = 0; i < Math.Min(targetWords.Length, enteredWords.Length); i++)
-            {
-                if (targetWords[i] == enteredWords[i])
-                {
-                    correctWordCount++;
-                }
-            }
-
-            // Bereken de tijd en typesnelheid (WPM) alleen op basis van correct overgetypte woorden
+            // Calculate time taken in minutes
             double timeTakenInMinutes = stopwatch.Elapsed.TotalMinutes;
-            int typingSpeed = OefenschermMethods.CalculateTypingSpeed(correctWordCount, timeTakenInMinutes);
 
-            // Bereken nauwkeurigheid op basis van het totale aantal woorden in de doeltekst
-            double accuracy = ((double)correctWordCount / targetWords.Length) * 100;
+            // Calculate typing speed in words per minute (WPM)
+            int typingSpeed = OefenschermMethods.CalculateTypingSpeed(enteredWordCount, timeTakenInMinutes);
 
-            // Toon de resultaten
+            // Calculate accuracy
+            double accuracy = OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText);
+
+            // Display results
             ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
             Navigation.PushAsync(new Resultscherm(typingSpeed, TimerLabel.Text,accuracy,enteredText, targetText));
         }
-
 
         private List<Label> labelList = new List<Label>();
 
