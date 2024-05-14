@@ -7,9 +7,7 @@ namespace Data_Access
 {
     public class RegisterHandler
     {
-        // Connection string naar jouw SQL Server-database
         
-        private static SqlConnectionStringBuilder _builder;
 
         public static bool RegisterUser(string username, string email, string password)
         {

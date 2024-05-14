@@ -1,43 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Data_Access
 {
     public class LoginHandler
     {
-        private static SqlConnectionStringBuilder _builder;
-        public static bool CheckLogin(string email, string password)
+        public static bool CheckLogin(string username, string hashedPassword)
         {
-            using (var connection = new SqlConnection(_builder.ConnectionString))
+            using (var connectionManager = new DBConnectionHandler())
             {
-                connection.Open();
-                string sql = "SELECT password FROM Users WHERE email = @email";
-                using (SqlCommand command = new SqlCommand(sql, connection))
+                using (SqlConnection connection = connectionManager.SqlConnection)
                 {
-                    command.Parameters.AddWithValue("@email", email);
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    try
                     {
-                        if (reader.Read())
+                        // Select query to retrieve user with matching username and hashed password
+                        string selectQuery = "SELECT COUNT(*) FROM Users WHERE Username = @username AND CONVERT(nvarchar(MAX), Password) = @password";
+
+                        using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
-                            string hashedPasswordFromDB = reader.GetString(0);
-                            // Hash het ingevoerde wachtwoord met SHA256 en vergelijk met het gehashte wachtwoord in de database
-                            string hashedPassword = password;
-                            if (hashedPassword == hashedPasswordFromDB)
-                            {
-                                return true;
-                            }
+                            // Add parameters to the query
+                            cmd.Parameters.AddWithValue("@username", username);
+                            cmd.Parameters.AddWithValue("@password", hashedPassword);
+
+                            // Execute the query
+                            int count = (int)cmd.ExecuteScalar();
+
+                            // If count > 0, user exists with provided username and hashed password
+                            return count > 0;
                         }
-                        return false; // Gebruiker niet gevonden
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
                     }
                 }
             }
-
         }
-
     }
-
 }
