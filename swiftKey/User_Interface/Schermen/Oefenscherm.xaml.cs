@@ -7,16 +7,10 @@ namespace User_Interface
     public partial class Oefenscherm : ContentPage
     {
         private string targetText = "";
-        private List<char> targetTextList;
-
-
         private Stopwatch stopwatch = new Stopwatch();
 
-        public Oefenscherm(string oefeningText)
         {
             InitializeComponent();
-            targetText = oefeningText;
-            targetTextList = targetText.ToList();
             InstructionsLabel.Text = targetText;
             Device.StartTimer(TimeSpan.FromSeconds(1), UpdateTimer);
             Build();
@@ -35,6 +29,10 @@ namespace User_Interface
         {
             string enteredText = e.NewTextValue ?? "";
 
+            if (!stopwatch.IsRunning) 
+            {
+                stopwatch.Start(); // Restart the stopwatch for a new measurement
+            }
             // Iterate through all labels
             for (int i = 0; i < labelList.Count; i++)
             {
@@ -65,6 +63,15 @@ namespace User_Interface
             stopwatch.Stop();
             string enteredText = TextInputEntry.Text.Trim();
             CalculateAndDisplayResults(enteredText);
+
+            TextInputEntry.Text = "";
+            targetText = OefenschermMethods.GenerateNewTargetText();
+            InstructionsLabel.Text = targetText;
+            
+
+            Build(); // Rebuild the labels for the new text
+
+            stopwatch.Reset();
         }
 
 
@@ -85,6 +92,7 @@ namespace User_Interface
 
             // Display results
             ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
+            Navigation.PushAsync(new Resultscherm(typingSpeed, TimerLabel.Text,accuracy,enteredText, targetText));
         }
 
         private List<Label> labelList = new List<Label>();
