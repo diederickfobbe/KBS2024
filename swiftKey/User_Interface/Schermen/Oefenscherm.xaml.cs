@@ -4,6 +4,7 @@ using System.Linq;
 //using Android.OS;
 using SwiftKey_Logic;
 
+
 namespace User_Interface
 {
     public partial class Oefenscherm : ContentPage
@@ -91,6 +92,7 @@ namespace User_Interface
             // Bereken de tijd en typesnelheid (WPM) alleen op basis van correct overgetypte woorden
             double timeTakenInMinutes = stopwatch.Elapsed.TotalMinutes;
             int typingSpeed = OefenschermMethods.CalculateTypingSpeed(correctWordCount, timeTakenInMinutes);
+            
 
             // Bereken nauwkeurigheid op basis van het totale aantal woorden in de doeltekst
             double accuracy = ((double)correctWordCount / targetWords.Length) * 100;
@@ -128,12 +130,15 @@ namespace User_Interface
                 labelList.Add(letterLabel);
             }
         }
-
+        private void OnEntryLoaded(object sender, EventArgs e)
+        {
+            TextInputEntry.Focus();
+        }
 
         protected override void OnAppearing()
         {
+            
             base.OnAppearing();
-
             TextInputEntry.Focus();
             stopwatch.Start();
         }
