@@ -1,6 +1,5 @@
 using NUnit.Framework;
-using Business_Logic;
-using SwiftKey_Logic;
+
 
 [TestFixture]
 public class AccuracyTests
