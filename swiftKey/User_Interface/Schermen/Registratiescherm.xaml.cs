@@ -2,8 +2,7 @@ using Business_Logic;
 using Microsoft.Maui.Controls;
 using System;
 using System.Net.Http.Headers;
-using Data_Access;
- 
+
 namespace User_Interface
 {
     public partial class Registratiescherm : ContentPage
@@ -40,28 +39,12 @@ namespace User_Interface
                 return;
             }
 
-            if (!Business_Logic.CheckComplexity.EmailValidCheck(email))
-            {
-                DisplayAlert("Fout", "Dit lijkt niet op een email", "OK");
-                return;
-            }
-
-            if (!Business_Logic.CheckComplexity.PasswordValidCheck(password))
-            {
-                DisplayAlert("Fout", "Controleer of het wachtwoord minimaal 8 tekens lang is, Controleer of het wachtwoord minstens één hoofdletter bevat, Controleer of het wachtwoord minstens één kleine letter bevat, Controleer of het wachtwoord minstens één cijfer bevat, Controleer of het wachtwoord minstens één speciaal teken bevat", "OK");
-                return;
-            }
-
-
             try
             {
                 // Probeer een nieuwe gebruiker te maken
                 string hashedPassword = Business_Logic.RegisterChecks.HashPassword(password);
                
                 userManager.CreateUser(username, email, hashedPassword);
-                Data_Access.RegisterHandler.RegisterUser(username, email, hashedPassword);
-               
-
                 // Toon een melding na succesvolle registratie
                 DisplayAlert("Succes", "Account succesvol geregistreerd voor " + username, "OK");
 
