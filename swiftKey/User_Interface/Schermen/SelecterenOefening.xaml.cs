@@ -30,38 +30,56 @@ namespace User_Interface.Schermen
 
         private void LoadLevels()
         {
-            // Retrieve levels from database using LevelHandler
-            var levels = levelHandler.GetLevels();
+            try
+            {
+                // Retrieve levels from database using LevelHandler
+                var levels = levelHandler.GetLevels();
 
-            // Convert levels to Oefening objects
-            List<Oefening> oefeningen = levels.Select(level =>
-                new Oefening
+                if (levels == null || levels.Count == 0)
                 {
-                    Name = "Level " + level.Id, // Assuming tags represent the name in your database
-                    Difficulty = level.Difficulty,
-                    ImageLocation = "", // Provide appropriate image location if available in the database
-                    ExampleText = level.ExampleText
-                }).ToList();
+                    DisplayAlert("Error", "Geen levels gevonden.", "OK");
+                    return;
+                }
 
-           
+                // Convert levels to Oefening objects
+                List<Oefening> oefeningen = levels.Select(level =>
+                    new Oefening
+                    {
+                        Name = "Level " + level.Id, 
+                        Difficulty = level.Difficulty,
+                        ImageLocation = "swiftkey", 
+                        ExampleText = level.ExampleText
+                    }).ToList();
 
-            // Bind levels to ListView
-            SelectOefeningen.ItemsSource = oefeningen;
+                // Bind levels to ListView
+                SelectOefeningen.ItemsSource = oefeningen;
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Error", "Er zijn geen levels gevonden. " + ex.Message, "OK");
+            }
         }
 
         private async void SelectOefeningen_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            if (e.Item is Oefening selectedOefening)
+            try
             {
-                if (!string.IsNullOrEmpty(selectedOefening.ExampleText))
+                if (e.Item is Oefening selectedOefening)
                 {
-                    // Open new Oefenscherm with the selected Oefening's text
-                    await Navigation.PushAsync(new Oefenscherm(selectedOefening.ExampleText));
+                    if (!string.IsNullOrEmpty(selectedOefening.ExampleText))
+                    {
+                        // Open new Oefenscherm with the selected Oefening's text
+                        await Navigation.PushAsync(new Oefenscherm(selectedOefening.ExampleText));
+                    }
+                    else
+                    {
+                        DisplayAlert("Error", "Er is geen voorbeeldtekst gevonden voor dit level.", "OK");
+                    }
                 }
-                else
-                {
-                    DisplayAlert("Error", "The level is corrupted", "Dismiss");
-                }
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Error", "An error occurred while navigating to Oefenscherm: " + ex.Message, "OK");
             }
         }
 
