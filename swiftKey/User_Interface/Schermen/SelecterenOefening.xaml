@@ -2,16 +2,17 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:userInterface="clr-namespace:User_Interface.Schermen"
              x:Class="User_Interface.Schermen.SelecterenOefening">
 
-<!--De grid hieronder functioneert als een horizontalstacklayout, Aangezien de horizontalstacklayout niet de juiste functionaliteit-->
+
     <Grid HorizontalOptions="FillAndExpand" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
     
- <!--De grid hieronder is voor het plaatsen van de knoppen op de juiste plek aan de linker kant van het scherm-->
+ 
         <Grid  Margin="2" Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -37,12 +38,13 @@
             <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-    <!--De grid hieronder is voor de opmaak van de oefeningslabels-->
+    
                     <Grid Padding="10" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="20" />
                             <RowDefinition Height="15" />
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="15"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -66,7 +68,8 @@
                            HorizontalOptions="End"
                            BackgroundColor="Gray"
                            />
-                    </Grid>
+                            <StackLayout x:Name="taglist" Grid.Row="3" Grid.Column="1"/>
+                        </Grid>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
