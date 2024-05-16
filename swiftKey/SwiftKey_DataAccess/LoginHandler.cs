@@ -7,7 +7,8 @@ namespace Data_Access
 {
     public class LoginHandler
     {
-        public static bool CheckLogin(string username, string hashedPassword)
+
+        public static string GetPasswordFromDB(string email)
         {
             using (var connectionManager = new DBConnectionHandler())
             {
@@ -15,20 +16,27 @@ namespace Data_Access
                 {
                     try
                     {
-                        // Select query to retrieve user with matching username and hashed password
-                        string selectQuery = "SELECT COUNT(*) FROM Users WHERE Username = @username AND CONVERT(nvarchar(MAX), Password) = @password";
+
+                        // Select query to get the hashed password based on email address
+                        string selectQuery = "SELECT Password FROM Users WHERE email = @email";
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
-                            // Add parameters to the query
-                            cmd.Parameters.AddWithValue("@username", username);
-                            cmd.Parameters.AddWithValue("@password", hashedPassword);
+                            // Add parameter to the query
+                            cmd.Parameters.AddWithValue("@email", email);
 
-                            // Execute the query
-                            int count = (int)cmd.ExecuteScalar();
+                            // Execute the query and get the hashed password
+                            object result = cmd.ExecuteScalar();
 
-                            // If count > 0, user exists with provided username and hashed password
-                            return count > 0;
+                            // Check if the result is not null
+                            if (result != null)
+                            {
+                                return result.ToString();
+                            }
+                            else
+                            {
+                                return null; // Email address not found
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -37,6 +45,20 @@ namespace Data_Access
                     }
                 }
             }
+        }
+
+        public static bool CheckLogin(string email, string hashedPassword)
+        {
+            string dbPassword = GetPasswordFromDB (email);
+            if(hashedPassword == dbPassword)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
     }
 }
