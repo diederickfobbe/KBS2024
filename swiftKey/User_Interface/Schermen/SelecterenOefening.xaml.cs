@@ -46,6 +46,7 @@ namespace User_Interface.Schermen
                     new Oefening
                     {
                         Name = "Level " + level.Id, 
+                        Tags = level.Tags,
                         Difficulty = level.Difficulty,
                         ImageLocation = "swiftkey", 
                         ExampleText = level.ExampleText
@@ -96,6 +97,7 @@ namespace User_Interface.Schermen
     {
         public string Name { get; set; }
         public string Difficulty { get; set; }
+        public string Tags { get; set; }
         public string ImageLocation { get; set; }
         public string ExampleText { get; set; }
     }
