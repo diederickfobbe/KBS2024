@@ -1,18 +1,22 @@
 using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace User_Interface.Schermen
 {
     public partial class SelecterenOefening : ContentPage
     {
+        List<string> tags;
         public SelecterenOefening()
         {
             InitializeComponent();
-            InitializeOefeningen();
+            tags = new List<string>() { "engels", "easy", "woord" };
+            InitializeOefeningen();           
             SelectOefeningen.ItemTapped += SelectOefeningen_ItemTapped;
         }
 
@@ -26,7 +30,25 @@ namespace User_Interface.Schermen
                 new Oefening{Name="game4", Difficulty="medium",ImageLocation="ukimage.png"}
             };
             SelectOefeningen.ItemsSource = oefeningen;
+            foreach (string tag in tags)
+            {
+                Label letterLabel = new Label
+                {
+                    Text = tag,
+                    FontSize = 12,
+                    VerticalTextAlignment = TextAlignment.Center,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    TextColor = Colors.Black,
+                    Margin = 2,
+                    BackgroundColor = Colors.LightGray // Default color
+                };
+
+                taglist.Children.Add(letterLabel); // Corrected line
+            }
         }
+
+
+    
 
         private async void SelectOefeningen_ItemTapped(object sender, ItemTappedEventArgs e)
         {
