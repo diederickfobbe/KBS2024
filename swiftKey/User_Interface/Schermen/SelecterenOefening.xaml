@@ -1,49 +1,42 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="User_Interface.Schermen.SelecterenOefening">
-    <!-- Set background color to White or another color to fill the screen -->
-
     <ContentPage.Content>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <!-- This column will contain the buttons -->
-                <ColumnDefinition Width="*"/>
-                <!-- This column will contain the ListView and fill remaining space -->
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Row for the buttons -->
+                <RowDefinition Height="Auto"/>
+                <!-- Row for the picker -->
+                <RowDefinition Height="*"/>
+                <!-- Row for the levels -->
+            </Grid.RowDefinitions>
 
-            <!-- Grid containing the buttons -->
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <!-- Row for the other buttons -->
-                    <RowDefinition Height="*"/>
-                    <!-- Row for the "Uitloggen" button -->
-                </Grid.RowDefinitions>
+            <!-- Horizontal StackLayout to contain the pickers -->
+            <StackLayout Grid.Row="1" Orientation="Horizontal">
+                <!-- Dropdown menu to filter tags -->
+                <Picker Title="Select Tag"
+                        x:Name="TagPicker"
+                        Margin="10"
+                        VerticalOptions="Start"
+                        SelectedIndexChanged="TagPicker_SelectedIndexChanged">
+                </Picker>
 
-                <!-- StackLayout containing the other buttons -->
-                <StackLayout Grid.Row="0" VerticalOptions="Start">
-                    <Button Text="Home" Margin="10"/>
-                    <!-- Margin added to the right and bottom of the button -->
-                    <Button Text="Leaderboard" Margin="10"/>
-                    <!-- Margin added to the right and bottom of the button -->
-                    <Button Text="Account" Margin="10"/>
-                    <!-- Margin added to the right and bottom of the button -->
-                </StackLayout>
-
-                <!-- "Uitloggen" button -->
-                <Button Text="Uitloggen" Grid.Row="1" VerticalOptions="End" Margin="10"/>
-                <!-- Aligned to the bottom of the grid with a margin -->
-            </Grid>
-
+                <!-- Dropdown menu to filter difficulty -->
+                <Picker Title="Select Difficulty"
+                        x:Name="DifficultyPicker"
+                        Margin="10"
+                        VerticalOptions="Start"
+                        SelectedIndexChanged="DifficultyPicker_SelectedIndexChanged">
+                </Picker>
+            </StackLayout>
             <!-- ListView Column -->
             <ListView x:Name="SelectOefeningen"
-                      Grid.Column="1"
+                      Grid.Row="2"
                       SeparatorColor="Grey"
                       SeparatorVisibility="Default"
-                      HorizontalOptions="FillAndExpand"
+                      HorizontalOptions="Start"
                       VerticalOptions="FillAndExpand">
-                <!-- Expand vertically to fill available space -->
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -57,18 +50,18 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Image Grid.RowSpan="2"
-                                       Source="{Binding ImageLocation}"
-                                       Aspect="Fill"
-                                       HeightRequest="60"
-                                       WidthRequest="100" />
+                                <Label Grid.RowSpan="2"
+                                       Text="{Binding Image}"
+                                       FontAttributes="Bold" 
+                                       FontSize="20"
+                                       LineBreakMode="TailTruncation" />
 
                                 <Label Grid.Column="1"
                                        Text="{Binding Name}"
                                        FontAttributes="Bold" 
                                        FontSize="20"
                                        LineBreakMode="TailTruncation" />
-                                
+
                                 <Frame Grid.Row="1"
                                        Grid.Column="1"
                                        Padding="5"
@@ -81,9 +74,8 @@
                                            HorizontalOptions="End"
                                            VerticalOptions="Center"
                                            LineBreakMode="WordWrap"/>
-                                    </Frame>
+                                </Frame>
 
-                                <!-- Truncate text with ellipses if it doesn't fit -->
                                 <Frame Grid.Row="1"
                                        Grid.Column="1"
                                        Padding="5"
@@ -97,11 +89,6 @@
                                            VerticalOptions="Center"
                                            LineBreakMode="WordWrap"/>
                                 </Frame>
-                                
-                                
-
-
-                                <!-- Enable text wrapping -->
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
