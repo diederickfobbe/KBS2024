@@ -18,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SwiftKey_DataAccess\Data_Access.csproj" />
     <ProjectReference Include="..\SwiftKey_Logic\Business_Logic.csproj" />
+    <ProjectReference Include="..\User_Interface\User_Interface.csproj" />
   </ItemGroup>
 
   <ItemGroup>
