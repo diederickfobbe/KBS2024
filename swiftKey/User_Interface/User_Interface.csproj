@@ -77,9 +77,6 @@
 	    <SubType>Designer</SubType>
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Schermen\Resultscherm.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>

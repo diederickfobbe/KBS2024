@@ -29,11 +29,11 @@ namespace User_Interface
         }
 		private void asignResults(int typeSpeed, string timeTaken, double accuracy, int mistakes)
 		{
-			Wpm.Text=$"type snelheid:{typeSpeed}";
-			Time.Text = $"Tijd:{timeTaken}";
+			Wpm.Text=$"type snelheid:{typeSpeed} WPM";
+			Tijd.Text = $"Tijd:{timeTaken}";
             accuracy = Math.Round(accuracy, 2);
             Ratio.Text = $"Goed/Fout ratio:{accuracy}%";
-			Mistakes.Text = $"Fouten:{mistakes}";
+			Fouten.Text = $"Fouten:{mistakes}";
 
 		}
 	}
