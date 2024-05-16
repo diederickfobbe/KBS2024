@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Text;
 
 namespace Data_Access
@@ -18,7 +19,7 @@ namespace Data_Access
                     {
 
                         // Select query to get the hashed password based on email address
-                        string selectQuery = "SELECT Password FROM Users WHERE email = @email";
+                        string selectQuery = "SELECT password FROM Users WHERE email = @email";
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
@@ -31,7 +32,10 @@ namespace Data_Access
                             // Check if the result is not null
                             if (result != null)
                             {
+                               
                                 return result.ToString();
+                                Debug.WriteLine(result.ToString());
+                                
                             }
                             else
                             {
