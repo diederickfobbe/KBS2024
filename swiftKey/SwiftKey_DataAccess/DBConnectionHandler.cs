@@ -20,7 +20,7 @@ namespace Data_Access
         public DBConnectionHandler(
             string sshHost = "145.44.233.8",
             string sshUsername = "student",
-            string sshPassword = "groep3",
+            string sshPassword = "groep 3",
             string sqlHost = "localhost",
             string sqlUsername = "sa",
             string sqlPassword = "KBSgroep3",

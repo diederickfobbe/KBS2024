@@ -19,7 +19,10 @@ namespace Data_Access
                     {
 
                         // Select query to get the hashed password based on email address
-                        string selectQuery = "SELECT password FROM Users WHERE email = @email";
+                        /*string selectQuery = "SELECT password FROM Users WHERE email = @email";*/
+                        // Select query to get the hashed password based on email address
+                        string selectQuery = "SELECT password FROM Users WHERE CAST(email AS NVARCHAR(MAX)) = @email";
+
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
