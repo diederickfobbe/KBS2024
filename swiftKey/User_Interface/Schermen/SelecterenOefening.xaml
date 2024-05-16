@@ -2,9 +2,16 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:User_Interface.Converters"
              x:Class="User_Interface.Schermen.SelecterenOefening">
-<HorizontalStackLayout>
-        
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DifficultyToColorConverter x:Key="DifficultyToColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <HorizontalStackLayout>
         <Grid RowSpacing="2" Margin="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -21,47 +28,45 @@
             <Button Text="Account" Grid.Row="3"/>
             <Button Text="Uitloggen" Grid.Row="4"/>
         </Grid>
+
         <ListView x:Name="SelectOefeningen"
-              SeparatorColor="Grey"
-              SeparatorVisibility="Default"
-              WidthRequest="1500"
-              >
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Grid Padding="10" ColumnSpacing="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="15" />
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        
-                        <Image Grid.RowSpan="3"
-                           Source="{Binding ImageLocation}"
-                           Aspect="Fill"
-                           HeightRequest="60"
-                           WidthRequest="100" />
-                        <Label Grid.Column="1"
-                           Text="{Binding Name}"
-                           FontAttributes="Bold" />
-                        <Label Grid.Row="1"
-                           Grid.Column="2"
-                           Text="{Binding Difficulty}"
-                           FontAttributes="Italic"
-                           FontSize="10"
-                           HorizontalOptions="End"
-                           
-                           BackgroundColor="Gray"
-                           />
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+                  SeparatorColor="Grey"
+                  SeparatorVisibility="Default"
+                  WidthRequest="1500">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10" ColumnSpacing="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="15" />
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image Grid.RowSpan="3"
+                                   Source="{Binding ImageLocation}"
+                                   Aspect="Fill"
+                                   HeightRequest="60"
+                                   WidthRequest="100" />
+                            <Label Grid.Column="1"
+                                   Text="{Binding Name}"
+                                   FontAttributes="Bold" />
+                            <Label Grid.Row="0"
+                                   Grid.Column="2"
+                                   Text="{Binding Difficulty}"
+                                   FontAttributes="None"
+                                   FontSize="15"
+                                   HorizontalOptions="End"
+                           TextColor="{Binding Difficulty, Converter={StaticResource DifficultyToColorConverter}}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </HorizontalStackLayout>
 </ContentPage>
