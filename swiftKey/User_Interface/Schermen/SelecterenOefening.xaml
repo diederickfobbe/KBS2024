@@ -77,7 +77,6 @@
                                        Margin="0,0,20,0"
                                        VerticalOptions="Start">
                                     <Label Text="{Binding Difficulty}"
-                                           FontAttributes="Italic"
                                            FontSize="10"
                                            HorizontalOptions="End"
                                            VerticalOptions="Center"
@@ -93,7 +92,6 @@
                                        Margin="0,0,20,0"
                                        VerticalOptions="Start">
                                     <Label Text="{Binding Tags}"
-                                           FontAttributes="Italic"
                                            FontSize="15"
                                            HorizontalOptions="Start"
                                            VerticalOptions="Center"
