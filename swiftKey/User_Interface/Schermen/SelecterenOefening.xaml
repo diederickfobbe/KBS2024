@@ -66,13 +66,12 @@
                            HorizontalOptions="End"
                            BackgroundColor="Gray"/>
 
-                            <ListView ItemsSource="{Binding tags}" Grid.Row="3" Grid.Column="1">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Label Text="{Binding}" Margin="5" BackgroundColor="Green"/>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                            <Label Grid.Row="3" 
+                           Grid.Column="1"
+                           Text="{Binding TagString}"
+                           FontAttributes="Italic"
+                           TextColor="Gray"
+                           FontSize="10"/>
                         </Grid>
                 </ViewCell>
             </DataTemplate>

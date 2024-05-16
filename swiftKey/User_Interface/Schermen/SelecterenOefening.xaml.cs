@@ -11,30 +11,32 @@ namespace User_Interface.Schermen
 {
     public partial class SelecterenOefening : ContentPage
     {
-        List<string> tags = new List<string>() { "engels", "easy", "woord" };
-        List<Label> TagLabels;
+        string TagString;
+
         public SelecterenOefening()
         {
             InitializeComponent();
-            InitializeOefeningen();           
+            InitializeOefeningen();
+
             SelectOefeningen.ItemTapped += SelectOefeningen_ItemTapped;
         }
 
         private void InitializeOefeningen()
         {
+            List<string> tags = new List<string>() { "engels", "easy", "woord" };
             List<Oefening> oefeningen = new List<Oefening>()
             {
-                new Oefening{Name="game1", Difficulty="Hard", ImageLocation="swiftkey.png"},
-                new Oefening{Name="game2", Difficulty="Easy",ImageLocation="swiftkey.png"},
-                new Oefening{Name="game3", Difficulty="medium",ImageLocation="swiftkey.png"},
-                new Oefening{Name="game4", Difficulty="medium",ImageLocation="ukimage.png"}
+                
+                new Oefening{Name="game1", Difficulty="Hard", ImageLocation="swiftkey.png",TagString = string.Join(", ", tags)},
+                new Oefening{Name="game2", Difficulty="Easy",ImageLocation="swiftkey.png",TagString = string.Join(", ", tags)},
+                new Oefening{Name="game3", Difficulty="medium",ImageLocation="swiftkey.png", TagString = string.Join(", ", tags)},
+                new Oefening{Name="game4", Difficulty="medium",ImageLocation="ukimage.png", TagString = string.Join(", ", tags)}
             };
             SelectOefeningen.ItemsSource = oefeningen;
 
         }
 
-
-    
+   
 
         private async void SelectOefeningen_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -52,5 +54,7 @@ namespace User_Interface.Schermen
         public string Name { get; set; }
         public string Difficulty { get; set; }
         public string ImageLocation { get; set; }
+        public string TagString { get; set; }
     }
+
 }
