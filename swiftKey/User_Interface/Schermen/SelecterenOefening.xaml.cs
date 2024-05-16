@@ -11,11 +11,11 @@ namespace User_Interface.Schermen
 {
     public partial class SelecterenOefening : ContentPage
     {
-        List<string> tags;
+        List<string> tags = new List<string>() { "engels", "easy", "woord" };
+        List<Label> TagLabels;
         public SelecterenOefening()
         {
             InitializeComponent();
-            tags = new List<string>() { "engels", "easy", "woord" };
             InitializeOefeningen();           
             SelectOefeningen.ItemTapped += SelectOefeningen_ItemTapped;
         }
@@ -30,21 +30,7 @@ namespace User_Interface.Schermen
                 new Oefening{Name="game4", Difficulty="medium",ImageLocation="ukimage.png"}
             };
             SelectOefeningen.ItemsSource = oefeningen;
-            foreach (string tag in tags)
-            {
-                Label letterLabel = new Label
-                {
-                    Text = tag,
-                    FontSize = 12,
-                    VerticalTextAlignment = TextAlignment.Center,
-                    HorizontalTextAlignment = TextAlignment.Center,
-                    TextColor = Colors.Black,
-                    Margin = 2,
-                    BackgroundColor = Colors.LightGray // Default color
-                };
 
-                taglist.Children.Add(letterLabel); // Corrected line
-            }
         }
 
 
@@ -59,6 +45,7 @@ namespace User_Interface.Schermen
             }
         }
     }
+
 
     public class Oefening
     {
