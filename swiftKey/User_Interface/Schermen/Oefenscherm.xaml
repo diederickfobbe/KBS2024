@@ -16,8 +16,11 @@
         </Grid.RowDefinitions>
         <Label x:Name="TimerLabel" Text="00:00:00" HorizontalOptions="Center" FontSize="25" TextColor="#007ACC" Grid.Row="1"/>
         <Label x:Name="InstructionsLabel" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold" Grid.Row="2"/>
-        <FlexLayout x:Name="Sentence" Grid.Row="3" Wrap="Wrap" HorizontalOptions="Center" AlignContent="Stretch"/>
-        <Entry x:Name="TextInputEntry" Placeholder="Type de tekst hier en klik enter als je klaar bent."
+        <FlexLayout x:Name="Sentence" Grid.Row="3" Wrap="Wrap" HorizontalOptions="Center" AlignContent="Stretch">
+
+        </FlexLayout>
+
+        <Entry x:Name="TextInputEntry"  Loaded="OnEntryLoaded" Placeholder="Type de tekst hier en klik enter als je klaar bent."
                HorizontalOptions="CenterAndExpand" Completed="TextInputEntry_Completed"
                FontSize="22" WidthRequest="500" HeightRequest="50" Grid.Row="4" />
         <Label x:Name="ResultsLabel" Text="" HorizontalOptions="Center" FontSize="25" TextColor="#007ACC" Grid.Row="5"/>

@@ -1,5 +1,8 @@
-﻿using Microsoft.Maui.Controls;
+﻿using Data_Access;
+using Microsoft.Maui.Controls;
 using Microsoft.Maui.Platform;
+using User_Interface.Schermen;
+using Business_Logic;
 
 namespace User_Interface
 {
@@ -7,24 +10,23 @@ namespace User_Interface
     {
         public Loginscherm()
         {
+            new RegisterHandler();
             InitializeComponent();
         }
 
         private void Button_OnLoginClicked(object? sender, EventArgs e)
         {
+           
+
             string email = EmailEntry.Text;
             string password = PasswordEntry.Text;
+            string hashedPassword = Business_Logic.RegisterChecks.HashPassword(password);
 
-
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            if (Data_Access.LoginHandler.CheckLogin(email, hashedPassword))
             {
-                // Gebruiker heeft geen gebruikersnaam of wachtwoord ingevoerd
-                DisplayAlert("Fout", "Voer een gebruikersnaam en een wachtwoord in", "OK");
-            }
-            else if (email.Equals("admin") && password.Equals("admin"))
-            {
-                // Inloggen als admin
-                Navigation.PushAsync(new Oefenscherm());
+                // Gebruiker heeft juiste gebruikersnaam en wachtwoord ingevoerd
+                Navigation.PushAsync(new SelecterenOefening());
+                
             }
             else
             {
@@ -36,6 +38,7 @@ namespace User_Interface
         private void Button_OnRegisterClicked(object? sender, EventArgs e)
         {
             // Navigeer naar de registratiepagina
+           
             Navigation.PushAsync(new Registratiescherm());
         }
     }

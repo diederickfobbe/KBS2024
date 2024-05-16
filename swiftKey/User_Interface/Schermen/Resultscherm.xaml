@@ -19,7 +19,7 @@
                 HorizontalOptions="Center"
                 />
             <Label
-                x:Name="Time"
+                x:Name="Tijd"
                 Text="tijd"
                 FontSize="15"
                 HorizontalOptions="Center"
@@ -32,7 +32,7 @@
                 HorizontalOptions="Center"
                 />
             <Label
-                x:Name="Mistakes"
+                x:Name="Fouten"
                 Text=""
                 FontSize="15"
                 HorizontalOptions="Center"
