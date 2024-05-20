@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Renci.SshNet;
+﻿using Renci.SshNet;
+using System;
 using System.Data.SqlClient;
-
-using System.Threading.Tasks;
 
 namespace Data_Access
 {
     public class DBConnectionHandler : IDisposable
     {
-
         private SshClient sshClient;
         private ForwardedPortLocal port;
 
@@ -26,16 +20,16 @@ namespace Data_Access
             string sqlPassword = "KBSgroep3",
             string initialCatalog = "SwiftKey")
         {
-            // SSH-verbinding instellen
+            // SSH connection setup
             sshClient = new SshClient(sshHost, sshUsername, sshPassword);
             sshClient.Connect();
 
-            // Lokale poort doorsturen
+            // Local port forwarding
             port = new ForwardedPortLocal("127.0.0.1", 1433, sqlHost, 1433);
             sshClient.AddForwardedPort(port);
             port.Start();
 
-            // SQL-verbinding instellen 
+            // SQL connection setup 
             var builder = new SqlConnectionStringBuilder
             {
                 DataSource = "127.0.0.1",
@@ -52,16 +46,20 @@ namespace Data_Access
         {
             try
             {
-                // close SSH- and SQL-connections
+                // Close SQL connection
                 SqlConnection?.Close();
-                sshClient?.RemoveForwardedPort(port);
+
+                // Stop and dispose of port forwarding
                 port?.Stop();
-            }
-            finally
-            {
-                // Ensure SSH client is disconnected and disposed, even if there was an exception
+                sshClient?.RemoveForwardedPort(port);
+
+                // Disconnect and dispose of SSH client
                 sshClient?.Disconnect();
                 sshClient?.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error disposing SSH client: " + ex.Message);
             }
         }
     }

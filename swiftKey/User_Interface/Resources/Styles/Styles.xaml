@@ -23,6 +23,7 @@
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
@@ -142,6 +143,7 @@
         <Setter Property="Opacity" Value="1" />
         <Setter Property="BorderColor" Value="Transparent"/>
         <Setter Property="BorderWidth" Value="0"/>
+        <Setter Property="BackgroundColor" Value="#00FFFFFF"/>
         <Setter Property="CornerRadius" Value="0"/>
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
@@ -157,6 +159,69 @@
                     <VisualState x:Name="PointerOver" />
                 </VisualStateGroup>
             </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageButtonHome" TargetType="ImageButton">
+        <Setter Property="VerticalOptions" Value="End"/>
+        <Setter Property="Source">
+            <Setter.Value>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf015;" Size="20" Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray300}}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageButtonPodium" TargetType="ImageButton">
+        <Setter Property="Source">
+            <Setter.Value>
+                <FontImageSource FontFamily="FAS" Glyph="&#xe561;" Size="20" Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray300}}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageButtonUser" TargetType="ImageButton">
+        <Setter Property="Source">
+            <Setter.Value>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf007;" Size="20" Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray300}}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageButtonLogOut" TargetType="ImageButton">
+        <Setter Property="Source">
+            <Setter.Value>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf08b;" Size="20" Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray300}}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SelecterenOefeningGrid" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource OffWhite}, Dark={StaticResource Gray600}}" />
+    </Style>
+
+    <Style x:Key="SideBarGrid" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBlue}, Dark={StaticResource Gray950}}" />
+    </Style>
+
+    <Style x:Key="SelecterenOefeningListView" TargetType="ListView">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}" />
+    </Style>
+    
+    
+
+    <Style x:Key="GradientLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Offset="1.0" Color="{AppThemeBinding Light={StaticResource DarkBlue},Dark={StaticResource Gray900}}"/>
+                    <GradientStop Offset="0.25" Color="{AppThemeBinding Light={StaticResource LightBlue},Dark={StaticResource Gray900}}"/>
+                </LinearGradientBrush>
+            </Setter.Value>
         </Setter>
     </Style>
 

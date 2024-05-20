@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using Business_Logic;
 using SwiftKey_Logic;
+using NUnit.Framework.Legacy;
 
 [TestFixture]
 public class WordCountTests
@@ -14,8 +15,8 @@ public class WordCountTests
         // Act
         var count = OefenschermMethods.GetWordCount(text);
 
-        // Assert
-        Assert.AreEqual(6, count);
+        // ClassicClassicAssert
+        ClassicAssert.AreEqual(6, count);
     }
 
     [Test]
@@ -27,8 +28,8 @@ public class WordCountTests
         // Act
         var count = OefenschermMethods.GetWordCount(text);
 
-        // Assert
-        Assert.AreEqual(6, count);
+        // ClassicClassicAssert
+        ClassicAssert.AreEqual(6, count);
     }
 
     [Test]
@@ -40,8 +41,8 @@ public class WordCountTests
         // Act
         var count = OefenschermMethods.GetWordCount(text);
 
-        // Assert
-        Assert.AreEqual(6, count);
+        // ClassicClassicAssert
+        ClassicAssert.AreEqual(6, count);
     }
 
     [Test]
@@ -53,8 +54,8 @@ public class WordCountTests
         // Act
         var count = OefenschermMethods.GetWordCount(text);
 
-        // Assert
-        Assert.AreEqual(0, count);
+        // ClassicClassicAssert
+        ClassicAssert.AreEqual(0, count);
     }
 
     [Test]
@@ -66,8 +67,9 @@ public class WordCountTests
         // Act
         var count = OefenschermMethods.GetWordCount(text);
 
-        // Assert
-        Assert.AreEqual(0, count);
+        // ClassicAssert
+        ClassicAssert.AreEqual(0, count);
+        
     }
 
     [Test]
@@ -76,9 +78,9 @@ public class WordCountTests
         // Arrange
         string text = null;
 
-        // Act & Assert
-        var ex = Assert.Throws<System.ArgumentNullException>(() => OefenschermMethods.GetWordCount(text));
-        Assert.That(ex.ParamName, Is.EqualTo("text"));
+        // Act & ClassicAssert
+        var ex = ClassicAssert.Throws<System.ArgumentNullException>(() => OefenschermMethods.GetWordCount(text));
+        ClassicAssert.That(ex.ParamName, Is.EqualTo("text"));
     }
 }
 
