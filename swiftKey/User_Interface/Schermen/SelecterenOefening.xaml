@@ -2,8 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="User_Interface.Schermen.SelecterenOefening">
     <ContentPage.Content>
-        <Grid>
+        <Grid Style="{StaticResource SelecterenOefeningGrid}">
             <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
                 <!-- Row for the buttons -->
                 <RowDefinition Height="Auto"/>
@@ -12,8 +13,45 @@
                 <!-- Row for the levels -->
             </Grid.RowDefinitions>
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Label Grid.ColumnSpan="2" Text="swiftkey" Style="{StaticResource GradientLabelStyle}">
+            </Label>
+            
+            <Grid VerticalOptions="FillAndExpand" Style="{StaticResource SideBarGrid}" Grid.Row="1" Grid.RowSpan="3">
+ 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ImageButton Style="{StaticResource ImageButtonHome}"/>
+
+
+
+                <ImageButton Grid.Row="1" Style="{StaticResource ImageButtonPodium}"/>
+
+
+
+                <ImageButton Grid.Row="2" Style="{StaticResource ImageButtonUser}"/>
+
+
+                <ImageButton  VerticalOptions="End" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
+
+            </Grid>
+            
+
+            <Label Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" FontAttributes="Bold" Padding="30,0,0,0" Text="Kies een oefening" FontSize="Subtitle"/>
+            
+            
             <!-- Horizontal StackLayout to contain the pickers -->
-            <StackLayout Grid.Row="1" Orientation="Horizontal">
+            <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Orientation="Horizontal">
                 <!-- Dropdown menu to filter tags -->
                 <Picker Title="Select Tag"
                         x:Name="TagPicker"
@@ -33,9 +71,13 @@
             <!-- ListView Column -->
             <ListView x:Name="SelectOefeningen"
                       Grid.Row="2"
+                      Grid.Column="1"
+                      Grid.RowSpan="2"
                       SeparatorColor="Grey"
                       SeparatorVisibility="Default"
                       HorizontalOptions="Start"
+                      Margin="30,0,0,0"
+                      Style="{StaticResource SelecterenOefeningListView}"
                       VerticalOptions="FillAndExpand">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -79,7 +121,7 @@
                                 <Frame Grid.Row="1"
                                        Grid.Column="1"
                                        Padding="5"
-                                       BackgroundColor="Gray"
+                                       BackgroundColor="Orange"
                                        HorizontalOptions="Start" 
                                        Margin="0,0,20,0"
                                        VerticalOptions="Start">
