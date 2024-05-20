@@ -1,49 +1,84 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="User_Interface.Schermen.SelecterenOefening">
-    <!-- Set background color to White or another color to fill the screen -->
-
     <ContentPage.Content>
-        <Grid>
+        <Grid Style="{StaticResource SelecterenOefeningGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <!-- Row for the buttons -->
+                <RowDefinition Height="Auto"/>
+                <!-- Row for the picker -->
+                <RowDefinition Height="*"/>
+                <!-- Row for the levels -->
+            </Grid.RowDefinitions>
+
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <!-- This column will contain the buttons -->
+                <ColumnDefinition Width="50"/>
                 <ColumnDefinition Width="*"/>
-                <!-- This column will contain the ListView and fill remaining space -->
             </Grid.ColumnDefinitions>
 
-            <!-- Grid containing the buttons -->
-            <Grid Grid.Column="0">
+
+            <Label Grid.ColumnSpan="2" Text="swiftkey" Style="{StaticResource GradientLabelStyle}">
+            </Label>
+            
+            <Grid VerticalOptions="FillAndExpand" Style="{StaticResource SideBarGrid}" Grid.Row="1" Grid.RowSpan="3">
+ 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <!-- Row for the other buttons -->
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
-                    <!-- Row for the "Uitloggen" button -->
                 </Grid.RowDefinitions>
 
-                <!-- StackLayout containing the other buttons -->
-                <StackLayout Grid.Row="0" VerticalOptions="Start">
-                    <Button Text="Home" Margin="10"/>
-                    <!-- Margin added to the right and bottom of the button -->
-                    <Button Text="Leaderboard" Margin="10"/>
-                    <!-- Margin added to the right and bottom of the button -->
-                    <Button Text="Account" Margin="10"/>
-                    <!-- Margin added to the right and bottom of the button -->
-                </StackLayout>
+                <ImageButton Style="{StaticResource ImageButtonHome}"/>
 
-                <!-- "Uitloggen" button -->
-                <Button Text="Uitloggen" Grid.Row="1" VerticalOptions="End" Margin="10"/>
-                <!-- Aligned to the bottom of the grid with a margin -->
+
+
+                <ImageButton Grid.Row="1" Style="{StaticResource ImageButtonPodium}"/>
+
+
+
+                <ImageButton Grid.Row="2" Style="{StaticResource ImageButtonUser}"/>
+
+
+                <ImageButton  VerticalOptions="End" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
+
             </Grid>
+            
 
+            <Label Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" FontAttributes="Bold" Padding="30,0,0,0" Text="Kies een oefening" FontSize="Subtitle"/>
+            
+            
+            <!-- Horizontal StackLayout to contain the pickers -->
+            <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Orientation="Horizontal">
+                <!-- Dropdown menu to filter tags -->
+                <Picker Title="Select Tag"
+                        x:Name="TagPicker"
+                        Margin="10"
+                        VerticalOptions="Start"
+                        SelectedIndexChanged="TagPicker_SelectedIndexChanged">
+                </Picker>
+
+                <!-- Dropdown menu to filter difficulty -->
+                <Picker Title="Select Difficulty"
+                        x:Name="DifficultyPicker"
+                        Margin="10"
+                        VerticalOptions="Start"
+                        SelectedIndexChanged="DifficultyPicker_SelectedIndexChanged">
+                </Picker>
+            </StackLayout>
             <!-- ListView Column -->
             <ListView x:Name="SelectOefeningen"
+                      Grid.Row="2"
                       Grid.Column="1"
+                      Grid.RowSpan="2"
                       SeparatorColor="Grey"
                       SeparatorVisibility="Default"
-                      HorizontalOptions="FillAndExpand"
+                      HorizontalOptions="Start"
+                      Margin="30,0,0,0"
+                      Style="{StaticResource SelecterenOefeningListView}"
                       VerticalOptions="FillAndExpand">
-                <!-- Expand vertically to fill available space -->
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -57,18 +92,18 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Image Grid.RowSpan="2"
-                                       Source="{Binding ImageLocation}"
-                                       Aspect="Fill"
-                                       HeightRequest="60"
-                                       WidthRequest="100" />
+                                <Label Grid.RowSpan="2"
+                                       Text="{Binding Image}"
+                                       FontAttributes="Bold" 
+                                       FontSize="20"
+                                       LineBreakMode="TailTruncation" />
 
                                 <Label Grid.Column="1"
                                        Text="{Binding Name}"
                                        FontAttributes="Bold" 
                                        FontSize="20"
                                        LineBreakMode="TailTruncation" />
-                                
+
                                 <Frame Grid.Row="1"
                                        Grid.Column="1"
                                        Padding="5"
@@ -81,13 +116,12 @@
                                            HorizontalOptions="End"
                                            VerticalOptions="Center"
                                            LineBreakMode="WordWrap"/>
-                                    </Frame>
+                                </Frame>
 
-                                <!-- Truncate text with ellipses if it doesn't fit -->
                                 <Frame Grid.Row="1"
                                        Grid.Column="1"
                                        Padding="5"
-                                       BackgroundColor="Gray"
+                                       BackgroundColor="Orange"
                                        HorizontalOptions="Start" 
                                        Margin="0,0,20,0"
                                        VerticalOptions="Start">
@@ -97,11 +131,6 @@
                                            VerticalOptions="Center"
                                            LineBreakMode="WordWrap"/>
                                 </Frame>
-                                
-                                
-
-
-                                <!-- Enable text wrapping -->
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
