@@ -36,14 +36,14 @@ namespace User_Interface
         private void TextInputEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             string enteredText = e.NewTextValue ?? "";
+            string[] enteredWords = enteredText.Split(' ');
 
-            // Iterate through all labels
             for (int i = 0; i < labelList.Count; i++)
             {
-                if (i < enteredText.Length)
+                if (i < enteredWords.Length)
                 {
-                    // Change color based on whether the entered character matches the target
-                    if (enteredText[i] == targetText[i])
+                    // Change color based on whether the entered word matches the target word
+                    if (labelList[i].Text.Trim() == enteredWords[i])
                     {
                         labelList[i].BackgroundColor = Colors.Green;
                     }
@@ -54,7 +54,7 @@ namespace User_Interface
                 }
                 else
                 {
-                    // No character entered in this position yet, reset to default
+                    // No word entered in this position yet, reset to default
                     labelList[i].BackgroundColor = Colors.LightGray;
                 }
             }
@@ -76,13 +76,12 @@ namespace User_Interface
 
         private void CalculateAndDisplayResults(string enteredText)
         {
-            // Splits de doeltekst en de ingevoerde tekst in woorden
-            char[] targetWords = targetText.ToCharArray();
-            char[] enteredWords = enteredText.ToCharArray();
+            string[] targetWords = targetText.Split(' ');
+            string[] enteredWords = enteredText.Split(' ');
 
             int correctWordCount = 0;
 
-            // Vergelijk woord voor woord en tel alleen correct overgetypte woorden
+            // Compare word for word and count only correctly typed words
             for (int i = 0; i < Math.Min(targetWords.Length, enteredWords.Length); i++)
             {
                 if (targetWords[i] == enteredWords[i])
@@ -91,19 +90,19 @@ namespace User_Interface
                 }
             }
 
-            // Bereken de tijd en typesnelheid (WPM) alleen op basis van correct overgetypte woorden
+            // Calculate the time and typing speed (WPM) based on correctly typed words
             double timeTakenInMinutes = stopwatch.Elapsed.TotalMinutes;
             int typingSpeed = OefenschermMethods.CalculateTypingSpeed(correctWordCount, timeTakenInMinutes);
-            
 
-            // Bereken nauwkeurigheid op basis van het totale aantal woorden in de doeltekst
+            // Calculate accuracy based on the total number of words in the target text
             double accuracy = ((double)correctWordCount / targetWords.Length) * 100;
 
-            // Toon de resultaten
+            // Display the results
             ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
             Navigation.PushAsync(new Resultscherm(typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
             stopwatch.Reset();
         }
+
 
 
         private List<Label> labelList = new List<Label>();
@@ -113,25 +112,37 @@ namespace User_Interface
             Sentence.Children.Clear();
             labelList.Clear();
 
-            foreach (char letter in targetText)
+            string[] words = targetText.Split(' ');
+
+            foreach (string word in words)
             {
-                Label letterLabel = new Label
+                Label wordLabel = new Label
                 {
-                    Text = letter.ToString(),
-                    FontSize = 36,
-                    WidthRequest = 40,
-                    HeightRequest = 60,
-                    VerticalTextAlignment = TextAlignment.Center,
-                    HorizontalTextAlignment = TextAlignment.Center,
-                    Padding = new Thickness(6, 4, 6, 4),
+                    Text = word,
+                    FontSize = 24,
+                    Margin = new Thickness(2, 0),
+                    BackgroundColor = Colors.LightGray, // Default color
                     TextColor = Colors.Black,
-                    Margin = 2,
-                    BackgroundColor = Colors.LightGray // Default color
+                    Padding = new Thickness(6, 4)
                 };
-                Sentence.Children.Add(letterLabel);
-                labelList.Add(letterLabel);
+
+                Sentence.Children.Add(wordLabel);
+                labelList.Add(wordLabel);
+
+                // Add a space after each word
+                if (word != words.Last())
+                {
+                    Label spaceLabel = new Label
+                    {
+                        Text = " ",
+                        FontSize = 24
+                    };
+                    Sentence.Children.Add(spaceLabel);
+                    labelList.Add(spaceLabel);
+                }
             }
         }
+
 
         //het inputveld wordt in focus gebracht
         private void OnEntryLoaded(object sender, EventArgs e)
