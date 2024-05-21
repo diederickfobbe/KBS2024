@@ -118,9 +118,9 @@ namespace User_Interface
                 Label letterLabel = new Label
                 {
                     Text = letter.ToString(),
-                    FontSize = 36,
-                    WidthRequest = 40,
-                    HeightRequest = 60,
+                    FontSize = 19,
+                    WidthRequest = 25,
+                    HeightRequest = 30,
                     VerticalTextAlignment = TextAlignment.Center,
                     HorizontalTextAlignment = TextAlignment.Center,
                     Padding = new Thickness(6, 4, 6, 4),

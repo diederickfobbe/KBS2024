@@ -1,6 +1,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="User_Interface.Schermen.SelecterenOefening">
+             x:Class="User_Interface.Schermen.SelecterenOefening"
+             NavigationPage.HasBackButton="False">
     <ContentPage.Content>
         <Grid Style="{StaticResource SelecterenOefeningGrid}">
             <Grid.RowDefinitions>
@@ -31,18 +32,10 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <ImageButton Style="{StaticResource ImageButtonHome}"/>
-
-
-
-                <ImageButton Grid.Row="1" Style="{StaticResource ImageButtonPodium}"/>
-
-
-
-                <ImageButton Grid.Row="2" Style="{StaticResource ImageButtonUser}"/>
-
-
-                <ImageButton  VerticalOptions="End" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
+                <ImageButton Clicked="onHomeButtonClicked" Style="{StaticResource ImageButtonHome}"/>
+                <ImageButton Grid.Row="1" Clicked="onLeaderboardButtonClicked" Style="{StaticResource ImageButtonPodium}"/>
+                <ImageButton Grid.Row="2" Clicked="onProfielButtonClicked"  Style="{StaticResource ImageButtonUser}"/>
+                <ImageButton  VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
 
             </Grid>
             
