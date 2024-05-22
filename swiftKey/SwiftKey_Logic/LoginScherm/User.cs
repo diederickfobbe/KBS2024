@@ -25,12 +25,12 @@ namespace Business_Logic
 
         public void CalculateAverageWpm()
         {
-            int AverageWpm = Data_Access.GetUserInfo.GetWPM(Id);
+            int AverageWpm = Data_Access.GetUserInfo.GetAverageWPM(Id);
         }
 
         public void CalculateAverageAccuracy()
         {
-            int AverageAccuracy = Data_Access.GetUserInfo.GetAccuracy(Id);
+            double AverageAccuracy = Data_Access.GetUserInfo.GetAverageAccuracy(Id);
         }
 
         public void CalculateExercisesCount()

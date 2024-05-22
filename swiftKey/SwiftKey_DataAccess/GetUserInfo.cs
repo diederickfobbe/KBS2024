@@ -97,7 +97,7 @@ namespace Data_Access
         }
 
 
-        public static int GetWPM(int id)
+        public static int GetAverageWPM(int id)
         {
             using (var connectionManager = new DBConnectionHandler())
             {
@@ -105,28 +105,24 @@ namespace Data_Access
                 {
                     try
                     {
-                        string selectQuery = "SELECT wpm FROM userlevelcompletion WHERE user_id = @id";
-
+                        string selectQuery = "SELECT AVG(wpm) FROM userlevelcompletion WHERE user_id = @id";
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
                             // Add parameter to the query
                             cmd.Parameters.AddWithValue("@id", id);
 
-                            // Execute the query and get the hashed password
+                            // Execute the query and get the average
                             object result = cmd.ExecuteScalar();
 
                             // Check if the result is not null
-                            if (result != null)
+                            if (result != null && result != DBNull.Value)
                             {
-
-                                return (int)result;
-
-
+                                return Convert.ToInt32(result);
                             }
                             else
                             {
-                                return 0; // Email address not found
+                                return 0; // No WPM values found
                             }
                         }
                     }
@@ -139,7 +135,8 @@ namespace Data_Access
         }
 
 
-        public static int GetAccuracy(int id)
+
+        public static double GetAverageAccuracy(int id)
         {
             using (var connectionManager = new DBConnectionHandler())
             {
@@ -147,28 +144,24 @@ namespace Data_Access
                 {
                     try
                     {
-                        string selectQuery = "SELECT accuracy FROM userlevelcompletion WHERE user_id = @id";
-
+                        string selectQuery = "SELECT AVG(accuracy) FROM userlevelcompletion WHERE user_id = @id";
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
                             // Add parameter to the query
                             cmd.Parameters.AddWithValue("@id", id);
 
-                            // Execute the query and get the hashed password
+                            // Execute the query and get the average
                             object result = cmd.ExecuteScalar();
 
                             // Check if the result is not null
-                            if (result != null)
+                            if (result != null && result != DBNull.Value)
                             {
-
-                                return (int)result;
-
-
+                                return Convert.ToDouble(result);
                             }
                             else
                             {
-                                return 0; // Email address not found
+                                return 0; // No accuracy values found
                             }
                         }
                     }
