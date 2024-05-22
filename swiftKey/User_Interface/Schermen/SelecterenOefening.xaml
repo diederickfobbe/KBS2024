@@ -19,12 +19,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-
             <Label Grid.ColumnSpan="2" Text="swiftkey" Style="{StaticResource GradientLabelStyle}">
             </Label>
-            
+
             <Grid VerticalOptions="FillAndExpand" Style="{StaticResource SideBarGrid}" Grid.Row="1" Grid.RowSpan="3">
- 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -34,15 +32,12 @@
 
                 <ImageButton Clicked="onHomeButtonClicked" Style="{StaticResource ImageButtonHome}"/>
                 <ImageButton Grid.Row="1" Clicked="onLeaderboardButtonClicked" Style="{StaticResource ImageButtonPodium}"/>
-                <ImageButton Grid.Row="2" Clicked="onProfielButtonClicked"  Style="{StaticResource ImageButtonUser}"/>
-                <ImageButton  VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
-
+                <ImageButton Grid.Row="2" Clicked="onProfielButtonClicked" Style="{StaticResource ImageButtonUser}"/>
+                <ImageButton VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
             </Grid>
-            
 
             <Label Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" FontAttributes="Bold" Padding="30,0,0,0" Text="Kies een oefening" FontSize="Subtitle"/>
-            
-            
+
             <!-- Horizontal StackLayout to contain the pickers -->
             <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Orientation="Horizontal">
                 <!-- Dropdown menu to filter tags -->
@@ -61,6 +56,20 @@
                         SelectedIndexChanged="DifficultyPicker_SelectedIndexChanged">
                 </Picker>
             </StackLayout>
+
+            <!-- Label for no levels found message -->
+            <Label x:Name="NoLevelsLabel"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   Grid.RowSpan="2"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Text="Geen levels gevonden."
+                   IsVisible="False"
+                   TextColor="Red"
+                   FontAttributes="Bold"
+                   FontSize="Medium"/>
+
             <!-- ListView Column -->
             <ListView x:Name="SelectOefeningen"
                       Grid.Row="2"

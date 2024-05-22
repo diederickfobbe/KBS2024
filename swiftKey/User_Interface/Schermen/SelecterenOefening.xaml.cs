@@ -2,9 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Data_Access;
-using Business_Logic; // Import your data access namespace
+using Business_Logic;
 
 namespace User_Interface.Schermen
 {
@@ -19,39 +18,39 @@ namespace User_Interface.Schermen
             InitializeComponent();
             this.user = user;
 
-
             // Initialize database connection
             dbConnection = new DBConnectionHandler();
 
             // Initialize LevelHandler
             levelHandler = new LevelHandler(dbConnection);
 
-            // Load levels into ListView
-            LoadLevels();
+            // Load tags and difficulties into respective controls
             LoadTags();
             LoadDifficulties();
 
             TagPicker.SelectedIndexChanged += TagPicker_SelectedIndexChanged;
             SelectOefeningen.ItemTapped += SelectOefeningen_ItemTapped;
-            DifficultyPicker.SelectedIndexChanged += DifficultyPicker_SelectedIndexChanged; // Attach event handler
+            DifficultyPicker.SelectedIndexChanged += DifficultyPicker_SelectedIndexChanged;
 
             // Ensure default selections are set after page has been fully rendered
             this.Appearing += (sender, e) =>
             {
                 TagPicker.SelectedItem = "All";
                 DifficultyPicker.SelectedItem = "Any Difficulty";
+                LoadLevels();
             };
-
         }
-        
+
         private async void onHomeButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new Loginscherm());
         }
+
         private async void onLeaderboardButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new LeaderboardScherm());
         }
+
         private async void onProfielButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ProfielScherm(user));
@@ -62,46 +61,36 @@ namespace User_Interface.Schermen
             await Navigation.PushModalAsync(new Loginscherm());
         }
 
-
         private void LoadTags()
         {
             try
             {
-                // Retrieve levels from database using LevelHandler
                 var levels = levelHandler.GetLevels();
-
-                // Create a list to hold the tags
                 List<string> tags = new List<string>();
 
                 if (levels != null && levels.Count > 0)
                 {
-                    // Get distinct tags
                     foreach (var level in levels)
                     {
-                        // Split tags by comma and trim any leading or trailing whitespace
-                        string[] tagsArray = level.Tags.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                        string[] tagsArray = level.Tags?.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                                                          .Select(tag => tag.Trim())
                                                          .ToArray();
-
-                        // Add each individual tag to the list
-                        foreach (var tag in tagsArray)
+                        if (tagsArray != null)
                         {
-                            tags.Add(tag);
+                            tags.AddRange(tagsArray);
                         }
                     }
 
-                    // Remove duplicates
                     tags = tags.Distinct().ToList();
                 }
 
-                // Add "All" option at the beginning
                 tags.Insert(0, "All");
-
-                // Add tags to Picker
                 foreach (var tag in tags)
                 {
                     TagPicker.Items.Add(tag);
                 }
+
+                Console.WriteLine("Tags loaded: " + string.Join(", ", tags));
             }
             catch (Exception ex)
             {
@@ -109,134 +98,86 @@ namespace User_Interface.Schermen
             }
         }
 
-        private async void DifficultyPicker_SelectedIndexChanged(object sender, EventArgs e)
+        private void LoadDifficulties()
         {
             try
             {
-                var selectedTag = TagPicker.SelectedItem?.ToString();
-                var selectedDifficulty = DifficultyPicker.SelectedItem?.ToString();
+                DifficultyPicker.Items.Add("Any Difficulty");
 
-                Console.WriteLine("Selected Tag: " + selectedTag);
-                Console.WriteLine("Selected Difficulty: " + selectedDifficulty);
+                var levels = levelHandler.GetLevels();
+                List<string> difficulties = new List<string>();
 
-                if (selectedDifficulty == "Any Difficulty")
+                if (levels != null && levels.Count > 0)
                 {
-                    if (selectedTag == "All")
-                    {
-                        // Show all levels regardless of tag
-                        var allLevels = levelHandler.GetLevels();
-                        UpdateListView(allLevels);
-                    }
-                    else
-                    {
-                        // Show levels with the specified tag
-                        var filteredLevels = levelHandler.GetLevels()
-                                                         .Where(level => level.Tags?.Contains(selectedTag) == true)
-                                                         .ToList();
-                        UpdateListView(filteredLevels);
-                    }
+                    difficulties = levels.Select(level => level.Difficulty).Distinct().ToList();
                 }
-                else
-                {
-                    // Filter levels based on both selected tag and difficulty
-                    var filteredLevels = levelHandler.GetLevels()
-                                                     .Where(level => (selectedTag == null || level.Tags?.Contains(selectedTag) == true) &&
-                                                                     (selectedDifficulty == null || level.Difficulty == selectedDifficulty))
-                                                     .ToList();
 
-                    if (filteredLevels.Any())
-                    {
-                        UpdateListView(filteredLevels);
-                    }
-                    else
-                    {
-                        DisplayAlert("Info", "No levels found for the selected tag and difficulty.", "OK");
-                    }
+                foreach (var difficulty in difficulties)
+                {
+                    DifficultyPicker.Items.Add(difficulty);
                 }
+
+                Console.WriteLine("Difficulties loaded: " + string.Join(", ", difficulties));
             }
             catch (Exception ex)
             {
-                DisplayAlert("Error", "Failed to handle difficulty selection: " + ex.Message, "OK");
+                DisplayAlert("Error", "Failed to load difficulties: " + ex.Message, "OK");
             }
         }
 
-
-
-
-        private async void TagPicker_SelectedIndexChanged(object sender, EventArgs e)
+        private void LoadLevels()
         {
             try
             {
-                var selectedTag = TagPicker.SelectedItem?.ToString();
-                var selectedDifficulty = DifficultyPicker.SelectedItem?.ToString();
-
-                Console.WriteLine("Selected Tag: " + selectedTag);
-                Console.WriteLine("Selected Difficulty: " + selectedDifficulty);
-
-                if (selectedTag == "All")
+                var levels = levelHandler.GetLevels();
+                if (levels == null || levels.Count == 0)
                 {
-                    if (selectedDifficulty == "Any Difficulty")
-                    {
-                        // Show all levels regardless of tag
-                        var allLevels = levelHandler.GetLevels();
-                        UpdateListView(allLevels);
-                    }
-                    else
-                    {
-                        // Show levels with the specified difficulty
-                        var filteredLevels = levelHandler.GetLevels()
-                                                         .Where(level => level.Difficulty == selectedDifficulty)
-                                                         .ToList();
-                        UpdateListView(filteredLevels);
-                    }
+                    DisplayAlert("Error", "Geen levels gevonden.", "OK");
+                    Console.WriteLine("No levels found.");
+                    NoLevelsLabel.IsVisible = true;
+                    SelectOefeningen.IsVisible = false;
+                    return;
                 }
-                else
-                {
-                    // Filter levels based on both selected tag and difficulty
-                    var filteredLevels = levelHandler.GetLevels()
-                                                     .Where(level => (selectedDifficulty == null || level.Difficulty == selectedDifficulty) &&
-                                                                     (selectedTag == null || level.Tags?.Contains(selectedTag) == true))
-                                                     .ToList();
 
-                    if (filteredLevels.Any())
-                    {
-                        UpdateListView(filteredLevels);
-                    }
-                    else
-                    {
-                        DisplayAlert("Info", "No levels found for the selected tag and difficulty.", "OK");
-                    }
-                }
+                // Initial load without filtering
+                UpdateListView(levels, false);
+                Console.WriteLine("Levels loaded: " + levels.Count);
             }
             catch (Exception ex)
             {
-                DisplayAlert("Error", "Failed to handle tag selection: " + ex.Message, "OK");
+                DisplayAlert("Error", "Er zijn geen levels gevonden. " + ex.Message, "OK");
+                Console.WriteLine("Error loading levels: " + ex.Message);
+                NoLevelsLabel.IsVisible = true;
+                SelectOefeningen.IsVisible = false;
             }
         }
 
-
-
-        private void UpdateListView(List<LevelHandler.Level> levels)
+        private void UpdateListView(List<LevelHandler.Level> levels, bool isFiltered = true)
         {
             try
             {
                 if (levels == null || levels.Count == 0)
                 {
-                    DisplayAlert("Info", "No levels found for the selected tag.", "OK");
-                    return;
+                    NoLevelsLabel.IsVisible = true;
+                    SelectOefeningen.IsVisible = false;
                 }
+                else
+                {
+                    NoLevelsLabel.IsVisible = false;
+                    SelectOefeningen.IsVisible = true;
 
-                List<Oefening> oefeningen = levels.Select(level =>
-                    new Oefening
-                    {
-                        Name = "Level " + level.Id,
-                        Tags = level.Tags,
-                        Difficulty = level.Difficulty,
-                        Image = "❌",
-                        ExampleText = level.ExampleText
-                    }).ToList();
+                    List<Oefening> oefeningen = levels.Select(level =>
+                        new Oefening
+                        {
+                            Name = "Level " + level.Id,
+                            Tags = level.Tags,
+                            Difficulty = level.Difficulty,
+                            Image = "❌",
+                            ExampleText = level.ExampleText
+                        }).ToList();
 
-                SelectOefeningen.ItemsSource = oefeningen;
+                    SelectOefeningen.ItemsSource = oefeningen;
+                }
             }
             catch (Exception ex)
             {
@@ -244,41 +185,35 @@ namespace User_Interface.Schermen
             }
         }
 
-
-
-        private void LoadLevels()
+        private void FilterLevels()
         {
             try
             {
-                // Retrieve levels from database using LevelHandler
-                var levels = levelHandler.GetLevels();
+                var selectedTag = TagPicker.SelectedItem?.ToString();
+                var selectedDifficulty = DifficultyPicker.SelectedItem?.ToString();
 
-                if (levels == null || levels.Count == 0)
-                {
-                    DisplayAlert("Error", "Geen levels gevonden.", "OK");
-                    return;
-                }
+                var filteredLevels = levelHandler.GetLevels().Where(level =>
+                    (selectedTag == "All" || (level.Tags?.Contains(selectedTag) == true)) &&
+                    (selectedDifficulty == "Any Difficulty" || level.Difficulty == selectedDifficulty)
+                ).ToList();
 
-                // Convert levels to Oefening objects
-                List<Oefening> oefeningen = levels.Select(level =>
-                    new Oefening
-                    {
-                        Name = "Level " + level.Id,
-                        Tags = level.Tags,
-                        Difficulty = level.Difficulty,
-                        Image = "❌",
-                        ExampleText = level.ExampleText
-                    }).ToList();
-
-                // Bind levels to ListView
-                SelectOefeningen.ItemsSource = oefeningen;
+                UpdateListView(filteredLevels, true);
             }
             catch (Exception ex)
             {
-                DisplayAlert("Error", "Er zijn geen levels gevonden. " + ex.Message, "OK");
+                DisplayAlert("Error", "Failed to filter levels: " + ex.Message, "OK");
             }
         }
 
+        private void TagPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterLevels();
+        }
+
+        private void DifficultyPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterLevels();
+        }
 
         private async void SelectOefeningen_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -288,7 +223,6 @@ namespace User_Interface.Schermen
                 {
                     if (!string.IsNullOrEmpty(selectedOefening.ExampleText))
                     {
-                        // Open new Oefenscherm with the selected Oefening's text
                         await Navigation.PushAsync(new Oefenscherm(user, selectedOefening.ExampleText));
                     }
                     else
@@ -303,50 +237,14 @@ namespace User_Interface.Schermen
             }
         }
 
-        private void LoadDifficulties()
-        {
-            try
-            {
-                // Add "Any Difficulty" option at the beginning
-                DifficultyPicker.Items.Add("Any Difficulty");
-
-                // Retrieve levels from database using LevelHandler
-                var levels = levelHandler.GetLevels();
-
-                // Create a list to hold the difficulty levels
-                List<string> difficulties = new List<string>();
-
-                if (levels != null && levels.Count > 0)
-                {
-                    // Get distinct difficulties
-                    difficulties = levels.Select(level => level.Difficulty).Distinct().ToList();
-                }
-
-                // Add difficulties to Picker
-                foreach (var difficulty in difficulties)
-                {
-                    DifficultyPicker.Items.Add(difficulty);
-                }
-            }
-            catch (Exception ex)
-            {
-                DisplayAlert("Error", "Failed to load difficulties: " + ex.Message, "OK");
-            }
-        }
-
-
-
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-
-            // Dispose the database connection
             dbConnection.Dispose();
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
-
         }
     }
 
