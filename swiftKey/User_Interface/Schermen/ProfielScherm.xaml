@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="User_Interface.Schermen.ProfielScherm">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <!-- Gebruikersnaam -->
+        <Label x:Name="UserNameLabel"
+               FontSize="24"
+               HorizontalOptions="Center" />
+
     </VerticalStackLayout>
 </ContentPage>
