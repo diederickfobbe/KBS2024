@@ -1,5 +1,7 @@
 
 
+using User_Interface.Schermen;
+
 namespace User_Interface
 {
 
@@ -36,5 +38,15 @@ namespace User_Interface
 			Fouten.Text = $"Fouten:{mistakes}";
 
 		}
-	}
+
+        private void DoneButton_Clicked(object sender, EventArgs e)
+        {
+             Navigation.PushAsync(new SelecterenOefening());
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

@@ -38,6 +38,23 @@ namespace User_Interface.Schermen
                 DifficultyPicker.SelectedItem = "Any Difficulty";
             };
         }
+        
+        private async void onHomeButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new Loginscherm());
+        }
+        private async void onLeaderboardButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new LeaderboardScherm());
+        }
+        private async void onProfielButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfielScherm());
+        }
+        private async void onLogoutButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new Loginscherm());
+        }
 
 
         private void LoadTags()
@@ -319,6 +336,11 @@ namespace User_Interface.Schermen
 
             // Dispose the database connection
             dbConnection.Dispose();
+        }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 

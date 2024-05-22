@@ -37,6 +37,7 @@
                 FontSize="15"
                 HorizontalOptions="Center"
                 />
+            <Button Clicked="DoneButton_Clicked"/>
 
         </VerticalStackLayout>
     </ScrollView>
