@@ -9,5 +9,63 @@
                FontSize="24"
                HorizontalOptions="Center" />
 
+        <!-- Lijn onder de naam -->
+        <BoxView HeightRequest="1"
+                 Color="white"
+                 HorizontalOptions="FillAndExpand" />
+
+        <!-- Boxen voor statistieken -->
+        <HorizontalStackLayout Spacing="10"
+                               HorizontalOptions="Center">
+            <!-- Gemiddelde WPM -->
+            <Frame Padding="10" 
+                   HasShadow="True"
+                   CornerRadius="5">
+                <VerticalStackLayout>
+                    <Label Text="Gemiddelde WPM" 
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                    <Label x:Name="AverageWpmLabel" 
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Witte lijn tussen de boxen -->
+            <BoxView WidthRequest="1"
+                     Color="White"
+                     VerticalOptions="FillAndExpand" />
+
+            <!-- Gemiddelde Accuratie -->
+            <Frame Padding="10" 
+                   HasShadow="True"
+                   CornerRadius="5">
+                <VerticalStackLayout>
+                    <Label Text="Gemiddelde Accuratie" 
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                    <Label x:Name="AverageAccuracyLabel" 
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Witte lijn tussen de boxen -->
+            <BoxView WidthRequest="1"
+                     Color="White"
+                     VerticalOptions="FillAndExpand" />
+
+            <!-- Aantal Gemaakte Oefeningen -->
+            <Frame Padding="10" 
+                   HasShadow="True"
+                   CornerRadius="5">
+                <VerticalStackLayout>
+                    <Label Text="Gemaakte Oefeningen" 
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                    <Label x:Name="ExercisesCountLabel" 
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+        </HorizontalStackLayout>
+
     </VerticalStackLayout>
 </ContentPage>

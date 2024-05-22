@@ -15,9 +15,21 @@ namespace User_Interface.Schermen
 
         private void SetUpUserProfile()
         {
-
-            UserNameLabel.Text = "Welkom! " + user.Username;
-
+            // Controleer of de gebruiker niet null is om NullReferenceException te voorkomen
+            if (user != null)
+            {
+                user.CalculateAverageAccuracy();
+                user.CalculateExercisesCount();
+                user.CalculateAverageWpm();
+                UserNameLabel.Text = "Welkom " + user.Username + "!";
+                AverageWpmLabel.Text = user.AverageWpm.ToString();
+                AverageAccuracyLabel.Text = $"{user.AverageAccuracy}%";
+                ExercisesCountLabel.Text = user.ExercisesCount.ToString();
+            }
+            else
+            {
+                UserNameLabel.Text = "Welkom!";
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data_Access
 {
-    public class GetInfo
+    public class GetUserInfo
     {
 
         public static string GetUserNameFromDB(string email)
@@ -55,5 +55,191 @@ namespace Data_Access
                 }
             }
         }
+        public static int GetUserIDByEmail(string email)
+        {
+            using (var connectionManager = new DBConnectionHandler())
+            {
+                using (SqlConnection connection = connectionManager.SqlConnection)
+                {
+                    try
+                    {
+                        string selectQuery = "SELECT id FROM Users WHERE CAST(email AS NVARCHAR(MAX)) = @email";
+
+
+                        using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                        {
+                            // Add parameter to the query
+                            cmd.Parameters.AddWithValue("@email", email);
+
+                            // Execute the query and get the hashed password
+                            object result = cmd.ExecuteScalar();
+
+                            // Check if the result is not null
+                            if (result != null)
+                            {
+
+                                return (int)result;
+
+
+                            }
+                            else
+                            {
+                                return 0; // Email address not found
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }
+            }
+        }
+
+
+        public static int GetWPM(int id)
+        {
+            using (var connectionManager = new DBConnectionHandler())
+            {
+                using (SqlConnection connection = connectionManager.SqlConnection)
+                {
+                    try
+                    {
+                        string selectQuery = "SELECT wpm FROM userlevelcompletion WHERE user_id = @id";
+
+
+                        using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                        {
+                            // Add parameter to the query
+                            cmd.Parameters.AddWithValue("@id", id);
+
+                            // Execute the query and get the hashed password
+                            object result = cmd.ExecuteScalar();
+
+                            // Check if the result is not null
+                            if (result != null)
+                            {
+
+                                return (int)result;
+
+
+                            }
+                            else
+                            {
+                                return 0; // Email address not found
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }
+            }
+        }
+
+
+        public static int GetAccuracy(int id)
+        {
+            using (var connectionManager = new DBConnectionHandler())
+            {
+                using (SqlConnection connection = connectionManager.SqlConnection)
+                {
+                    try
+                    {
+                        string selectQuery = "SELECT accuracy FROM userlevelcompletion WHERE user_id = @id";
+
+
+                        using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                        {
+                            // Add parameter to the query
+                            cmd.Parameters.AddWithValue("@id", id);
+
+                            // Execute the query and get the hashed password
+                            object result = cmd.ExecuteScalar();
+
+                            // Check if the result is not null
+                            if (result != null)
+                            {
+
+                                return (int)result;
+
+
+                            }
+                            else
+                            {
+                                return 0; // Email address not found
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }
+            }
+        }
+
+        public static int GetExercisesCount(int id)
+        {
+            using (var connectionManager = new DBConnectionHandler())
+            {
+                using (SqlConnection connection = connectionManager.SqlConnection)
+                {
+                    try
+                    {
+                        string selectQuery = "SELECT COUNT(*) FROM userlevelcompletion WHERE user_id = @id";
+
+                        using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
+                        {
+                            // Add parameter to the query
+                            cmd.Parameters.AddWithValue("@id", id);
+
+                            // Execute the query and get the count
+                            object result = cmd.ExecuteScalar();
+
+                            // Check if the result is not null
+                            if (result != null)
+                            {
+                                return Convert.ToInt32(result);
+                            }
+                            else
+                            {
+                                return 0; // No exercises found for the user
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }
