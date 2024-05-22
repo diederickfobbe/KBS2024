@@ -16,7 +16,9 @@
 
         <!-- Boxen voor statistieken -->
         <HorizontalStackLayout Spacing="10"
-                               HorizontalOptions="Center">
+                               HorizontalOptions="Center"
+                               BackgroundColor="white">
+                               
             <!-- Gemiddelde WPM -->
             <Frame Padding="10" 
                    HasShadow="True"
