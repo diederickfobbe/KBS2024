@@ -1,5 +1,7 @@
 using System.Diagnostics;
 using System.Linq;
+using Business_Logic;
+
 
 //using Android.OS;
 using SwiftKey_Logic;
@@ -11,13 +13,14 @@ namespace User_Interface
     {
         private string targetText = "";
         private List<char> targetTextList;
-
+        private User user; 
 
         private Stopwatch stopwatch = new Stopwatch();
 
-        public Oefenscherm(string oefeningText)
+        public Oefenscherm(User user, string oefeningText)
         {
             InitializeComponent();
+            this.user = user;
             targetText = oefeningText;
             targetTextList = targetText.ToList();
             InstructionsLabel.Text = targetText;
@@ -101,7 +104,7 @@ namespace User_Interface
 
             // Toon de resultaten
             ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
-            Navigation.PushAsync(new Resultscherm(typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
+            Navigation.PushAsync(new Resultscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
             stopwatch.Reset();
         }
 

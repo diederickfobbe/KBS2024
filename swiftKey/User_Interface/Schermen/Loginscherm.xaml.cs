@@ -24,9 +24,15 @@ namespace User_Interface
 
             if (Data_Access.LoginHandler.CheckLogin(email, hashedPassword))
             {
+
+                //maak een user aan om gegevens in op te slaan
+
+                User user = new User(Data_Access.GetInfo.GetUserNameFromDB(email), email);
+
                 // Gebruiker heeft juiste gebruikersnaam en wachtwoord ingevoerd
-                Navigation.PushAsync(new SelecterenOefening());
-                
+
+                Navigation.PushAsync(new SelecterenOefening(user));
+
             }
             else
             {

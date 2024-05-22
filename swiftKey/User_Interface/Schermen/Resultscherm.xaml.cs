@@ -1,5 +1,6 @@
 
 
+using Business_Logic;
 using User_Interface.Schermen;
 
 namespace User_Interface
@@ -7,10 +8,12 @@ namespace User_Interface
 
 	public partial class Resultscherm : ContentPage
 	{
-		public Resultscherm(int typeSpeed,string timeTaken, double accuracy, string enteredText, string targetText)
+        private User user;
+        public Resultscherm(User user, int typeSpeed,string timeTaken, double accuracy, string enteredText, string targetText)
 		{
 			InitializeComponent();
-			asignResults( typeSpeed,  timeTaken,  accuracy, calculateMistakes( enteredText,  targetText));
+            this.user = user;
+            asignResults( typeSpeed,  timeTaken,  accuracy, calculateMistakes( enteredText,  targetText));
 
         }
 
@@ -41,7 +44,7 @@ namespace User_Interface
 
         private void DoneButton_Clicked(object sender, EventArgs e)
         {
-             Navigation.PushAsync(new SelecterenOefening());
+             Navigation.PushAsync(new SelecterenOefening(user));
         }
 
         private void Button_Clicked(object sender, EventArgs e)

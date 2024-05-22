@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Data_Access; // Import your data access namespace
+using Data_Access;
+using Business_Logic; // Import your data access namespace
 
 namespace User_Interface.Schermen
 {
@@ -11,10 +12,13 @@ namespace User_Interface.Schermen
     {
         private DBConnectionHandler dbConnection;
         private LevelHandler levelHandler;
+        private User user;
 
-        public SelecterenOefening()
+        public SelecterenOefening(User user)
         {
             InitializeComponent();
+            this.user = user;
+
 
             // Initialize database connection
             dbConnection = new DBConnectionHandler();
@@ -37,6 +41,7 @@ namespace User_Interface.Schermen
                 TagPicker.SelectedItem = "All";
                 DifficultyPicker.SelectedItem = "Any Difficulty";
             };
+
         }
         
         private async void onHomeButtonClicked(object sender, EventArgs e)
@@ -49,8 +54,9 @@ namespace User_Interface.Schermen
         }
         private async void onProfielButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ProfielScherm());
+            await Navigation.PushAsync(new ProfielScherm(user));
         }
+
         private async void onLogoutButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new Loginscherm());
@@ -283,7 +289,7 @@ namespace User_Interface.Schermen
                     if (!string.IsNullOrEmpty(selectedOefening.ExampleText))
                     {
                         // Open new Oefenscherm with the selected Oefening's text
-                        await Navigation.PushAsync(new Oefenscherm(selectedOefening.ExampleText));
+                        await Navigation.PushAsync(new Oefenscherm(user, selectedOefening.ExampleText));
                     }
                     else
                     {
