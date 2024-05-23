@@ -9,7 +9,7 @@ namespace User_Interface.Schermen
 {
     public partial class SelecterenOefening : ContentPage
     {
-        private DBConnectionHandler dbConnection;
+        private static DBConnectionHandler dbConnection;
         private LevelHandler levelHandler;
         private User user;
 
@@ -18,11 +18,7 @@ namespace User_Interface.Schermen
             InitializeComponent();
             this.user = user;
 
-            // Initialize database connection
-            dbConnection = new DBConnectionHandler();
-
-            // Initialize LevelHandler
-            levelHandler = new LevelHandler(dbConnection);
+            InitializeHandlers();
 
             // Load tags and difficulties into respective controls
             LoadTags();
@@ -31,14 +27,34 @@ namespace User_Interface.Schermen
             TagPicker.SelectedIndexChanged += TagPicker_SelectedIndexChanged;
             SelectOefeningen.ItemTapped += SelectOefeningen_ItemTapped;
             DifficultyPicker.SelectedIndexChanged += DifficultyPicker_SelectedIndexChanged;
+        }
 
-            // Ensure default selections are set after page has been fully rendered
-            this.Appearing += (sender, e) =>
+        private void InitializeHandlers()
+        {
+            // Initialize database connection if not already initialized
+            if (dbConnection == null)
             {
+                dbConnection = new DBConnectionHandler();
+            }
+
+            // Initialize LevelHandler
+            levelHandler = new LevelHandler(dbConnection);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            try
+            {
+                InitializeHandlers(); // Reinitialize handlers to ensure fresh connection
                 TagPicker.SelectedItem = "All";
                 DifficultyPicker.SelectedItem = "Any Difficulty";
                 LoadLevels();
-            };
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Error", "Failed to load levels on reappearing: " + ex.Message, "OK");
+            }
         }
 
         private async void onHomeButtonClicked(object sender, EventArgs e)
@@ -85,12 +101,11 @@ namespace User_Interface.Schermen
                 }
 
                 tags.Insert(0, "All");
+                TagPicker.Items.Clear();
                 foreach (var tag in tags)
                 {
                     TagPicker.Items.Add(tag);
                 }
-
-                Console.WriteLine("Tags loaded: " + string.Join(", ", tags));
             }
             catch (Exception ex)
             {
@@ -102,6 +117,7 @@ namespace User_Interface.Schermen
         {
             try
             {
+                DifficultyPicker.Items.Clear();
                 DifficultyPicker.Items.Add("Any Difficulty");
 
                 var levels = levelHandler.GetLevels();
@@ -116,8 +132,6 @@ namespace User_Interface.Schermen
                 {
                     DifficultyPicker.Items.Add(difficulty);
                 }
-
-                Console.WriteLine("Difficulties loaded: " + string.Join(", ", difficulties));
             }
             catch (Exception ex)
             {
@@ -133,7 +147,6 @@ namespace User_Interface.Schermen
                 if (levels == null || levels.Count == 0)
                 {
                     DisplayAlert("Error", "Geen levels gevonden.", "OK");
-                    Console.WriteLine("No levels found.");
                     NoLevelsLabel.IsVisible = true;
                     SelectOefeningen.IsVisible = false;
                     return;
@@ -141,12 +154,10 @@ namespace User_Interface.Schermen
 
                 // Initial load without filtering
                 UpdateListView(levels, false);
-                Console.WriteLine("Levels loaded: " + levels.Count);
             }
             catch (Exception ex)
             {
                 DisplayAlert("Error", "Er zijn geen levels gevonden. " + ex.Message, "OK");
-                Console.WriteLine("Error loading levels: " + ex.Message);
                 NoLevelsLabel.IsVisible = true;
                 SelectOefeningen.IsVisible = false;
             }
@@ -235,16 +246,22 @@ namespace User_Interface.Schermen
             {
                 DisplayAlert("Error", "An error occurred while navigating to Oefenscherm: " + ex.Message, "OK");
             }
+            finally
+            {
+                ((ListView)sender).SelectedItem = null; // Ensure the item is deselected
+            }
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             dbConnection.Dispose();
+            dbConnection = null; // Ensure the connection is properly disposed of
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
+            // Handle ImageButton click event
         }
     }
 
