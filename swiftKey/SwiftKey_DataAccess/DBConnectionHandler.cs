@@ -1,6 +1,6 @@
-﻿using Renci.SshNet;
-using System;
+﻿using System;
 using System.Data.SqlClient;
+using Renci.SshNet;
 
 namespace Data_Access
 {
@@ -8,7 +8,6 @@ namespace Data_Access
     {
         private SshClient sshClient;
         private ForwardedPortLocal port;
-
         public SqlConnection SqlConnection { get; private set; }
 
         public DBConnectionHandler(
@@ -44,16 +43,12 @@ namespace Data_Access
 
         public void Dispose()
         {
+            // Ensure all resources are properly disposed
             try
             {
-                // Close SQL connection
                 SqlConnection?.Close();
-
-                // Stop and dispose of port forwarding
                 port?.Stop();
                 sshClient?.RemoveForwardedPort(port);
-
-                // Disconnect and dispose of SSH client
                 sshClient?.Disconnect();
                 sshClient?.Dispose();
             }

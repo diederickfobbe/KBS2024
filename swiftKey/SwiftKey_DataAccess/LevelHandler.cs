@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Reflection.Emit;
 
 namespace Data_Access
 {
-    public class LevelHandler
+    public class LevelHandler : IDisposable
     {
         private DBConnectionHandler dbConnection;
 
-        public LevelHandler(DBConnectionHandler dbConnection)
+        public LevelHandler()
         {
-            this.dbConnection = dbConnection;
+            dbConnection = new DBConnectionHandler();
         }
+
         public class Level
         {
             public int Id { get; set; }
@@ -57,6 +57,11 @@ namespace Data_Access
             }
 
             return levels;
+        }
+
+        public void Dispose()
+        {
+            dbConnection?.Dispose();
         }
     }
 }
