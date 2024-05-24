@@ -1,4 +1,3 @@
-
 using Data_Access;
 using Business_Logic;
 
@@ -9,9 +8,10 @@ namespace User_Interface.Schermen
         private LeaderboardHandler leaderboardHandler;
         private User user;
 
-        public LeaderboardScherm()
+        public LeaderboardScherm(User user)
         {
             InitializeComponent();
+            this.user = user;
 
             // Initialize the leaderboard handler with DB connection
             DBConnectionHandler dbConnection = new DBConnectionHandler(); // Initialize your DB connection handler here
@@ -41,14 +41,9 @@ namespace User_Interface.Schermen
             }
         }
 
-
-
-        // Add this method to your code-behind file to handle the SelectedIndexChanged event of the Picker
-       
-
         private async void onHomeButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Loginscherm());
+            await Navigation.PushAsync(new SelecterenOefening(user));
         }
 
         private async void onLeaderboardButtonClicked(object sender, EventArgs e)
@@ -59,15 +54,12 @@ namespace User_Interface.Schermen
 
         private async void onProfielButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ProfielScherm( user));
+            await Navigation.PushAsync(new ProfielScherm(user));
         }
 
         private async void onLogoutButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Loginscherm());
+            await Navigation.PushAsync(new Loginscherm());
         }
-
-
-
     }
 }
