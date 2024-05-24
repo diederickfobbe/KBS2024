@@ -10,7 +10,6 @@ namespace Data_Access
         private ForwardedPortLocal port;
         private bool disposed = false;
 
-
         public SqlConnection SqlConnection { get; private set; }
 
         public DBConnectionHandler(
@@ -33,7 +32,7 @@ namespace Data_Access
                 Console.WriteLine("SSH connection established.");
 
                 // Local port forwarding using a dynamic port
-                port = new ForwardedPortLocal("127.0.0.1", "localhost", 1433);
+                port = new ForwardedPortLocal("127.0.0.1", sqlHost, 1433);
                 sshClient.AddForwardedPort(port);
                 port.Start();
 
@@ -62,20 +61,7 @@ namespace Data_Access
 
         public void Dispose()
         {
-
             // Ensure all resources are properly disposed
-            try
-            {
-                SqlConnection?.Close();
-                port?.Stop();
-                sshClient?.RemoveForwardedPort(port);
-                sshClient?.Disconnect();
-                sshClient?.Dispose();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error disposing SSH client: " + ex.Message);
-
             if (!disposed)
             {
                 try
