@@ -226,32 +226,42 @@ namespace User_Interface.Schermen
             {
                 if (e.Item is Oefening selectedOefening)
                 {
+                    string levelName = selectedOefening.Name.Replace("Level ", ""); // Remove "Level " prefix
+
+                    // Check if the example text is available
                     if (!string.IsNullOrEmpty(selectedOefening.ExampleText))
                     {
-                        await Navigation.PushAsync(new Oefenscherm(user, selectedOefening.ExampleText));
+                        // Pass the user object, level name, and example text to the Oefenscherm constructor
+                        await Navigation.PushAsync(new Oefenscherm(user, levelName, selectedOefening.ExampleText));
                     }
                     else
                     {
-                        DisplayAlert("Error", "Er is geen voorbeeldtekst gevonden voor dit level.", "OK");
+                        // Display an alert if the example text is not available
+                        await DisplayAlert("Error", "Er is geen voorbeeldtekst gevonden voor dit level.", "OK");
                     }
                 }
             }
             catch (Exception ex)
             {
-                DisplayAlert("Error", "An error occurred while navigating to Oefenscherm: " + ex.Message, "OK");
+                // Display an alert for any unexpected errors
+                await DisplayAlert("Error", "Er is een fout opgetreden bij het navigeren naar het oefenscherm: " + ex.Message, "OK");
             }
             finally
             {
-                ((ListView)sender).SelectedItem = null; // Ensure the item is deselected
+                // Deselect the tapped item
+                ((ListView)sender).SelectedItem = null;
             }
         }
+
+
+
+
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
             // Handle ImageButton click event
         }
     }
-
     public class Oefening
     {
         public string Name { get; set; }
@@ -260,4 +270,5 @@ namespace User_Interface.Schermen
         public string Image { get; set; }
         public string ExampleText { get; set; }
     }
+
 }
