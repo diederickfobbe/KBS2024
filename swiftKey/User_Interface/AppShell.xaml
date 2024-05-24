@@ -9,7 +9,7 @@
     Title="SwiftKey">
 
     <ShellContent
-        ContentTemplate="{DataTemplate local:Loginscherm}"
+        ContentTemplate="{DataTemplate schermen:HomePage}"
         Route="MainPage" />
 
 </Shell>

@@ -183,8 +183,9 @@ namespace User_Interface.Schermen
                             Name = "Level " + level.Id,
                             Tags = level.Tags,
                             Difficulty = level.Difficulty,
-                            Image = "❌",
-                            ExampleText = level.ExampleText
+                            Image = level.IsCompleted ? "✔️" : "❌", // Checkmark if completed, otherwise cross
+                            ExampleText = level.ExampleText,
+                            IsCompleted = level.IsCompleted // Assuming you have this property in Level class
                         }).ToList();
 
                     SelectOefeningen.ItemsSource = oefeningen;
@@ -193,6 +194,19 @@ namespace User_Interface.Schermen
             catch (Exception ex)
             {
                 DisplayAlert("Error", "Failed to update ListView: " + ex.Message, "OK");
+            }
+        }
+
+        private void MarkExerciseAsCompleted(Oefening oefening)
+        {
+            // Find the corresponding level in LevelHandler and mark it as completed
+            var level = levelHandler.GetLevels().FirstOrDefault(l => l.ExampleText == oefening.ExampleText);
+            if (level != null)
+            {
+                level.IsCompleted = true;
+                oefening.IsCompleted = true;
+                oefening.Image = "✔️"; // Update the image to checkmark
+                UpdateListView(levelHandler.GetLevels(), true); // Refresh the ListView
             }
         }
 
@@ -234,7 +248,11 @@ namespace User_Interface.Schermen
                 {
                     if (!string.IsNullOrEmpty(selectedOefening.ExampleText))
                     {
+                        // Navigate to Oefenscherm and handle exercise completion
                         await Navigation.PushAsync(new Oefenscherm(user, selectedOefening.ExampleText));
+
+                        // Mark the exercise as completed after completion
+                        MarkExerciseAsCompleted(selectedOefening);
                     }
                     else
                     {
@@ -272,5 +290,6 @@ namespace User_Interface.Schermen
         public string Tags { get; set; }
         public string Image { get; set; }
         public string ExampleText { get; set; }
+        public bool IsCompleted { get; set; }
     }
 }
