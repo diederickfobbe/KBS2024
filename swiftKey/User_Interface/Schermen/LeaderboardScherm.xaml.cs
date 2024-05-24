@@ -1,5 +1,7 @@
 using Data_Access;
 using Business_Logic;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace User_Interface.Schermen
 {
@@ -7,32 +9,55 @@ namespace User_Interface.Schermen
     {
         private LeaderboardHandler leaderboardHandler;
         private User user;
+        private int SelectedLevelID; // Field to store the selected level ID
 
-        public LeaderboardScherm(User user)
+
+
+        public LeaderboardScherm()
         {
             InitializeComponent();
-            this.user = user;
 
             // Initialize the leaderboard handler with DB connection
-            DBConnectionHandler dbConnection = new DBConnectionHandler(); // Initialize your DB connection handler here
+            DBConnectionHandler dbConnection = new DBConnectionHandler();
             leaderboardHandler = new LeaderboardHandler(dbConnection);
 
-            // Fetch and display leaderboard data
+            // By default, set "All levels" as selected
+            SelectedLevelID = -1; // -1 or any value that indicates "All levels"
+
+            // Fetch and display the normal leaderboard
             DisplayLeaderboard();
+
+            // Initialize pickers
+            InitializePickers();
         }
 
         private async void DisplayLeaderboard()
         {
             try
             {
-                // Fetch leaderboard data from the database
-                var leaderboard = leaderboardHandler.GetLeaderboard();
+                // Check if "All levels" are selected
+                if (SelectedLevelID == -1)
+                {
+                    // Fetch normal leaderboard data from the database
+                    var leaderboard = leaderboardHandler.GetLeaderboard();
 
-                // Clear any existing items in the ListView
-                LeaderboardListView.ItemsSource = null;
+                    // Clear any existing items in the ListView
+                    LeaderboardListView.ItemsSource = null;
 
-                // Update the ListView with the fetched leaderboard data
-                LeaderboardListView.ItemsSource = leaderboard;
+                    // Update the ListView with the fetched leaderboard data
+                    LeaderboardListView.ItemsSource = leaderboard;
+                }
+                else
+                {
+                    // Fetch leaderboard data for the selected level from the database
+                    var leaderboard = leaderboardHandler.GetLeaderboardForLevel(SelectedLevelID);
+
+                    // Clear any existing items in the ListView
+                    LeaderboardListView.ItemsSource = null;
+
+                    // Update the ListView with the fetched leaderboard data
+                    LeaderboardListView.ItemsSource = leaderboard;
+                }
             }
             catch (Exception ex)
             {
@@ -41,9 +66,40 @@ namespace User_Interface.Schermen
             }
         }
 
+        private void InitializePickers()
+        {
+            // Fetch level IDs from the database
+            var levelIDs = leaderboardHandler.GetLevelIDs();
+
+            // Convert level IDs to strings
+            var levelOptions = levelIDs.ConvertAll(id => id.ToString());
+
+            // Insert "All levels" as the first item
+            levelOptions.Insert(0, "All levels");
+
+            // Populate the LevelPicker with the retrieved level options
+            LevelPicker.ItemsSource = levelOptions;
+
+            // By default, select "All levels"
+            LevelPicker.SelectedIndex = 0;
+        }
+
+        private void LevelPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Get the selected level option
+            string selectedOption = (string)LevelPicker.SelectedItem;
+
+            // If "All levels" is selected, set SelectedLevelID to -1
+            SelectedLevelID = selectedOption == "All levels" ? -1 : int.Parse(selectedOption);
+
+            // Fetch and display the leaderboard for the selected level
+            DisplayLeaderboard();
+        }
+
+
         private async void onHomeButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SelecterenOefening(user));
+            await Navigation.PushAsync(new Loginscherm());
         }
 
         private async void onLeaderboardButtonClicked(object sender, EventArgs e)
