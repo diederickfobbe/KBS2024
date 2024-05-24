@@ -77,7 +77,7 @@ namespace User_Interface
 
 
 
-        private void CalculateAndDisplayResults(string enteredText)
+        private async void CalculateAndDisplayResults(string enteredText)
         {
             // Splits de doeltekst en de ingevoerde tekst in woorden
             char[] targetWords = targetText.ToCharArray();
@@ -104,7 +104,7 @@ namespace User_Interface
 
             // Toon de resultaten
             ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
-            Navigation.PushAsync(new Resultscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
+            await Navigation.PushAsync(new Resultscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
             stopwatch.Reset();
         }
 

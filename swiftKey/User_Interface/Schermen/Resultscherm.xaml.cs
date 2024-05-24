@@ -43,8 +43,9 @@ namespace User_Interface
 		}
 
         private void DoneButton_Clicked(object sender, EventArgs e)
-        {
-             Navigation.PushAsync(new SelecterenOefening(user));
+        {            
+            
+            Shell.Current.GoToAsync("../..");
         }
 
         private void Button_Clicked(object sender, EventArgs e)

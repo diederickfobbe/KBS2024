@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:userInterface="clr-namespace:User_Interface"
              x:Class="User_Interface.Oefenscherm"
+             
              >
 
     <Grid HorizontalOptions="Center" Margin="30">

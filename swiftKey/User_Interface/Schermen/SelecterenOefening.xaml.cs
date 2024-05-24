@@ -24,6 +24,7 @@ namespace User_Interface.Schermen
             DifficultyPicker.SelectedIndexChanged += DifficultyPicker_SelectedIndexChanged;
         }
 
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -39,14 +40,15 @@ namespace User_Interface.Schermen
             }
         }
 
+
         private async void onHomeButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Loginscherm());
+            await Navigation.PushAsync(new HomePage());
         }
 
         private async void onLeaderboardButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new LeaderboardScherm());
+            await Navigation.PushAsync(new LeaderboardScherm());
         }
 
         private async void onProfielButtonClicked(object sender, EventArgs e)
@@ -220,7 +222,7 @@ namespace User_Interface.Schermen
             FilterLevels();
         }
 
-        private async void SelectOefeningen_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void SelectOefeningen_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             try
             {
@@ -228,7 +230,7 @@ namespace User_Interface.Schermen
                 {
                     if (!string.IsNullOrEmpty(selectedOefening.ExampleText))
                     {
-                        await Navigation.PushAsync(new Oefenscherm(user, selectedOefening.ExampleText));
+                        Navigation.PushAsync(new Oefenscherm(user, selectedOefening.ExampleText));
                     }
                     else
                     {
@@ -252,12 +254,5 @@ namespace User_Interface.Schermen
         }
     }
 
-    public class Oefening
-    {
-        public string Name { get; set; }
-        public string Difficulty { get; set; }
-        public string Tags { get; set; }
-        public string Image { get; set; }
-        public string ExampleText { get; set; }
-    }
+
 }

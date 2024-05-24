@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:User_Interface"
     xmlns:schermen="clr-namespace:User_Interface.Schermen"
     Shell.FlyoutBehavior="Disabled"
-    Title="SwiftKey">
+    >
 
     <ShellContent
         ContentTemplate="{DataTemplate local:Loginscherm}"
