@@ -31,6 +31,7 @@ namespace User_Interface.Schermen
                 AverageAccuracyLabel.Text = $"{user.AverageAccuracy}%";
                  
                 ExercisesCountLabel.Text = user.ExercisesCount.ToString();
+               
             }
             else
             {

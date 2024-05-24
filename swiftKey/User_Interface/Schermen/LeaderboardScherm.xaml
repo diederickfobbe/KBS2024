@@ -7,8 +7,10 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <!-- Row for the pickers -->
                 <RowDefinition Height="*"/>
-                <!-- Row for the buttons -->
+                <!-- Row for the list view -->
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -16,11 +18,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.ColumnSpan="2" Text="Leaderboard" Style="{StaticResource GradientLabelStyle}">
-            </Label>
+            <Label Grid.ColumnSpan="2" Text="Leaderboard" Style="{StaticResource GradientLabelStyle}"/>
 
             <!-- SideBar -->
-            <Grid VerticalOptions="FillAndExpand" Style="{StaticResource SideBarGrid}" Grid.RowSpan="2">
+            <Grid VerticalOptions="FillAndExpand" Style="{StaticResource SideBarGrid}" Grid.RowSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -34,6 +35,17 @@
                 <ImageButton VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
             </Grid>
 
+            <!-- Horizontal StackLayout to contain the pickers -->
+            <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Orientation="Horizontal">
+                <!-- Dropdown menu to filter tags -->
+                <Picker Title="Select level"
+                        x:Name="LevelPicker"
+                        Margin="10"
+                        VerticalOptions="Start"
+                        SelectedIndexChanged="LevelPicker_SelectedIndexChanged">
+                </Picker>
+
+            </StackLayout>
 
             <ListView x:Name="LeaderboardListView"
                       Grid.Row="2"

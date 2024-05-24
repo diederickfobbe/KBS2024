@@ -46,7 +46,7 @@ namespace User_Interface.Schermen
 
         private async void onLeaderboardButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LeaderboardScherm(user));
+            await Navigation.PushAsync(new LeaderboardScherm());
         }
 
         private async void onProfielButtonClicked(object sender, EventArgs e)
