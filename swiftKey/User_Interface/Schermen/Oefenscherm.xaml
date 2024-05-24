@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:userInterface="clr-namespace:User_Interface"
-             x:Class="User_Interface.Oefenscherm">
+             x:Class="User_Interface.Oefenscherm"
+             >
 
     <Grid HorizontalOptions="Center" Margin="30">
         <Grid.RowDefinitions>
@@ -22,8 +23,8 @@
 
         <Entry x:Name="TextInputEntry"  Loaded="OnEntryLoaded" Placeholder="Type de tekst hier en klik enter als je klaar bent."
                HorizontalOptions="CenterAndExpand" Completed="TextInputEntry_Completed"
-               FontSize="22" WidthRequest="500" HeightRequest="50" Grid.Row="4" />
-        <Label x:Name="ResultsLabel" Text="" HorizontalOptions="Center" FontSize="25" TextColor="#007ACC" Grid.Row="5"/>
+               FontSize="15" WidthRequest="500" HeightRequest="50" Grid.Row="4" />
+        <Label x:Name="ResultsLabel" Text="" HorizontalOptions="Center" FontSize="15" TextColor="#007ACC" Grid.Row="5"/>
     </Grid>
 
 </ContentPage>

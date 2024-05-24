@@ -15,8 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data_Access", "SwiftKey_Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User_Interface", "User_Interface\User_Interface.csproj", "{6677B547-49FA-494B-B680-303014801484}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "swiftKeytests", "swiftKeytests\swiftKeytests.csproj", "{583BB963-767B-40A4-8A65-EB135E7F1382}"
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,10 +36,10 @@ Global
 		{6677B547-49FA-494B-B680-303014801484}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6677B547-49FA-494B-B680-303014801484}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6677B547-49FA-494B-B680-303014801484}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{583BB963-767B-40A4-8A65-EB135E7F1382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{583BB963-767B-40A4-8A65-EB135E7F1382}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{583BB963-767B-40A4-8A65-EB135E7F1382}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{583BB963-767B-40A4-8A65-EB135E7F1382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5443B51-1708-4260-A640-F78B81C58905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5443B51-1708-4260-A640-F78B81C58905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5443B51-1708-4260-A640-F78B81C58905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5443B51-1708-4260-A640-F78B81C58905}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +48,7 @@ Global
 		{14E6A0F7-CF65-42D5-A1D0-6AF8FAF57BC9} = {39397A4A-5614-4F09-82ED-8F1A4A6F9D68}
 		{3A5D25B8-6B54-4355-A649-00564FEFD85A} = {2F1DC315-312B-4C33-B79D-D74EB44139CD}
 		{6677B547-49FA-494B-B680-303014801484} = {EE982431-10CE-43D8-885B-FEDD60FF3CBC}
+		{A5443B51-1708-4260-A640-F78B81C58905} = {416A1FE4-DBD0-417F-BBA5-349D61C8845E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EC35AA65-F587-46A6-B76E-7A31FDD9B3E7}

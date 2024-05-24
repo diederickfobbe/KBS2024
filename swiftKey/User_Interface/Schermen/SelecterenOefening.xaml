@@ -1,81 +1,143 @@
-<?xml version="1.0" encoding="utf-8"?>
-
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="User_Interface.Schermen.SelecterenOefening">
-    
-    <Grid HorizontalOptions="FillAndExpand" >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-    
- 
-        <Grid  Margin="2" Grid.Row="0">
+             x:Class="User_Interface.Schermen.SelecterenOefening"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <Grid Style="{StaticResource SelecterenOefeningGrid}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <!-- Row for the buttons -->
+                <RowDefinition Height="Auto"/>
+                <!-- Row for the picker -->
+                <RowDefinition Height="*"/>
+                <!-- Row for the levels -->
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Button Text="Home" Grid.Row="0"/>
-            <Button Text="Leaderboard" Grid.Row="1"/>
-            <Button Text="Account" Grid.Row="3"/>
-            <Button Text="Uitloggen" Grid.Row="4"/>
-        </Grid>
-        
-        <ListView x:Name="SelectOefeningen"
-              SeparatorColor="Grey"
-              SeparatorVisibility="Default"
-              Grid.Column="1">
-            <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-    
-                    <Grid Padding="10" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="20" />
-                            <RowDefinition Height="15" />
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="15"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        
-                        <Image Grid.RowSpan="3"
-                           Source="{Binding ImageLocation}"
-                           Aspect="Fill"
-                           HeightRequest="60"
-                           WidthRequest="100" />
-                        <Label Grid.Column="1"
-                           Text="{Binding Name}"
-                           FontAttributes="Bold" />
-                        <Label Grid.Row="1"
-                           Grid.Column="2"
-                           Text="{Binding Difficulty}"
-                           FontAttributes="Italic"
-                           FontSize="10"
-                           HorizontalOptions="End"
-                           BackgroundColor="Gray"/>
 
-                            <Label Grid.Row="3" 
-                           Grid.Column="1"
-                           Text="{Binding TagString}"
-                           FontAttributes="Italic"
-                           TextColor="Gray"
-                           FontSize="10"/>
-                        </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
-    </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.ColumnSpan="2" Text="swiftkey" Style="{StaticResource GradientLabelStyle}">
+            </Label>
+
+            <Grid VerticalOptions="FillAndExpand" Style="{StaticResource SideBarGrid}" Grid.Row="1" Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ImageButton Clicked="onHomeButtonClicked" Style="{StaticResource ImageButtonHome}"/>
+                <ImageButton Grid.Row="1" Clicked="onLeaderboardButtonClicked" Style="{StaticResource ImageButtonPodium}"/>
+                <ImageButton Grid.Row="2" Clicked="onProfielButtonClicked" Style="{StaticResource ImageButtonUser}"/>
+                <ImageButton VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
+            </Grid>
+
+            <Label Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" FontAttributes="Bold" Padding="30,0,0,0" Text="Kies een oefening" FontSize="Subtitle"/>
+
+            <!-- Horizontal StackLayout to contain the pickers -->
+            <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Orientation="Horizontal">
+                <!-- Dropdown menu to filter tags -->
+                <Picker Title="Select Tag"
+                        x:Name="TagPicker"
+                        Margin="10"
+                        VerticalOptions="Start"
+                        SelectedIndexChanged="TagPicker_SelectedIndexChanged">
+                </Picker>
+
+                <!-- Dropdown menu to filter difficulty -->
+                <Picker Title="Select Difficulty"
+                        x:Name="DifficultyPicker"
+                        Margin="10"
+                        VerticalOptions="Start"
+                        SelectedIndexChanged="DifficultyPicker_SelectedIndexChanged">
+                </Picker>
+            </StackLayout>
+
+            <!-- Label for no levels found message -->
+            <Label x:Name="NoLevelsLabel"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   Grid.RowSpan="2"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Text="Geen levels gevonden."
+                   IsVisible="False"
+                   TextColor="Red"
+                   FontAttributes="Bold"
+                   FontSize="Medium"/>
+
+            <!-- ListView Column -->
+            <ListView x:Name="SelectOefeningen"
+                      Grid.Row="2"
+                      Grid.Column="1"
+                      Grid.RowSpan="2"
+                      SeparatorColor="Grey"
+                      SeparatorVisibility="Default"
+                      HorizontalOptions="Start"
+                      Margin="30,0,0,0"
+                      Style="{StaticResource SelecterenOefeningListView}"
+                      VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" ColumnSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.RowSpan="2"
+                                       Text="{Binding Image}"
+                                       FontAttributes="Bold" 
+                                       FontSize="20"
+                                       LineBreakMode="TailTruncation" />
+
+                                <Label Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       FontAttributes="Bold" 
+                                       FontSize="20"
+                                       LineBreakMode="TailTruncation" />
+
+                                <Frame Grid.Row="1"
+                                       Grid.Column="1"
+                                       Padding="5"
+                                       BackgroundColor="Gray"
+                                       HorizontalOptions="End" 
+                                       Margin="0,0,20,0"
+                                       VerticalOptions="Start">
+                                    <Label Text="{Binding Difficulty}"
+                                           FontSize="10"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"
+                                           LineBreakMode="WordWrap"/>
+                                </Frame>
+
+                                <Frame Grid.Row="1"
+                                       Grid.Column="1"
+                                       Padding="5"
+                                       BackgroundColor="Orange"
+                                       HorizontalOptions="Start" 
+                                       Margin="0,0,20,0"
+                                       VerticalOptions="Start">
+                                    <Label Text="{Binding Tags}"
+                                           FontSize="15"
+                                           HorizontalOptions="Start"
+                                           VerticalOptions="Center"
+                                           LineBreakMode="WordWrap"/>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

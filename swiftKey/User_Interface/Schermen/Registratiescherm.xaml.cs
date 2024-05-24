@@ -8,9 +8,6 @@ namespace User_Interface
 {
     public partial class Registratiescherm : ContentPage
     {
-        
-        private UserManager userManager = new UserManager();
-
 
         public Registratiescherm()
         {
@@ -58,7 +55,7 @@ namespace User_Interface
                 // Probeer een nieuwe gebruiker te maken
                 string hashedPassword = Business_Logic.RegisterChecks.HashPassword(password);
                
-                userManager.CreateUser(username, email, hashedPassword);
+                
                 Data_Access.RegisterHandler.RegisterUser(username, email, hashedPassword);
                
 

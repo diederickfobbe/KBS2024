@@ -1,15 +1,17 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Data_Access
 {
-    public class LoginHandler
+    public class GetInfo
     {
 
-        public static string GetPasswordFromDB(string email)
+        public static string GetUserNameFromDB(string email)
         {
             using (var connectionManager = new DBConnectionHandler())
             {
@@ -21,7 +23,7 @@ namespace Data_Access
                         // Select query to get the hashed password based on email address
                         /*string selectQuery = "SELECT password FROM Users WHERE email = @email";*/
                         // Select query to get the hashed password based on email address
-                        string selectQuery = "SELECT password FROM Users WHERE CAST(email AS NVARCHAR(MAX)) = @email";
+                        string selectQuery = "SELECT username FROM Users WHERE CAST(email AS NVARCHAR(MAX)) = @email";
 
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
@@ -35,10 +37,10 @@ namespace Data_Access
                             // Check if the result is not null
                             if (result != null)
                             {
-                               
+
                                 return result.ToString();
                                 Debug.WriteLine(result.ToString());
-                                
+
                             }
                             else
                             {
@@ -52,20 +54,6 @@ namespace Data_Access
                     }
                 }
             }
-        }
-
-        public static bool CheckLogin(string email, string hashedPassword)
-        {
-            string dbPassword = GetPasswordFromDB (email);
-            if(hashedPassword == dbPassword)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            
         }
     }
 }
