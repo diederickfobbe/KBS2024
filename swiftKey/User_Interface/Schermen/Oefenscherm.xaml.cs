@@ -2,6 +2,8 @@ using System.Diagnostics;
 using System.Linq;
 using Business_Logic;
 using Data_Access;
+using Plugin.Maui.Audio;
+
 
 
 
@@ -18,12 +20,14 @@ namespace User_Interface
         private User user;
         private int UserID;
         private string LevelID;
+        private IAudioPlayer player;
 
         private Stopwatch stopwatch = new Stopwatch();
 
         public Oefenscherm(User user, string levelID, string oefeningText)
         {
             InitializeComponent();
+            
             this.user = user;
             this.UserID = GetUserInfo.GetUserIDByEmail(user.Email);
             this.LevelID = levelID;
@@ -42,8 +46,9 @@ namespace User_Interface
             return true; // Return true to keep the timer running.
         }
         
-        private void TextInputEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private async void TextInputEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
+            player.Play();   
             string enteredText = e.NewTextValue ?? "";
 
             // Iterate through all labels
@@ -161,11 +166,17 @@ namespace User_Interface
             TextInputEntry.Focus();
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
-            
             base.OnAppearing();
+            this.player = AudioManager.Current.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("letterclick.wav"));
             stopwatch.Start();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            player.Dispose();
         }
 
     }
