@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using static Data_Access.LevelHandler;
 
 namespace Data_Access
 {
@@ -19,7 +20,9 @@ namespace Data_Access
             public string Username { get; set; }
             public float Score { get; set; }
             public int UserID { get; set; }
+            public int LevelID { get; set; } // Add this property
         }
+
 
         public List<LeaderboardEntry> GetLeaderboard()
         {
@@ -31,7 +34,8 @@ namespace Data_Access
                     @"SELECT ROW_NUMBER() OVER (ORDER BY ulc.score DESC) AS Rank,
                      u.username AS Username,
                      ulc.score AS Score,
-                     u.id as UserID
+                     u.id AS UserID,
+                     ulc.level_id AS LevelID
               FROM dbo.UserLevelCompletion ulc
               INNER JOIN dbo.Users u ON ulc.user_id = u.id
               INNER JOIN dbo.Level l ON ulc.level_id = l.id
@@ -46,6 +50,7 @@ namespace Data_Access
                             string username = reader.GetString(1);
                             double score = reader.GetDouble(2); // Read as Double
                             int userID = (int)reader.GetInt32(3); // Convert to int
+                            int levelID = (int)reader.GetInt32(4); // Convert to int
 
                             // Create LeaderboardEntry object and add to the list
                             LeaderboardEntry entry = new LeaderboardEntry
@@ -53,7 +58,8 @@ namespace Data_Access
                                 Rank = rank,
                                 Username = username,
                                 Score = (float)score, // Convert to float
-                                UserID = userID
+                                UserID = userID,
+                                LevelID = levelID
                             };
                             leaderboard.Add(entry);
                         }
@@ -70,5 +76,8 @@ namespace Data_Access
             return leaderboard;
         }
 
+
     }
+
+
 }

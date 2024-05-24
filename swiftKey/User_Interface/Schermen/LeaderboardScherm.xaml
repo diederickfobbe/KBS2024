@@ -1,7 +1,90 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="User_Interface.Schermen.LeaderboardScherm">
-    <StackLayout x:Name="MainLayout" Padding="20">
-        <!-- Leaderboard entries will be added here dynamically -->
-    </StackLayout>
+             x:Class="User_Interface.Schermen.LeaderboardScherm"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <!-- Row for the buttons -->
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.ColumnSpan="2" Text="Leaderboard" Style="{StaticResource GradientLabelStyle}">
+            </Label>
+
+            <!-- SideBar -->
+            <Grid VerticalOptions="FillAndExpand" Style="{StaticResource SideBarGrid}" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ImageButton Clicked="onHomeButtonClicked" Style="{StaticResource ImageButtonHome}"/>
+                <ImageButton Grid.Row="1" Clicked="onLeaderboardButtonClicked" Style="{StaticResource ImageButtonPodium}"/>
+                <ImageButton Grid.Row="2" Clicked="onProfielButtonClicked" Style="{StaticResource ImageButtonUser}"/>
+                <ImageButton VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
+            </Grid>
+
+
+            <ListView x:Name="LeaderboardListView"
+          Grid.Row="2"
+          Grid.Column="1"
+          SeparatorColor="LightGray"
+          SeparatorVisibility="Default"
+          Margin="30,0,0,0"
+          VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" ColumnSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.RowSpan="2"
+                                       Text="{Binding Rank}"
+                                       FontAttributes="Bold" 
+                                       FontSize="20"
+                                       LineBreakMode="TailTruncation" />
+
+                                <Label Grid.Column="1"
+                                       Text="{Binding Username}"
+                                       FontAttributes="Bold" 
+                                       FontSize="20"
+                                       LineBreakMode="TailTruncation" />
+
+                                <Frame Grid.Row="1"
+                                       Grid.Column="1"
+                                       Padding="5"
+                                       BackgroundColor="Gray"
+                                       HorizontalOptions="End" 
+                                       Margin="0,0,20,0"
+                                       VerticalOptions="Start">
+                                    <Label Text="{Binding Score, StringFormat='Score: {0}'}"
+                                           FontSize="15"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"
+                                           LineBreakMode="WordWrap"/>
+
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>
