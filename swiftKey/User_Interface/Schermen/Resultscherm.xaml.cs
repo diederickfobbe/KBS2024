@@ -2,6 +2,7 @@
 
 using Business_Logic;
 using User_Interface.Schermen;
+using Data_Access;
 
 namespace User_Interface
 {
@@ -13,7 +14,7 @@ namespace User_Interface
 		{
 			InitializeComponent();
             this.user = user;
-            asignResults( typeSpeed,  timeTaken,  accuracy, calculateMistakes( enteredText,  targetText));
+            asignResults(user.Id, typeSpeed,  timeTaken,  accuracy, calculateMistakes( enteredText,  targetText));
 
         }
 
@@ -32,19 +33,20 @@ namespace User_Interface
            
             return incorrectWords;
         }
-		private void asignResults(int typeSpeed, string timeTaken, double accuracy, int mistakes)
+		private void asignResults(int user_id, int typeSpeed, string timeTaken, double accuracy, int mistakes)
 		{
 			Wpm.Text=$"type snelheid:{typeSpeed} WPM";
 			Tijd.Text = $"Tijd:{timeTaken}";
             accuracy = Math.Round(accuracy, 2);
             Ratio.Text = $"Goed/Fout ratio:{accuracy}%";
 			Fouten.Text = $"Fouten:{mistakes}";
-
+            
 		}
 
         private void DoneButton_Clicked(object sender, EventArgs e)
-        {
-             Navigation.PushAsync(new SelecterenOefening(user));
+        {            
+            
+            Shell.Current.GoToAsync("../..");
         }
 
         private void Button_Clicked(object sender, EventArgs e)
