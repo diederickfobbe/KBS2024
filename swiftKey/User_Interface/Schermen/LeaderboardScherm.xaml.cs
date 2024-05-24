@@ -35,29 +35,45 @@ namespace User_Interface.Schermen
         {
             try
             {
+                List<LeaderboardHandler.LeaderboardEntry> leaderboard;
+
                 // Check if "All levels" are selected
                 if (SelectedLevelID == -1)
                 {
                     // Fetch normal leaderboard data from the database
-                    var leaderboard = leaderboardHandler.GetLeaderboard();
-
-                    // Clear any existing items in the ListView
-                    LeaderboardListView.ItemsSource = null;
-
-                    // Update the ListView with the fetched leaderboard data
-                    LeaderboardListView.ItemsSource = leaderboard;
+                    leaderboard = leaderboardHandler.GetLeaderboard();
                 }
                 else
                 {
                     // Fetch leaderboard data for the selected level from the database
-                    var leaderboard = leaderboardHandler.GetLeaderboardForLevel(SelectedLevelID);
-
-                    // Clear any existing items in the ListView
-                    LeaderboardListView.ItemsSource = null;
-
-                    // Update the ListView with the fetched leaderboard data
-                    LeaderboardListView.ItemsSource = leaderboard;
+                    leaderboard = leaderboardHandler.GetLeaderboardForLevel(SelectedLevelID);
                 }
+
+                // If "All levels" are selected, aggregate scores by user ID
+                if (SelectedLevelID == -1)
+                {
+                    // Aggregate scores by UserID
+                    var aggregatedLeaderboard = leaderboard
+                        .GroupBy(entry => entry.UserID)
+                        .Select(group => new LeaderboardHandler.LeaderboardEntry
+                        {
+                            Rank = group.First().Rank, // Assume the same rank for all entries of the same user
+                            Username = group.First().Username,
+                            Score = group.Sum(entry => entry.Score),
+                            UserID = group.Key, // Use the UserID from the group
+                            LevelID = -1 // Indicates aggregation for all levels
+                        })
+                        .OrderByDescending(entry => entry.Score)
+                        .ToList();
+
+                    leaderboard = aggregatedLeaderboard;
+                }
+
+                // Clear any existing items in the ListView
+                LeaderboardListView.ItemsSource = null;
+
+                // Update the ListView with the fetched leaderboard data
+                LeaderboardListView.ItemsSource = leaderboard;
             }
             catch (Exception ex)
             {
@@ -65,6 +81,7 @@ namespace User_Interface.Schermen
                 await DisplayAlert("Error", $"Error displaying leaderboard: {ex.Message}", "OK");
             }
         }
+
 
         private void InitializePickers()
         {
