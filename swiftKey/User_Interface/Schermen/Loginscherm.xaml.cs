@@ -27,7 +27,7 @@ namespace User_Interface
 
                 //maak een user aan om gegevens in op te slaan
 
-                User user = new User(Data_Access.GetInfo.GetUserNameFromDB(email), email);
+                User user = new User(Data_Access.GetUserInfo.GetUserNameFromDB(email), email);
 
                 // Gebruiker heeft juiste gebruikersnaam en wachtwoord ingevoerd
 
