@@ -41,7 +41,7 @@
                 FontSize="15"
                 HorizontalOptions="Center"
                 />
-            <Button Clicked="DoneButton_Clicked"/>
+            <Button Clicked="DoneButton_Clicked" MaximumWidthRequest="120" Text="Klaar"/>
 
         </VerticalStackLayout>
     </ScrollView>

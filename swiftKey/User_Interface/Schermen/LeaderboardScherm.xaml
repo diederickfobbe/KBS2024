@@ -4,7 +4,7 @@
              NavigationPage.HasBackButton="True"
              NavigationPage.HasNavigationBar="True">
     <ContentPage.Content>
-        <Grid>
+        <Grid Style="{StaticResource SelecterenOefeningGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
@@ -21,7 +21,7 @@
             <Label Grid.ColumnSpan="2" Text="Leaderboard" Style="{StaticResource GradientLabelStyle}"/>
 
             <!-- SideBar -->
-            <Grid VerticalOptions="FillAndExpand" Style="{StaticResource SideBarGrid}" Grid.RowSpan="3">
+            <Grid VerticalOptions="FillAndExpand" Grid.Row="1" Style="{StaticResource SideBarGrid}" Grid.RowSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>

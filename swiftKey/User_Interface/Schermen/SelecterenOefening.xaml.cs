@@ -41,7 +41,7 @@ namespace User_Interface.Schermen
 
         private async void onHomeButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Loginscherm());
+            await Navigation.PushAsync(new HomePage());
         }
 
         private async void onLeaderboardButtonClicked(object sender, EventArgs e)
@@ -252,12 +252,5 @@ namespace User_Interface.Schermen
         }
     }
 
-    public class Oefening
-    {
-        public string Name { get; set; }
-        public string Difficulty { get; set; }
-        public string Tags { get; set; }
-        public string Image { get; set; }
-        public string ExampleText { get; set; }
-    }
+
 }

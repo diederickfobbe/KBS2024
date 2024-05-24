@@ -99,7 +99,7 @@ namespace User_Interface.Schermen
 
         private async void onHomeButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Loginscherm());
+            await Navigation.PushAsync(new HomePage());
         }
 
         private async void onLeaderboardButtonClicked(object sender, EventArgs e)

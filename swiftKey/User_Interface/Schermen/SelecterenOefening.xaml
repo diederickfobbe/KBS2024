@@ -22,8 +22,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.ColumnSpan="2" Text="swiftkey" Style="{StaticResource GradientLabelStyle}">
-            </Label>
+            <Label Grid.ColumnSpan="2" Text="swiftkey" Style="{StaticResource GradientLabelStyle}"/>
 
             <Grid VerticalOptions="FillAndExpand" Style="{StaticResource SideBarGrid}" Grid.Row="1" Grid.RowSpan="3">
                 <Grid.RowDefinitions>
@@ -79,7 +78,6 @@
                       Grid.Column="1"
                       Grid.RowSpan="2"
                       SeparatorColor="Grey"
-                      
                       SeparatorVisibility="Default"
                       HorizontalOptions="Start"
                       Margin="30,0,0,0"
