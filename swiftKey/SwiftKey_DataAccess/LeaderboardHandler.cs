@@ -101,7 +101,7 @@ namespace Data_Access
             return levelIDs;
         }
 
-        public List<LeaderboardEntry> GetLeaderboardForLevel(int levelID)
+                public List<LeaderboardEntry> GetLeaderboardForLevel(int levelID)
         {
             List<LeaderboardEntry> leaderboard = new List<LeaderboardEntry>();
 
