@@ -21,10 +21,6 @@ namespace User_Interface.Schermen
                 
                 user.RefreshStats();
 
-/*                int exerciseCount = Data_Access.GetUserInfo.GetExercisesCount(5);
-
-                // Toon een alert met het aantal oefeningen
-                DisplayAlert("Mooi", exerciseCount.ToString(), "OK");*/
 
                 UserNameLabel.Text = "Welkom " + user.Username + "!";
                 
