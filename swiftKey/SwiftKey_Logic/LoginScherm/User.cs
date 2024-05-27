@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,22 +22,17 @@ namespace Business_Logic
         {
             this.Username = Username;
             this.Email = Email;
+            this.Id = Data_Access.GetUserInfo.GetUserIDByEmail(Email);
         }
 
-        public void CalculateAverageWpm()
+
+        public void RefreshStats()
         {
-            int AverageWpm = Data_Access.GetUserInfo.GetAverageWPM(Id);
+            this.AverageWpm = Data_Access.GetUserInfo.GetAverageWPM(Id);
+            this.AverageAccuracy = Data_Access.GetUserInfo.GetAverageAccuracy(Id);
+            this.ExercisesCount = Data_Access.GetUserInfo.GetExercisesCount(Id);
         }
+        
 
-        public void CalculateAverageAccuracy()
-        {
-            double AverageAccuracy = Data_Access.GetUserInfo.GetAverageAccuracy(Id);
-        }
-
-        public void CalculateExercisesCount()
-        {
-            int ExercisesCount = Data_Access.GetUserInfo.GetExercisesCount(Id);
-
-        }
     }
 }

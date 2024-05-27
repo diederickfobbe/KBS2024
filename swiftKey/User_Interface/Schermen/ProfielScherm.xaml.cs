@@ -18,12 +18,14 @@ namespace User_Interface.Schermen
             // Controleer of de gebruiker niet null is om NullReferenceException te voorkomen
             if (user != null)
             {
-                user.CalculateAverageAccuracy();
                 
-                user.CalculateExercisesCount();
-                
-                user.CalculateAverageWpm();
-                
+                user.RefreshStats();
+
+/*                int exerciseCount = Data_Access.GetUserInfo.GetExercisesCount(5);
+
+                // Toon een alert met het aantal oefeningen
+                DisplayAlert("Mooi", exerciseCount.ToString(), "OK");*/
+
                 UserNameLabel.Text = "Welkom " + user.Username + "!";
                 
                 AverageWpmLabel.Text = user.AverageWpm.ToString();
