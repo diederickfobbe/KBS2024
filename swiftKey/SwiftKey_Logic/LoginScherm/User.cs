@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Data_Access.LevelHandler;
 
 namespace Business_Logic
 {
@@ -16,6 +17,7 @@ namespace Business_Logic
         public int AverageWpm { get; set; }
         public double AverageAccuracy { get; set; }
         public int ExercisesCount { get; set; }
+        public List<Level> gemaakteOefeningen { get; set; }
 
 
         public User(string Username, string Email)
@@ -31,6 +33,7 @@ namespace Business_Logic
             this.AverageWpm = Data_Access.GetUserInfo.GetAverageWPM(Id);
             this.AverageAccuracy = Data_Access.GetUserInfo.GetAverageAccuracy(Id);
             this.ExercisesCount = Data_Access.GetUserInfo.GetExercisesCount(Id);
+            this.gemaakteOefeningen = Data_Access.GetUserInfo.GetGebruikerVoltooideLevels(Id);
         }
         
 

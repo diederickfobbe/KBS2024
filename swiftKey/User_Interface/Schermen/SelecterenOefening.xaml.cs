@@ -171,7 +171,7 @@ namespace User_Interface.Schermen
                     List<Oefening> oefeningen = levels.Select(level =>
                         new Oefening
                         {
-                            Name = "Level " + level.Id,
+                            Name = "Level " + level.LevelId,
                             Tags = level.Tags,
                             Difficulty = level.Difficulty,
                             Image = "❌",

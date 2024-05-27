@@ -1,4 +1,6 @@
 using Business_Logic;
+using System.Text;
+using static Data_Access.LevelHandler;
 
 namespace User_Interface.Schermen
 {
@@ -27,9 +29,22 @@ namespace User_Interface.Schermen
                 AverageWpmLabel.Text = user.AverageWpm.ToString();
                 
                 AverageAccuracyLabel.Text = $"{user.AverageAccuracy}%";
-                 
-                ExercisesCountLabel.Text = user.ExercisesCount.ToString();
-               
+                ExercisesCountLabel.Text = user.ExercisesCount.ToString() ;
+
+
+                foreach (Level exercise in user.gemaakteOefeningen)
+                {
+                    CompletedExercisesLabel.Text += "\n";
+                    CompletedExercisesLabel.Text += "Level: " + exercise.LevelId.ToString() + "         ";
+                    CompletedExercisesLabel.Text += "Datum: " + exercise.CompletionDate.ToString() + "         ";
+                    CompletedExercisesLabel.Text += "Woorden per minuut: " + exercise.Wpm.ToString() + "         ";
+                    CompletedExercisesLabel.Text += "Accuracy: " + exercise.Accuracy.ToString() + "         ";
+                    CompletedExercisesLabel.Text += "Score: " + exercise.Score.ToString() + "\n\n";
+                }
+
+
+
+
             }
             else
             {

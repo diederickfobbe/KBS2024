@@ -2,7 +2,7 @@ using Microsoft.Maui.Controls;
 using System;
 using System.Net.Http.Headers;
 using Data_Access;
-using Business_Logic.RegistratieScherm;
+using Business_Logic;
 
 namespace User_Interface
 {

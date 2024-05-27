@@ -17,9 +17,9 @@
         <!-- Boxen voor statistieken -->
         <HorizontalStackLayout Spacing="10"
                                HorizontalOptions="Center"
-                               BackgroundColor="white">
-                               
-            <!-- Gemiddelde WPM -->
+                              >
+
+         
             <Frame Padding="10" 
                    HasShadow="True"
                    CornerRadius="5">
@@ -34,7 +34,7 @@
 
             <!-- Witte lijn tussen de boxen -->
             <BoxView WidthRequest="1"
-                     Color="White"
+                     Color="Grey"
                      VerticalOptions="FillAndExpand" />
 
             <!-- Gemiddelde Accuratie -->
@@ -52,7 +52,7 @@
 
             <!-- Witte lijn tussen de boxen -->
             <BoxView WidthRequest="1"
-                     Color="White"
+                     
                      VerticalOptions="FillAndExpand" />
 
             <!-- Aantal Gemaakte Oefeningen -->
@@ -68,6 +68,15 @@
                 </VerticalStackLayout>
             </Frame>
         </HorizontalStackLayout>
+
+        <Label x:Name="CompletedExercisesLabel"
+               FontAttributes="Bold"
+               FontSize="20" 
+            HorizontalOptions="Center"
+                              Text="De laatst gemaakte oefeningen: 
+"/>
+                
+
 
     </VerticalStackLayout>
 </ContentPage>
