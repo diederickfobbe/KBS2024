@@ -19,6 +19,7 @@ namespace Data_Access
             public string Tags { get; set; }
             public string Difficulty { get; set; }
             public string ExampleText { get; set; }
+            public bool IsCompleted { get; set; }
         }
 
         public List<Level> GetLevels()
