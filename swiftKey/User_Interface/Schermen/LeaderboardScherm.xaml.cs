@@ -13,9 +13,10 @@ namespace User_Interface.Schermen
 
 
 
-        public LeaderboardScherm()
+        public LeaderboardScherm(User user)
         {
             InitializeComponent();
+            this.user = user;
 
             // Initialize the leaderboard handler with DB connection
             DBConnectionHandler dbConnection = new DBConnectionHandler();
