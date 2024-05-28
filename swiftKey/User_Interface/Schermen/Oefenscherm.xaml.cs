@@ -1,6 +1,10 @@
 using System.Diagnostics;
 using System.Linq;
 using Business_Logic;
+using Data_Access;
+using Plugin.Maui.Audio;
+
+
 
 
 //using Android.OS;
@@ -13,14 +17,20 @@ namespace User_Interface
     {
         private string targetText = "";
         private List<char> targetTextList;
-        private User user; 
+        private User user;
+        private int UserID;
+        private string LevelID;
+        private IAudioPlayer player;
 
         private Stopwatch stopwatch = new Stopwatch();
 
-        public Oefenscherm(User user, string oefeningText)
+        public Oefenscherm(User user, string levelID, string oefeningText)
         {
             InitializeComponent();
+            
             this.user = user;
+            this.UserID = GetUserInfo.GetUserIDByEmail(user.Email);
+            this.LevelID = levelID;
             targetText = oefeningText;
             targetTextList = targetText.ToList();
             InstructionsLabel.Text = targetText;
@@ -36,8 +46,9 @@ namespace User_Interface
             return true; // Return true to keep the timer running.
         }
         
-        private void TextInputEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private async void TextInputEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
+            player.Play();   
             string enteredText = e.NewTextValue ?? "";
 
             // Iterate through all labels
@@ -76,8 +87,7 @@ namespace User_Interface
         }
 
 
-
-        private void CalculateAndDisplayResults(string enteredText)
+        private async void CalculateAndDisplayResults(string enteredText)
         {
             // Splits de doeltekst en de ingevoerde tekst in woorden
             char[] targetWords = targetText.ToCharArray();
@@ -97,16 +107,30 @@ namespace User_Interface
             // Bereken de tijd en typesnelheid (WPM) alleen op basis van correct overgetypte woorden
             double timeTakenInMinutes = stopwatch.Elapsed.TotalMinutes;
             int typingSpeed = OefenschermMethods.CalculateTypingSpeed(correctWordCount, timeTakenInMinutes);
-            
+
 
             // Bereken nauwkeurigheid op basis van het totale aantal woorden in de doeltekst
             double accuracy = ((double)correctWordCount / targetWords.Length) * 100;
 
             // Toon de resultaten
             ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
-            Navigation.PushAsync(new Resultscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
+
+            try
+            {
+                RegisterScoresHandler.RegisterScore(UserID, LevelID, typingSpeed, accuracy);
+            }
+            catch (Exception ex)
+            {
+                // Display an error message using DisplayAlert
+                await DisplayAlert("Error", "An error occurred while registering the score: " + ex.Message, "OK");
+                return; // Exit the method early
+            }
+
+            // Proceed with navigation
+            await Navigation.PushAsync(new Resultscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
             stopwatch.Reset();
         }
+
 
 
         private List<Label> labelList = new List<Label>();
@@ -142,11 +166,17 @@ namespace User_Interface
             TextInputEntry.Focus();
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
-            
             base.OnAppearing();
+            this.player = AudioManager.Current.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("letterclick.wav"));
             stopwatch.Start();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            player.Dispose();
         }
 
     }

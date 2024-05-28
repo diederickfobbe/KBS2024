@@ -1,25 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Reflection.Emit;
 
 namespace Data_Access
 {
-    public class LevelHandler
+    public class LevelHandler : IDisposable
     {
         private DBConnectionHandler dbConnection;
 
-        public LevelHandler(DBConnectionHandler dbConnection)
+        public LevelHandler()
         {
-            this.dbConnection = dbConnection;
+            dbConnection = new DBConnectionHandler();
         }
+
         public class Level
         {
-            public int Id { get; set; }
+            public int LevelId { get; set; }
             public string Tags { get; set; }
             public string Difficulty { get; set; }
             public string ExampleText { get; set; }
-            public bool IsCompleted { get; set; }
+            public int UserId { get; internal set; }
+            public DateTime CompletionDate { get; internal set; }
+            public int Wpm { get; internal set; }
+            public double Accuracy { get; internal set; }
+            public double Score { get; internal set; }
+            public int Id { get; internal set; }
         }
 
         public List<Level> GetLevels()
@@ -42,7 +47,7 @@ namespace Data_Access
                             // Create Level object and add to the list
                             Level level = new Level
                             {
-                                Id = id,
+                                LevelId = id,
                                 Tags = tags,
                                 Difficulty = difficulty,
                                 ExampleText = exampleText
@@ -58,6 +63,11 @@ namespace Data_Access
             }
 
             return levels;
+        }
+
+        public void Dispose()
+        {
+            dbConnection?.Dispose();
         }
     }
 }

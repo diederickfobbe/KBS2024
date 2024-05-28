@@ -2,29 +2,36 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:userInterface="clr-namespace:User_Interface"
-             x:Class="User_Interface.Oefenscherm"
-             >
+             x:Class="User_Interface.Oefenscherm">
 
-    <Grid HorizontalOptions="Center" Margin="30">
+    <Grid Style="{StaticResource SelecterenOefeningGrid}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="TimerLabel" Text="00:00:00" HorizontalOptions="Center" FontSize="25" TextColor="#007ACC" Grid.Row="1"/>
-        <Label x:Name="InstructionsLabel" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold" Grid.Row="2"/>
-        <FlexLayout x:Name="Sentence" Grid.Row="3" Wrap="Wrap" HorizontalOptions="Center" AlignContent="Stretch">
 
-        </FlexLayout>
+        <Label Text="swiftkey" Style="{StaticResource GradientLabelStyle}"/>
 
-        <Entry x:Name="TextInputEntry"  Loaded="OnEntryLoaded" Placeholder="Type de tekst hier en klik enter als je klaar bent."
-               HorizontalOptions="CenterAndExpand" Completed="TextInputEntry_Completed"
-               FontSize="15" WidthRequest="500" HeightRequest="50" Grid.Row="4" />
-        <Label x:Name="ResultsLabel" Text="" HorizontalOptions="Center" FontSize="15" TextColor="#007ACC" Grid.Row="5"/>
+        <Grid HorizontalOptions="Center" Margin="30" Grid.Row="1" Padding="30" Style="{StaticResource CenterGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="TimerLabel" Text="00:00:00" HorizontalOptions="Center" FontSize="25" TextColor="Orange" Grid.Row="1"/>
+            <Label x:Name="InstructionsLabel" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold" Grid.Row="2"/>
+            <FlexLayout x:Name="Sentence" Grid.Row="3" Wrap="Wrap" HorizontalOptions="Center" AlignContent="Stretch">
+
+            </FlexLayout>
+
+            <Entry x:Name="TextInputEntry"  Loaded="OnEntryLoaded" Placeholder="Type de tekst hier en klik enter als je klaar bent."
+                   HorizontalOptions="CenterAndExpand" Completed="TextInputEntry_Completed"
+                   FontSize="15" WidthRequest="500" HeightRequest="50" Grid.Row="4" />
+            <Label x:Name="ResultsLabel" Text="" HorizontalOptions="Center" FontSize="15" TextColor="#007ACC" Grid.Row="5"/>
+        </Grid>
     </Grid>
 
 </ContentPage>

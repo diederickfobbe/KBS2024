@@ -1,12 +1,102 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="User_Interface.Schermen.LeaderboardScherm"
-             Title="LeaderboardScherm">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True">
+    <ContentPage.Content>
+        <Grid Style="{StaticResource SelecterenOefeningGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <!-- Row for the pickers -->
+                <RowDefinition Height="*"/>
+                <!-- Row for the list view -->
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.ColumnSpan="2" Text="Leaderboard" Style="{StaticResource GradientLabelStyle}"/>
+
+            <!-- SideBar -->
+            <Grid VerticalOptions="FillAndExpand" Grid.Row="1" Style="{StaticResource SideBarGrid}" Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <ImageButton Clicked="onHomeButtonClicked" Style="{StaticResource ImageButtonHome}"/>
+                <ImageButton Grid.Row="1" Clicked="onLeaderboardButtonClicked" Style="{StaticResource ImageButtonPodium}"/>
+                <ImageButton Grid.Row="2" Clicked="onProfielButtonClicked" Style="{StaticResource ImageButtonUser}"/>
+                <ImageButton VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
+            </Grid>
+
+            <!-- Horizontal StackLayout to contain the pickers -->
+            <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Orientation="Horizontal">
+                <!-- Dropdown menu to filter tags -->
+                <Picker Title="Select level"
+                        x:Name="LevelPicker"
+                        Margin="10"
+                        VerticalOptions="Start"
+                        SelectedIndexChanged="LevelPicker_SelectedIndexChanged">
+                </Picker>
+
+            </StackLayout>
+
+            <ListView x:Name="LeaderboardListView"
+                      Grid.Row="2"
+                      Grid.Column="1"
+                      SeparatorColor="LightGray"
+                      SeparatorVisibility="Default"
+                      Margin="30,0,0,0"
+                      VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10" ColumnSpacing="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.RowSpan="2"
+                                       Text="{Binding Rank}"
+                                       FontAttributes="Bold" 
+                                       FontSize="20"
+                                       LineBreakMode="TailTruncation" />
+
+                                <Label Grid.Column="1"
+                                       Text="{Binding Username}"
+                                       FontAttributes="Bold" 
+                                       FontSize="20"
+                                       LineBreakMode="TailTruncation" />
+
+                                <Frame Grid.Row="1"
+                                       Grid.Column="1"
+                                       Padding="5"
+                                       BackgroundColor="Gray"
+                                       HorizontalOptions="End" 
+                                       Margin="0,0,20,0"
+                                       VerticalOptions="Start">
+                                    <Label Text="{Binding Score, StringFormat='Score: {0}'}"
+                                           FontSize="15"
+                                           HorizontalOptions="End"
+                                           VerticalOptions="Center"
+                                           LineBreakMode="WordWrap"/>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

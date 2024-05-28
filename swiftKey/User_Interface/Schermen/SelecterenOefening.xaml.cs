@@ -9,8 +9,6 @@ namespace User_Interface.Schermen
 {
     public partial class SelecterenOefening : ContentPage
     {
-        private static DBConnectionHandler dbConnection;
-        private LevelHandler levelHandler;
         private User user;
 
         public SelecterenOefening(User user)
@@ -18,9 +16,6 @@ namespace User_Interface.Schermen
             InitializeComponent();
             this.user = user;
 
-            InitializeHandlers();
-
-            // Load tags and difficulties into respective controls
             LoadTags();
             LoadDifficulties();
 
@@ -29,24 +24,11 @@ namespace User_Interface.Schermen
             DifficultyPicker.SelectedIndexChanged += DifficultyPicker_SelectedIndexChanged;
         }
 
-        private void InitializeHandlers()
-        {
-            // Initialize database connection if not already initialized
-            if (dbConnection == null)
-            {
-                dbConnection = new DBConnectionHandler();
-            }
-
-            // Initialize LevelHandler
-            levelHandler = new LevelHandler(dbConnection);
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
             try
             {
-                InitializeHandlers(); // Reinitialize handlers to ensure fresh connection
                 TagPicker.SelectedItem = "All";
                 DifficultyPicker.SelectedItem = "Any Difficulty";
                 LoadLevels();
@@ -59,12 +41,12 @@ namespace User_Interface.Schermen
 
         private async void onHomeButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Loginscherm());
+            await Navigation.PushAsync(new HomePage());
         }
 
         private async void onLeaderboardButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new LeaderboardScherm());
+            await Navigation.PushAsync(new LeaderboardScherm());
         }
 
         private async void onProfielButtonClicked(object sender, EventArgs e)
@@ -81,30 +63,33 @@ namespace User_Interface.Schermen
         {
             try
             {
-                var levels = levelHandler.GetLevels();
-                List<string> tags = new List<string>();
-
-                if (levels != null && levels.Count > 0)
+                using (var levelHandler = new LevelHandler())
                 {
-                    foreach (var level in levels)
+                    var levels = levelHandler.GetLevels();
+                    List<string> tags = new List<string>();
+
+                    if (levels != null && levels.Count > 0)
                     {
-                        string[] tagsArray = level.Tags?.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                                                         .Select(tag => tag.Trim())
-                                                         .ToArray();
-                        if (tagsArray != null)
+                        foreach (var level in levels)
                         {
-                            tags.AddRange(tagsArray);
+                            string[] tagsArray = level.Tags?.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                                                             .Select(tag => tag.Trim())
+                                                             .ToArray();
+                            if (tagsArray != null)
+                            {
+                                tags.AddRange(tagsArray);
+                            }
                         }
+
+                        tags = tags.Distinct().ToList();
                     }
 
-                    tags = tags.Distinct().ToList();
-                }
-
-                tags.Insert(0, "All");
-                TagPicker.Items.Clear();
-                foreach (var tag in tags)
-                {
-                    TagPicker.Items.Add(tag);
+                    tags.Insert(0, "All");
+                    TagPicker.Items.Clear();
+                    foreach (var tag in tags)
+                    {
+                        TagPicker.Items.Add(tag);
+                    }
                 }
             }
             catch (Exception ex)
@@ -117,20 +102,23 @@ namespace User_Interface.Schermen
         {
             try
             {
-                DifficultyPicker.Items.Clear();
-                DifficultyPicker.Items.Add("Any Difficulty");
-
-                var levels = levelHandler.GetLevels();
-                List<string> difficulties = new List<string>();
-
-                if (levels != null && levels.Count > 0)
+                using (var levelHandler = new LevelHandler())
                 {
-                    difficulties = levels.Select(level => level.Difficulty).Distinct().ToList();
-                }
+                    DifficultyPicker.Items.Clear();
+                    DifficultyPicker.Items.Add("Any Difficulty");
 
-                foreach (var difficulty in difficulties)
-                {
-                    DifficultyPicker.Items.Add(difficulty);
+                    var levels = levelHandler.GetLevels();
+                    List<string> difficulties = new List<string>();
+
+                    if (levels != null && levels.Count > 0)
+                    {
+                        difficulties = levels.Select(level => level.Difficulty).Distinct().ToList();
+                    }
+
+                    foreach (var difficulty in difficulties)
+                    {
+                        DifficultyPicker.Items.Add(difficulty);
+                    }
                 }
             }
             catch (Exception ex)
@@ -143,17 +131,20 @@ namespace User_Interface.Schermen
         {
             try
             {
-                var levels = levelHandler.GetLevels();
-                if (levels == null || levels.Count == 0)
+                using (var levelHandler = new LevelHandler())
                 {
-                    DisplayAlert("Error", "Geen levels gevonden.", "OK");
-                    NoLevelsLabel.IsVisible = true;
-                    SelectOefeningen.IsVisible = false;
-                    return;
-                }
+                    var levels = levelHandler.GetLevels();
+                    if (levels == null || levels.Count == 0)
+                    {
+                        DisplayAlert("Error", "Geen levels gevonden.", "OK");
+                        NoLevelsLabel.IsVisible = true;
+                        SelectOefeningen.IsVisible = false;
+                        return;
+                    }
 
-                // Initial load without filtering
-                UpdateListView(levels, false);
+                    // Initial load without filtering
+                    UpdateListView(levels, false);
+                }
             }
             catch (Exception ex)
             {
@@ -180,7 +171,7 @@ namespace User_Interface.Schermen
                     List<Oefening> oefeningen = levels.Select(level =>
                         new Oefening
                         {
-                            Name = "Level " + level.Id,
+                            Name = "Level " + level.LevelId,
                             Tags = level.Tags,
                             Difficulty = level.Difficulty,
                             Image = level.IsCompleted ? "✔️" : "❌", // Checkmark if completed, otherwise cross
@@ -214,15 +205,18 @@ namespace User_Interface.Schermen
         {
             try
             {
-                var selectedTag = TagPicker.SelectedItem?.ToString();
-                var selectedDifficulty = DifficultyPicker.SelectedItem?.ToString();
+                using (var levelHandler = new LevelHandler())
+                {
+                    var selectedTag = TagPicker.SelectedItem?.ToString();
+                    var selectedDifficulty = DifficultyPicker.SelectedItem?.ToString();
 
-                var filteredLevels = levelHandler.GetLevels().Where(level =>
-                    (selectedTag == "All" || (level.Tags?.Contains(selectedTag) == true)) &&
-                    (selectedDifficulty == "Any Difficulty" || level.Difficulty == selectedDifficulty)
-                ).ToList();
+                    var filteredLevels = levelHandler.GetLevels().Where(level =>
+                        (selectedTag == "All" || (level.Tags?.Contains(selectedTag) == true)) &&
+                        (selectedDifficulty == "Any Difficulty" || level.Difficulty == selectedDifficulty)
+                    ).ToList();
 
-                UpdateListView(filteredLevels, true);
+                    UpdateListView(filteredLevels, true);
+                }
             }
             catch (Exception ex)
             {
@@ -246,50 +240,36 @@ namespace User_Interface.Schermen
             {
                 if (e.Item is Oefening selectedOefening)
                 {
+                    string levelName = selectedOefening.Name.Replace("Level ", ""); // Remove "Level " prefix
+
+                    // Check if the example text is available
                     if (!string.IsNullOrEmpty(selectedOefening.ExampleText))
                     {
-                        // Navigate to Oefenscherm and handle exercise completion
-                        await Navigation.PushAsync(new Oefenscherm(user, selectedOefening.ExampleText));
-
-                        // Mark the exercise as completed after completion
-                        MarkExerciseAsCompleted(selectedOefening);
+                        // Pass the user object, level name, and example text to the Oefenscherm constructor
+                        await Navigation.PushAsync(new Oefenscherm(user, levelName, selectedOefening.ExampleText));
                     }
                     else
                     {
-                        DisplayAlert("Error", "Er is geen voorbeeldtekst gevonden voor dit level.", "OK");
+                        // Display an alert if the example text is not available
+                        await DisplayAlert("Error", "Er is geen voorbeeldtekst gevonden voor dit level.", "OK");
                     }
                 }
             }
             catch (Exception ex)
             {
-                DisplayAlert("Error", "An error occurred while navigating to Oefenscherm: " + ex.Message, "OK");
+                // Display an alert for any unexpected errors
+                await DisplayAlert("Error", "Er is een fout opgetreden bij het navigeren naar het oefenscherm: " + ex.Message, "OK");
             }
             finally
             {
-                ((ListView)sender).SelectedItem = null; // Ensure the item is deselected
+                // Deselect the tapped item
+                ((ListView)sender).SelectedItem = null;
             }
-        }
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            dbConnection.Dispose();
-            dbConnection = null; // Ensure the connection is properly disposed of
         }
 
         private void ImageButton_Clicked(object sender, EventArgs e)
         {
             // Handle ImageButton click event
         }
-    }
-
-    public class Oefening
-    {
-        public string Name { get; set; }
-        public string Difficulty { get; set; }
-        public string Tags { get; set; }
-        public string Image { get; set; }
-        public string ExampleText { get; set; }
-        public bool IsCompleted { get; set; }
     }
 }
