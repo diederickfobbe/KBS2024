@@ -24,6 +24,8 @@ namespace Data_Access
             public int Wpm { get; internal set; }
             public double Accuracy { get; internal set; }
             public double Score { get; internal set; }
+            public bool IsCompleted { get; set; }
+
             public int Id { get; internal set; }
         }
 

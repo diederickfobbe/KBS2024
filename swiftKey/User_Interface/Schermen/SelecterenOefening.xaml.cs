@@ -1,7 +1,7 @@
-﻿using Microsoft.Maui.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Maui.Controls;
 using Data_Access;
 using Business_Logic;
 
@@ -46,7 +46,7 @@ namespace User_Interface.Schermen
 
         private async void onLeaderboardButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LeaderboardScherm());
+            await Navigation.PushAsync(new LeaderboardScherm(user));
         }
 
         private async void onProfielButtonClicked(object sender, EventArgs e)
@@ -142,6 +142,15 @@ namespace User_Interface.Schermen
                         return;
                     }
 
+                    // Get all completed levels for the user in one query
+                    var completedLevels = LevelCompletionHandler.GetCompletedLevels(user.Id);
+
+                    // Set completion status for each level based on retrieved data
+                    foreach (var level in levels)
+                    {
+                        level.IsCompleted = completedLevels.Contains(level.LevelId);
+                    }
+
                     // Initial load without filtering
                     UpdateListView(levels, false);
                 }
@@ -151,53 +160,6 @@ namespace User_Interface.Schermen
                 DisplayAlert("Error", "Er zijn geen levels gevonden. " + ex.Message, "OK");
                 NoLevelsLabel.IsVisible = true;
                 SelectOefeningen.IsVisible = false;
-            }
-        }
-
-        private void UpdateListView(List<LevelHandler.Level> levels, bool isFiltered = true)
-        {
-            try
-            {
-                if (levels == null || levels.Count == 0)
-                {
-                    NoLevelsLabel.IsVisible = true;
-                    SelectOefeningen.IsVisible = false;
-                }
-                else
-                {
-                    NoLevelsLabel.IsVisible = false;
-                    SelectOefeningen.IsVisible = true;
-
-                    List<Oefening> oefeningen = levels.Select(level =>
-                        new Oefening
-                        {
-                            Name = "Level " + level.LevelId,
-                            Tags = level.Tags,
-                            Difficulty = level.Difficulty,
-                            Image = level.IsCompleted ? "✔️" : "❌", // Checkmark if completed, otherwise cross
-                            ExampleText = level.ExampleText,
-                            IsCompleted = level.IsCompleted // Assuming you have this property in Level class
-                        }).ToList();
-
-                    SelectOefeningen.ItemsSource = oefeningen;
-                }
-            }
-            catch (Exception ex)
-            {
-                DisplayAlert("Error", "Failed to update ListView: " + ex.Message, "OK");
-            }
-        }
-
-        private void MarkExerciseAsCompleted(Oefening oefening)
-        {
-            // Find the corresponding level in LevelHandler and mark it as completed
-            var level = levelHandler.GetLevels().FirstOrDefault(l => l.ExampleText == oefening.ExampleText);
-            if (level != null)
-            {
-                level.IsCompleted = true;
-                oefening.IsCompleted = true;
-                oefening.Image = "✔️"; // Update the image to checkmark
-                UpdateListView(levelHandler.GetLevels(), true); // Refresh the ListView
             }
         }
 
@@ -214,6 +176,15 @@ namespace User_Interface.Schermen
                         (selectedTag == "All" || (level.Tags?.Contains(selectedTag) == true)) &&
                         (selectedDifficulty == "Any Difficulty" || level.Difficulty == selectedDifficulty)
                     ).ToList();
+
+                    // Get all completed levels for the user in one query
+                    var completedLevels = LevelCompletionHandler.GetCompletedLevels(user.Id);
+
+                    // Set completion status for each filtered level based on retrieved data
+                    foreach (var level in filteredLevels)
+                    {
+                        level.IsCompleted = completedLevels.Contains(level.LevelId);
+                    }
 
                     UpdateListView(filteredLevels, true);
                 }
@@ -264,6 +235,39 @@ namespace User_Interface.Schermen
             {
                 // Deselect the tapped item
                 ((ListView)sender).SelectedItem = null;
+            }
+        }
+
+        private void UpdateListView(List<LevelHandler.Level> levels, bool isFiltered = true)
+        {
+            try
+            {
+                if (levels == null || levels.Count == 0)
+                {
+                    NoLevelsLabel.IsVisible = true;
+                    SelectOefeningen.IsVisible = false;
+                }
+                else
+                {
+                    NoLevelsLabel.IsVisible = false;
+                    SelectOefeningen.IsVisible = true;
+
+                    List<Oefening> oefeningen = levels.Select(level =>
+                        new Oefening
+                        {
+                            Name = "Level " + level.LevelId,
+                            Tags = level.Tags,
+                            Difficulty = level.Difficulty,
+                            Image = level.IsCompleted ? "✅" : "❌",
+                            ExampleText = level.ExampleText
+                        }).ToList();
+
+                    SelectOefeningen.ItemsSource = oefeningen;
+                }
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Error", "Failed to update ListView: " + ex.Message, "OK");
             }
         }
 
