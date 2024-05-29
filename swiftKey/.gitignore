@@ -5,7 +5,7 @@
 
 .nuspec/
 .buildtasks/
-templatesTest/
+
 
 # User-specific files
 *.rsuser
@@ -43,11 +43,6 @@ bld/
 
 # Visual Studio 2017 auto generated files
 Generated\ Files/
-
-# MSTest test Results
-[Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
-
 
 
 # Build Results of an ATL Project
@@ -98,8 +93,6 @@ StyleCopReport.xml
 *.svclog
 *.scc
 
-# Chutzpah Test files
-_Chutzpah*
 
 # Visual C++ cache files
 ipch/
@@ -155,10 +148,6 @@ coverage*.info
 _NCrunch_*
 .*crunch*.local.xml
 nCrunchTemp_*
-
-# MightyMoose
-*.mm.*
-AutoTest.Net/
 
 # Web workbench (sass)
 .sass-cache/
