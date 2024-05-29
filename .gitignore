@@ -104,3 +104,4 @@ $RECYCLE.BIN/
 
 _NCrunch*
 *.cache
+.vs/VSWorkspaceState.json
