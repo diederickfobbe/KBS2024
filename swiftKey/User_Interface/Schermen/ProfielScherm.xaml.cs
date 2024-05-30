@@ -20,17 +20,11 @@ namespace User_Interface.Schermen
             // Controleer of de gebruiker niet null is om NullReferenceException te voorkomen
             if (user != null)
             {
-                
                 user.RefreshStats();
-
-
                 UserNameLabel.Text = "Welkom " + user.Username + "!";
-                
                 AverageWpmLabel.Text = user.AverageWpm.ToString();
-                
                 AverageAccuracyLabel.Text = $"{user.AverageAccuracy}%";
-                ExercisesCountLabel.Text = user.ExercisesCount.ToString() ;
-
+                ExercisesCountLabel.Text = user.ExercisesCount.ToString();
 
                 foreach (Level exercise in user.gemaakteOefeningen)
                 {
@@ -41,15 +35,31 @@ namespace User_Interface.Schermen
                     CompletedExercisesLabel.Text += "Accuracy: " + exercise.Accuracy.ToString() + "         ";
                     CompletedExercisesLabel.Text += "Score: " + exercise.Score.ToString() + "\n\n";
                 }
-
-
-
-
             }
             else
             {
                 UserNameLabel.Text = "Welkom!";
             }
+        }
+
+        private async void onHomeButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage());
+        }
+
+        private async void onLeaderboardButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LeaderboardScherm(user));
+        }
+
+        private async void onProfielButtonClicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Info", "You are already on the profile page.", "OK");
+        }
+
+        private async void onLogoutButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Loginscherm());
         }
     }
 }
