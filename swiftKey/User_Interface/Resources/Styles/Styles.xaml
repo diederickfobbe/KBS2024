@@ -195,6 +195,14 @@
         </Setter>
     </Style>
 
+    <Style x:Key="ImageButtonBrowse" TargetType="ImageButton">
+        <Setter Property="Source">
+            <Setter.Value>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf002;" Size="20" Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray300}}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="SelecterenOefeningGrid" TargetType="Grid">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource OffWhite}, Dark={StaticResource Gray600}}" />
     </Style>

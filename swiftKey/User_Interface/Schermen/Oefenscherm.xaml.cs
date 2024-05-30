@@ -127,7 +127,7 @@ namespace User_Interface
             }
 
             // Proceed with navigation
-            await Navigation.PushAsync(new Resultscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
+            await Navigation.PushAsync(new Resultaatscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
             stopwatch.Reset();
         }
 
