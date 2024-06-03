@@ -19,6 +19,7 @@ namespace User_Interface.Schermen
             LoadTags();
             LoadDifficulties();
 
+
             TagPicker.SelectedIndexChanged += TagPicker_SelectedIndexChanged;
             SelectOefeningen.ItemTapped += SelectOefeningen_ItemTapped;
             DifficultyPicker.SelectedIndexChanged += DifficultyPicker_SelectedIndexChanged;
@@ -52,6 +53,11 @@ namespace User_Interface.Schermen
         private async void onProfielButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ProfielScherm(user));
+        }
+        private async void onBrowseButtonClicked(object sender, EventArgs e)
+        {
+            // Already on the Browse page, do nothing
+            await DisplayAlert("Info", "You are already on the browse page.", "OK");
         }
 
         private async void onLogoutButtonClicked(object sender, EventArgs e)

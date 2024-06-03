@@ -26,13 +26,15 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <ImageButton Clicked="onHomeButtonClicked" Style="{StaticResource ImageButtonHome}"/>
                 <ImageButton Grid.Row="1" Clicked="onLeaderboardButtonClicked" Style="{StaticResource ImageButtonPodium}"/>
                 <ImageButton Grid.Row="2" Clicked="onProfielButtonClicked" Style="{StaticResource ImageButtonUser}"/>
-                <ImageButton VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
+                <ImageButton Grid.Row="3" Clicked="onBrowseButtonClicked" Style="{StaticResource ImageButtonBrowse}"/>
+                <ImageButton VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="4" Style="{StaticResource ImageButtonLogOut}"/>
             </Grid>
 
             <!-- Horizontal StackLayout to contain the pickers -->

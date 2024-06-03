@@ -131,6 +131,11 @@ namespace User_Interface.Schermen
             await Navigation.PushAsync(new ProfielScherm(user));
         }
 
+        private async void onBrowseButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SelecterenOefening(user));
+        }
+
         private async void onLogoutButtonClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Loginscherm());
