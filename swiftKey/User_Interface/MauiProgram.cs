@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Plugin.Maui.Audio;
 
 namespace User_Interface
 {
@@ -19,7 +20,8 @@ namespace User_Interface
                     fonts.AddFont("Free-Solid-900.otf", "FAS");
 
                 });
-
+            builder.Services.AddSingleton(AudioManager.Current);
+            builder.Services.AddTransient<Oefenscherm>();
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif

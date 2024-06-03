@@ -195,12 +195,24 @@
         </Setter>
     </Style>
 
+    <Style x:Key="ImageButtonLogOut2" TargetType="ImageButton">
+        <Setter Property="Source">
+            <Setter.Value>
+                <FontImageSource FontFamily="FAS" Glyph="&#xf08b;" Size="40" Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray300}}"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="SelecterenOefeningGrid" TargetType="Grid">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource OffWhite}, Dark={StaticResource Gray600}}" />
     </Style>
 
     <Style x:Key="SideBarGrid" TargetType="Grid">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LightBlue}, Dark={StaticResource Gray950}}" />
+    </Style>
+
+    <Style x:Key="CenterGrid" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}" />
     </Style>
 
     <Style x:Key="SelecterenOefeningListView" TargetType="ListView">

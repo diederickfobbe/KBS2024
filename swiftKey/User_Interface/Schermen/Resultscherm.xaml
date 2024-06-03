@@ -3,6 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="User_Interface.Resultscherm">
 
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+    </Shell.BackButtonBehavior>
+
     <ScrollView>
         <VerticalStackLayout
             Padding="10,0"
@@ -37,10 +41,11 @@
                 FontSize="15"
                 HorizontalOptions="Center"
                 />
-            <Button Clicked="DoneButton_Clicked"/>
+            <Button Clicked="DoneButton_Clicked" MaximumWidthRequest="120" Text="Klaar"/>
 
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+
 
 

@@ -2,13 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="User_Interface.Schermen.HomePage">
-    <VerticalStackLayout>
-        <Image Source="swiftkey.png" HeightRequest="150" WidthRequest="450" Margin="10,100,10,10" HorizontalOptions="Center"/>
-        <Line X1="650" Stroke="Gray" HorizontalOptions="Center"/>
-        <HorizontalStackLayout>
-            <Button Text="Oefeningen"  FontSize="20"/>
-            <Button Text="Leaderboard"  FontSize="20"/>
-            <Button Text="Account"  FontSize="20"/>
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+    <Grid>
+        <VerticalStackLayout>
+            <Image Source="swiftkey.png" HeightRequest="150" WidthRequest="450" Margin="10,100,10,10" HorizontalOptions="Center"/>
+            <Line X1="620" Stroke="Gray" HorizontalOptions="Center"/>
+            <HorizontalStackLayout Margin="20" Spacing="10" HorizontalOptions="Center">
+                <Button Clicked="onOefeningenButtonClicked" FontSize="20" WidthRequest="200" HeightRequest="60" Text="Oefeningen"/>
+                <Button Clicked="onLeaderboardButtonClicked" FontSize="20" WidthRequest="200" HeightRequest="60" Text="Leaderboard"/>
+                <Button Clicked="onAccountButtonClicked" FontSize="20" WidthRequest="200" HeightRequest="60" Text="Account"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <ImageButton Grid.Row="1" Clicked="onLogoutButtonClicked" Style="{StaticResource ImageButtonLogOut2}" 
+                     HorizontalOptions="Start" VerticalOptions="End" Margin="30"/>
+    </Grid>
 </ContentPage>
