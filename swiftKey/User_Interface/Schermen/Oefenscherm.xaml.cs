@@ -83,50 +83,53 @@ namespace User_Interface
             }
         }
 
-
         private async void CalculateAndDisplayResults(string enteredText)
         {
-            // Splits de doeltekst en de ingevoerde tekst in woorden
-            char[] targetWords = targetText.ToCharArray();
-            char[] enteredWords = enteredText.ToCharArray();
+            // Splits de doeltekst en de ingevoerde tekst in karakters
+            char[] targetChars = targetText.ToCharArray();
+            char[] enteredChars = enteredText.ToCharArray();
 
-            int correctWordCount = 0;
+            int correctCharCount = 0;
 
-            // Vergelijk woord voor woord en tel alleen correct overgetypte woorden
-            for (int i = 0; i < Math.Min(targetWords.Length, enteredWords.Length); i++)
+            // Vergelijk karakter voor karakter en tel alleen correct overgetypte karakters
+            for (int i = 0; i < Math.Min(targetChars.Length, enteredChars.Length); i++)
             {
-                if (targetWords[i] == enteredWords[i])
+                if (targetChars[i] == enteredChars[i])
                 {
-                    correctWordCount++;
+                    correctCharCount++;
                 }
             }
 
-            // Bereken de tijd en typesnelheid (WPM) alleen op basis van correct overgetypte woorden
-            double timeTakenInMinutes = stopwatch.Elapsed.TotalMinutes;
-            int typingSpeed = OefenschermMethods.CalculateTypingSpeed(correctWordCount, timeTakenInMinutes);
+            // Bereken de tijd en typesnelheid (WPM) op basis van correct overgetypte karakters
+            double timeTakenInSeconds = stopwatch.Elapsed.TotalSeconds;
 
+            // Typen is meestal gemeten in woorden per minuut waarbij een woord gemiddeld uit 5 karakters bestaat
+            int totalWordsTyped = enteredChars.Length / 5;
+            double typingSpeed = (totalWordsTyped / timeTakenInSeconds) * 60;
 
-            // Bereken nauwkeurigheid op basis van het totale aantal woorden in de doeltekst
-            double accuracy = ((double)correctWordCount / targetWords.Length) * 100;
+            // Bereken nauwkeurigheid op basis van het totale aantal karakters in de doeltekst
+            double accuracy = ((double)correctCharCount / targetChars.Length) * 100;
 
             // Toon de resultaten
-            ResultsLabel.Text = $"Typesnelheid: {typingSpeed} WPM\nNauwkeurigheid: {accuracy:F2}%";
+            ResultsLabel.Text = $"Typesnelheid: {typingSpeed:F2} WPM\nNauwkeurigheid: {accuracy:F2}%";
 
             try
             {
-                RegisterScoresHandler.RegisterScore(UserID, LevelID, typingSpeed, accuracy);
+                RegisterScoresHandler.RegisterScore(UserID, LevelID, (int)typingSpeed, accuracy);
             }
             catch (Exception ex)
             {
-                //errors worden getoond in een alert
+                // Errors worden getoond in een alert
                 await DisplayAlert("Error", "An error occurred while registering the score: " + ex.Message, "OK");
-                return; 
+                return;
             }
 
             // Navigeer naar het resultaatscherm
-            await Navigation.PushAsync(new Resultaatscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
+            await Navigation.PushAsync(new Resultaatscherm(user, (int)typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
             stopwatch.Reset();
         }
+
+
 
 
         private List<Label> labelList = new List<Label>();
