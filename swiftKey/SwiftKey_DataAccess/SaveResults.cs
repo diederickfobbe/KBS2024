@@ -17,7 +17,7 @@ namespace Data_Access
 
                         using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
                         {
-                            // Add parameters to the query
+                            //parameters 
                             cmd.Parameters.AddWithValue("@user_id", user_id);
                             cmd.Parameters.AddWithValue("@level_id", level_id);
                             cmd.Parameters.AddWithValue("@completion_date", completion_date);
@@ -25,10 +25,10 @@ namespace Data_Access
                             cmd.Parameters.AddWithValue("@accuracy", accuracy);
                             cmd.Parameters.AddWithValue("@score", score);
 
-                            // Execute the query
+                            // Execute query
                             int rowsAffected = cmd.ExecuteNonQuery();
 
-                            // If rows were affected, insertion was successful
+                            // hoeveel rijen zijn aangepast
                             return rowsAffected > 0;
                         }
                     }

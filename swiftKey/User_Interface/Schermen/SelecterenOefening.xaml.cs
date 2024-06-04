@@ -56,7 +56,7 @@ namespace User_Interface.Schermen
         }
         private async void onBrowseButtonClicked(object sender, EventArgs e)
         {
-            // Already on the Browse page, do nothing
+           
             await DisplayAlert("Info", "You are already on the browse page.", "OK");
         }
 
@@ -71,6 +71,7 @@ namespace User_Interface.Schermen
             {
                 using (var levelHandler = new LevelHandler())
                 {
+                    //Alle tags ophalen
                     var levels = levelHandler.GetLevels();
                     List<string> tags = new List<string>();
 
@@ -89,7 +90,7 @@ namespace User_Interface.Schermen
 
                         tags = tags.Distinct().ToList();
                     }
-
+                    //Voeg "All" toe als eerste item om die default te maken
                     tags.Insert(0, "All");
                     TagPicker.Items.Clear();
                     foreach (var tag in tags)
@@ -100,6 +101,7 @@ namespace User_Interface.Schermen
             }
             catch (Exception ex)
             {
+                //Toon een alert als het laden van de tags mislukt
                 DisplayAlert("Error", "Failed to load tags: " + ex.Message, "OK");
             }
         }
@@ -110,12 +112,14 @@ namespace User_Interface.Schermen
             {
                 using (var levelHandler = new LevelHandler())
                 {
+                    //Voeg "Any Difficulty" toe als eerste item om die default te maken
                     DifficultyPicker.Items.Clear();
                     DifficultyPicker.Items.Add("Any Difficulty");
 
                     var levels = levelHandler.GetLevels();
                     List<string> difficulties = new List<string>();
 
+                    //Voeg alle verschillende moeilijkheidsgraden toe aan de DifficultyPicker
                     if (levels != null && levels.Count > 0)
                     {
                         difficulties = levels.Select(level => level.Difficulty).Distinct().ToList();
@@ -129,6 +133,7 @@ namespace User_Interface.Schermen
             }
             catch (Exception ex)
             {
+                //Toon een alert als het laden van de moeilijkheidsgraden mislukt
                 DisplayAlert("Error", "Failed to load difficulties: " + ex.Message, "OK");
             }
         }
@@ -139,7 +144,9 @@ namespace User_Interface.Schermen
             {
                 using (var levelHandler = new LevelHandler())
                 {
+                    //Alle levels ophalen
                     var levels = levelHandler.GetLevels();
+                    //Toon een alert als er geen levels gevonden zijn
                     if (levels == null || levels.Count == 0)
                     {
                         DisplayAlert("Error", "Geen levels gevonden.", "OK");
@@ -148,21 +155,22 @@ namespace User_Interface.Schermen
                         return;
                     }
 
-                    // Get all completed levels for the user in one query
+                    //Alle completed levels van de user ophalen
                     var completedLevels = LevelCompletionHandler.GetCompletedLevels(user.Id);
 
-                    // Set completion status for each level based on retrieved data
+                    //Voor elk level de completion status instellen
                     foreach (var level in levels)
                     {
                         level.IsCompleted = completedLevels.Contains(level.LevelId);
                     }
 
-                    // Initial load without filtering
+                    //Update de ListView met de levels
                     UpdateListView(levels, false);
                 }
             }
             catch (Exception ex)
             {
+                //Toon een alert als het laden van de levels mislukt
                 DisplayAlert("Error", "Er zijn geen levels gevonden. " + ex.Message, "OK");
                 NoLevelsLabel.IsVisible = true;
                 SelectOefeningen.IsVisible = false;
@@ -175,6 +183,7 @@ namespace User_Interface.Schermen
             {
                 using (var levelHandler = new LevelHandler())
                 {
+                    //Geselecteerde tag en moeilijkheidsgraad ophalen
                     var selectedTag = TagPicker.SelectedItem?.ToString();
                     var selectedDifficulty = DifficultyPicker.SelectedItem?.ToString();
 
@@ -183,10 +192,10 @@ namespace User_Interface.Schermen
                         (selectedDifficulty == "Any Difficulty" || level.Difficulty == selectedDifficulty)
                     ).ToList();
 
-                    // Get all completed levels for the user in one query
+                    //Alle completed levels van de user ophalen
                     var completedLevels = LevelCompletionHandler.GetCompletedLevels(user.Id);
 
-                    // Set completion status for each filtered level based on retrieved data
+                    //Voor elk level de completion status instellen
                     foreach (var level in filteredLevels)
                     {
                         level.IsCompleted = completedLevels.Contains(level.LevelId);
@@ -215,31 +224,32 @@ namespace User_Interface.Schermen
         {
             try
             {
+                // Check if the tapped item is an Oefening object
                 if (e.Item is Oefening selectedOefening)
                 {
-                    string levelName = selectedOefening.Name.Replace("Level ", ""); // Remove "Level " prefix
+                    string levelName = selectedOefening.Name.Replace("Level ", ""); // level naam ophalen
 
-                    // Check if the example text is available
+                    //naar het oefenscherm navigeren als er een voorbeeldtekst is
                     if (!string.IsNullOrEmpty(selectedOefening.ExampleText))
                     {
-                        // Pass the user object, level name, and example text to the Oefenscherm constructor
+                        // Navigeer naar het oefenscherm
                         await Navigation.PushAsync(new Oefenscherm(user, levelName, selectedOefening.ExampleText));
                     }
                     else
                     {
-                        // Display an alert if the example text is not available
+                        // Toon een alert als er geen voorbeeldtekst is
                         await DisplayAlert("Error", "Er is geen voorbeeldtekst gevonden voor dit level.", "OK");
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Display an alert for any unexpected errors
+                // Toon een alert als er een fout optreedt bij het navigeren naar het oefenscherm
                 await DisplayAlert("Error", "Er is een fout opgetreden bij het navigeren naar het oefenscherm: " + ex.Message, "OK");
             }
             finally
             {
-                // Deselect the tapped item
+                // Reset het selected item
                 ((ListView)sender).SelectedItem = null;
             }
         }
@@ -248,6 +258,7 @@ namespace User_Interface.Schermen
         {
             try
             {
+                //Als er geen levels zijn of de levels leeg zijn, toon dan een label en verberg de ListView
                 if (levels == null || levels.Count == 0)
                 {
                     NoLevelsLabel.IsVisible = true;
@@ -255,9 +266,11 @@ namespace User_Interface.Schermen
                 }
                 else
                 {
+                    //Als er levels zijn, toon dan de ListView en verberg de label
                     NoLevelsLabel.IsVisible = false;
                     SelectOefeningen.IsVisible = true;
 
+                    //Maak een lijst van Oefening objecten van de levels
                     List<Oefening> oefeningen = levels.Select(level =>
                         new Oefening
                         {
@@ -273,6 +286,7 @@ namespace User_Interface.Schermen
             }
             catch (Exception ex)
             {
+                //Toon een alert als het updaten van de ListView mislukt
                 DisplayAlert("Error", "Failed to update ListView: " + ex.Message, "OK");
             }
         }

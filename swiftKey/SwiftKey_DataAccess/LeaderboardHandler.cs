@@ -44,9 +44,9 @@ namespace Data_Access
                     {
                         while (reader.Read())
                         {
-                            int rank = (int)reader.GetInt64(0); // Explicitly cast to int
+                            int rank = (int)reader.GetInt64(0); // cast naar int anders bug
                             string username = reader.GetString(1);
-                            double score = reader.GetDouble(2); // Read as Double
+                            double score = reader.GetDouble(2); 
                             int userID = reader.GetInt32(3);
                             int levelID = reader.GetInt32(4);
 
@@ -54,7 +54,7 @@ namespace Data_Access
                             {
                                 Rank = rank,
                                 Username = username,
-                                Score = (float)score, // Convert to float
+                                Score = (float)score, //casten naar float anders bug
                                 UserID = userID,
                                 LevelID = levelID
                             };
@@ -125,9 +125,9 @@ namespace Data_Access
                     {
                         while (reader.Read())
                         {
-                            int rank = (int)reader.GetInt64(0); // Explicitly cast to int
+                            int rank = (int)reader.GetInt64(0); // casten naar int anders bug
                             string username = reader.GetString(1);
-                            double score = reader.GetDouble(2); // Read as Double
+                            double score = reader.GetDouble(2); 
                             int userID = reader.GetInt32(3);
                             int fetchedLevelID = reader.GetInt32(4);
 
@@ -135,7 +135,7 @@ namespace Data_Access
                             {
                                 Rank = rank,
                                 Username = username,
-                                Score = (float)score, // Convert to float
+                                Score = (float)score, // casten naar float anders bug
                                 UserID = userID,
                                 LevelID = fetchedLevelID
                             };

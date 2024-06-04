@@ -48,12 +48,12 @@ namespace User_Interface
             player.Play();   
             string enteredText = e.NewTextValue ?? "";
 
-            // Iterate through all labels
+            // door alle labels heengaan
             for (int i = 0; i < labelList.Count; i++)
             {
                 if (i < enteredText.Length)
                 {
-                    // Change color based on whether the entered character matches the target
+                    // kleur veranderen als de letter goed of fout is
                     if (enteredText[i] == targetText[i])
                     {
                         labelList[i].BackgroundColor = Colors.Green;
@@ -65,7 +65,7 @@ namespace User_Interface
                 }
                 else
                 {
-                    // No character entered in this position yet, reset to default
+                    // als de letter niet is ingevoerd, terug naar de default kleur
                     labelList[i].BackgroundColor = Colors.LightGray;
                 }
             }
@@ -118,12 +118,12 @@ namespace User_Interface
             }
             catch (Exception ex)
             {
-                // Display an error message using DisplayAlert
+                //errors worden getoond in een alert
                 await DisplayAlert("Error", "An error occurred while registering the score: " + ex.Message, "OK");
-                return; // Exit the method early
+                return; 
             }
 
-            // Proceed with navigation
+            // Navigeer naar het resultaatscherm
             await Navigation.PushAsync(new Resultaatscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
             stopwatch.Reset();
         }
@@ -149,7 +149,7 @@ namespace User_Interface
                     Padding = new Thickness(6, 4, 6, 4),
                     TextColor = Colors.Black,
                     Margin = 2,
-                    BackgroundColor = Colors.LightGray // Default color
+                    BackgroundColor = Colors.LightGray // Default kleur
                 };
                 Sentence.Children.Add(letterLabel);
                 labelList.Add(letterLabel);

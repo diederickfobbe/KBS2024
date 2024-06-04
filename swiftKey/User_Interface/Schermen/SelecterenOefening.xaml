@@ -42,9 +42,9 @@
 
             <Label Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" FontAttributes="Bold" Padding="30,0,0,0" Text="Kies een oefening" FontSize="Subtitle"/>
 
-            <!-- Horizontal StackLayout to contain the pickers -->
+            <!-- Horizontal StackLayout voor de pickers -->
             <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Orientation="Horizontal">
-                <!-- Dropdown menu to filter tags -->
+                <!-- Dropdown menu voor het filteren tags -->
                 <Picker Title="Select Tag"
                         x:Name="TagPicker"
                         Margin="10"
@@ -52,7 +52,7 @@
                         SelectedIndexChanged="TagPicker_SelectedIndexChanged">
                 </Picker>
 
-                <!-- Dropdown menu to filter difficulty -->
+                <!-- Dropdown menu voor het filteren difficulty -->
                 <Picker Title="Select Difficulty"
                         x:Name="DifficultyPicker"
                         Margin="10"
@@ -61,7 +61,7 @@
                 </Picker>
             </StackLayout>
 
-            <!-- Label for no levels found message -->
+            <!-- Label voor geen levels gevonden -->
             <Label x:Name="NoLevelsLabel"
                    Grid.Row="2"
                    Grid.Column="1"

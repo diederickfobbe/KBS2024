@@ -18,17 +18,12 @@ namespace User_Interface.Schermen
             InitializeComponent();
             this.user = user;
 
-            // Initialize the leaderboard handler with DB connection
             DBConnectionHandler dbConnection = new DBConnectionHandler();
             leaderboardHandler = new LeaderboardHandler(dbConnection);
 
-            // By default, set "All levels" as selected
-            SelectedLevelID = -1; // -1 or any value that indicates "All levels"
+            SelectedLevelID = -1; //-1 betekend alle levels
 
-            // Fetch and display the normal leaderboard
             DisplayLeaderboard();
-
-            // Initialize pickers
             InitializePickers();
         }
 
@@ -38,50 +33,46 @@ namespace User_Interface.Schermen
             {
                 List<LeaderboardHandler.LeaderboardEntry> leaderboard;
 
-                // Check if "All levels" are selected
                 if (SelectedLevelID == -1)
                 {
-                    // Fetch normal leaderboard data from the database
                     leaderboard = leaderboardHandler.GetLeaderboard();
                 }
                 else
                 {
-                    // Fetch leaderboard data for the selected level from the database
                     leaderboard = leaderboardHandler.GetLeaderboardForLevel(SelectedLevelID);
                 }
 
-                // If "All levels" are selected, aggregate scores by user ID
                 if (SelectedLevelID == -1)
                 {
-                    // Aggregate scores by UserID
                     var aggregatedLeaderboard = leaderboard
                         .GroupBy(entry => entry.UserID)
                         .Select(group => new LeaderboardHandler.LeaderboardEntry
                         {
-                            Rank = group.First().Rank, // Assume the same rank for all entries of the same user
                             Username = group.First().Username,
                             Score = group.Sum(entry => entry.Score),
-                            UserID = group.Key, // Use the UserID from the group
-                            LevelID = -1 // Indicates aggregation for all levels
+                            UserID = group.Key,
+                            LevelID = -1
                         })
                         .OrderByDescending(entry => entry.Score)
                         .ToList();
 
+                    for (int i = 0; i < aggregatedLeaderboard.Count; i++)
+                    {
+                        aggregatedLeaderboard[i].Rank = i + 1;
+                    }
+
                     leaderboard = aggregatedLeaderboard;
                 }
 
-                // Clear any existing items in the ListView
                 LeaderboardListView.ItemsSource = null;
-
-                // Update the ListView with the fetched leaderboard data
                 LeaderboardListView.ItemsSource = leaderboard;
             }
             catch (Exception ex)
             {
-                // Show an alert with the error message
                 await DisplayAlert("Error", $"Error displaying leaderboard: {ex.Message}", "OK");
             }
         }
+
 
 
         private void InitializePickers()

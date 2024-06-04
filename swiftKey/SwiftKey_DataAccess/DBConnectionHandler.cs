@@ -25,20 +25,20 @@ namespace Data_Access
             {
                Console.WriteLine("Setting up SSH connection...");
 
-                // SSH connection setup
+                // SSH connectie
                 sshClient = new SshClient(sshHost, sshUsername, sshPassword);
                 sshClient.Connect();
 
                 Console.WriteLine("SSH connection established.");
 
-                // Local port forwarding using a dynamic port
+                // port forwarding
                 port = new ForwardedPortLocal("127.0.0.1", sqlHost, 1433);
                 sshClient.AddForwardedPort(port);
                 port.Start();
 
                 Console.WriteLine($"Port forwarding started on local port: {port.BoundPort}");
 
-                // SQL connection setup 
+                // SQL connectie setup
                 var builder = new SqlConnectionStringBuilder
                 {
                     DataSource = $"127.0.0.1,{port.BoundPort}", // Use the dynamically assigned port
@@ -61,19 +61,18 @@ namespace Data_Access
 
         public void Dispose()
         {
-            // Ensure all resources are properly disposed
             if (!disposed)
             {
                 try
                 {
-                    // Close SQL connection
+                    // sql connectie closen
                     SqlConnection?.Close();
 
-                    // Stop and dispose of port forwarding
+                    // port forwarding stoppen
                     port?.Stop();
                     sshClient?.RemoveForwardedPort(port);
 
-                    // Disconnect and dispose of SSH client
+                    // Disconnect en dispose 
                     sshClient?.Disconnect();
                     sshClient?.Dispose();
 

@@ -46,7 +46,7 @@ namespace Data_Access
                             string difficulty = reader.GetString(2);
                             string exampleText = reader.IsDBNull(3) ? null : reader.GetString(3);
 
-                            // Create Level object and add to the list
+                            // nieuw level object aanmaken en toevoege aan de list
                             Level level = new Level
                             {
                                 LevelId = id,

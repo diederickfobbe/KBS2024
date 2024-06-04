@@ -16,7 +16,7 @@ namespace Data_Access
                 {
                     try
                     {
-                        // Query to get all completed levels for the user
+                        // Alle completed levels van een user ophalen
                         string selectQuery = "SELECT level_id FROM UserLevelCompletion WHERE user_id = @userId";
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))

@@ -8,9 +8,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
-                <!-- Row for the pickers -->
+                <!-- Row van pickers -->
                 <RowDefinition Height="*"/>
-                <!-- Row for the list view -->
+                <!-- Row van list view -->
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -37,9 +37,9 @@
                 <ImageButton VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="4" Style="{StaticResource ImageButtonLogOut}"/>
             </Grid>
 
-            <!-- Horizontal StackLayout to contain the pickers -->
+            <!-- Horizontal StackLayout voor picker -->
             <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Orientation="Horizontal">
-                <!-- Dropdown menu to filter tags -->
+                <!-- Dropdown menu -->
                 <Picker Title="Select level"
                         x:Name="LevelPicker"
                         Margin="10"
