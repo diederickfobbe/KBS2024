@@ -11,6 +11,5 @@
     <ShellContent
         ContentTemplate="{DataTemplate local:Loginscherm}"
         Route="MainPage" />
-
 </Shell>
 

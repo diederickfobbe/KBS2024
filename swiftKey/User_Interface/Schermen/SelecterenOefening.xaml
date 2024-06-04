@@ -1,10 +1,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:User_Interface.Converters"
              x:Class="User_Interface.Schermen.SelecterenOefening">
-
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
     </Shell.BackButtonBehavior>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:DifficultyToColorConverter x:Key="DifficultyToColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid Style="{StaticResource SelecterenOefeningGrid}">
             <Grid.RowDefinitions>
@@ -121,7 +126,8 @@
                                            FontSize="10"
                                            HorizontalOptions="End"
                                            VerticalOptions="Center"
-                                           LineBreakMode="WordWrap"/>
+                                           LineBreakMode="WordWrap"
+                                           TextColor="{Binding Difficulty, Converter={StaticResource DifficultyToColorConverter}}"/>
                                 </Frame>
 
                                 <Frame Grid.Row="1"

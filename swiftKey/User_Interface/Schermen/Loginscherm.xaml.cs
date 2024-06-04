@@ -3,6 +3,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Platform;
 using User_Interface.Schermen;
 using Business_Logic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace User_Interface
 {
@@ -16,8 +17,6 @@ namespace User_Interface
 
         private void Button_OnLoginClicked(object? sender, EventArgs e)
         {
-           
-
             string email = EmailEntry.Text;
             string password = PasswordEntry.Text;
             string hashedPassword = Business_Logic.RegisterChecks.HashPassword(password);
@@ -31,7 +30,7 @@ namespace User_Interface
 
                 // Gebruiker heeft juiste gebruikersnaam en wachtwoord ingevoerd
 
-                Navigation.PushAsync(new SelecterenOefening(user));
+                Navigation.PushAsync(new HomePage(user));
 
             }
             else
