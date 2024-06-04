@@ -129,7 +129,7 @@ namespace User_Interface.Schermen
 
         private async void onLogoutButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Loginscherm());
+            await Shell.Current.Navigation.PopToRootAsync();
         }
     }
 }

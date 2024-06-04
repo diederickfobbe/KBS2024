@@ -7,45 +7,87 @@
         <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
     </Shell.BackButtonBehavior>
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="10,0"
-            Spacing="20">
+    <Grid Style="{StaticResource SelecterenOefeningGrid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <Label
-                Text="Resultaten"
-                Style="{StaticResource Headline}"
-                />
-            <Label
-                x:Name="Wpm"
-                Text=""
-                FontSize="15"
-                HorizontalOptions="Center"
-                />
-            <Label
-                x:Name="Tijd"
-                Text="tijd"
-                FontSize="15"
-                HorizontalOptions="Center"
+        <Label Text="swiftkey" Grid.Row="0" Style="{StaticResource GradientLabelStyle}"/>
+
+        <ScrollView Grid.Row="1">
+            <Grid Padding="10" RowSpacing="15" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label
+                    Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                    Text="Resultaten"
+                    Style="{StaticResource Headline}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
                 />
 
-            <Label
-                x:Name="Ratio"
-                Text="Goed/Fout ratio:99%"
-                FontSize="15"
-                HorizontalOptions="Center"
+                <Label
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    x:Name="Wpm"
+                    Text=""
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
                 />
-            <Label
-                x:Name="Fouten"
-                Text=""
-                FontSize="15"
-                HorizontalOptions="Center"
-                />
-            <Button Clicked="DoneButton_Clicked" MaximumWidthRequest="120" Text="Klaar"/>
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <Label
+                    Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                    x:Name="Tijd"
+                    Text="tijd"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                />
+
+                <Label
+                    Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                    x:Name="Ratio"
+                    Text="Goed/Fout ratio:99%"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                />
+
+                <Label
+                    Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                    x:Name="Fouten"
+                    Text=""
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                />
+
+                <Button
+                    Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                    Clicked="DoneButton_Clicked"
+                    MaximumWidthRequest="120"
+                    Text="Klaar"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                />
+
+            </Grid>
+        </ScrollView>
+    </Grid>
 </ContentPage>
+
 
 
 

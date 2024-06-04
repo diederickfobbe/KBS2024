@@ -57,9 +57,14 @@ namespace User_Interface.Schermen
             await DisplayAlert("Info", "You are already on the profile page.", "OK");
         }
 
+        private async void onBrowseButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SelecterenOefening(user));
+        }
+
         private async void onLogoutButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Loginscherm());
+            await Shell.Current.Navigation.PopToRootAsync();
         }
     }
 }

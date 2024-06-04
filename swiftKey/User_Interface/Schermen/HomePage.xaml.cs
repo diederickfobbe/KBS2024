@@ -30,6 +30,6 @@ public partial class HomePage : ContentPage
 
     private async void onLogoutButtonClicked(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new Loginscherm());
+        await Shell.Current.Navigation.PopToRootAsync();
     }
 }
