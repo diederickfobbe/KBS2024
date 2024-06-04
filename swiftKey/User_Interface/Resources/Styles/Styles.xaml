@@ -200,12 +200,14 @@
         <Setter Property="Source">
             <Setter.Value>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf08b;" Size="40" Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray300}}"/>
-
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style x:Key="ImageButtonBrowse" TargetType="ImageButton">
         <Setter Property="Source">
             <Setter.Value>
                 <FontImageSource FontFamily="FAS" Glyph="&#xf002;" Size="20" Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray300}}"/>
-
             </Setter.Value>
         </Setter>
     </Style>
