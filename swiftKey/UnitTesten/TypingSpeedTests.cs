@@ -5,7 +5,7 @@ using SwiftKey_Logic;
 using NUnit.Framework;
 using Business_Logic;
 using SwiftKey_Logic;
-using NUnit.Framework.Legacy;
+using NUnit.Framework;
 
 namespace TypingTests
 {
@@ -23,7 +23,7 @@ namespace TypingTests
             int speed = OefenschermMethods.CalculateTypingSpeed(wordCount, timeTakenInMinutes);
 
             // ClassicAssert
-            ClassicAssert.AreEqual(120, speed);
+            Assert.AreEqual(120, speed);
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace TypingTests
             int speed = OefenschermMethods.CalculateTypingSpeed(wordCount, timeTakenInMinutes);
 
             // ClassicAssert
-            ClassicAssert.AreEqual(0, speed);
+            Assert.AreEqual(0, speed);
         }
 
         [Test]
@@ -48,9 +48,9 @@ namespace TypingTests
             double timeTakenInMinutes = 0;
 
             // Act & ClassicAssert
-            var ex = ClassicAssert.Throws<ArgumentException>(() => OefenschermMethods.CalculateTypingSpeed(wordCount, timeTakenInMinutes));
-            ClassicAssert.That(ex.Message, Does.Contain("Time taken must be greater than zero."));
-            ClassicAssert.AreEqual("timeTakenInMinutes", ex.ParamName);
+            var ex = Assert.Throws<ArgumentException>(() => OefenschermMethods.CalculateTypingSpeed(wordCount, timeTakenInMinutes));
+            Assert.That(ex.Message, Does.Contain("Time taken must be greater than zero."));
+            Assert.AreEqual("timeTakenInMinutes", ex.ParamName);
         }
 
         [Test]
@@ -61,9 +61,9 @@ namespace TypingTests
             double timeTakenInMinutes = -1;
 
             // Act & ClassicAssert
-            var ex = ClassicAssert.Throws<ArgumentException>(() => OefenschermMethods.CalculateTypingSpeed(wordCount, timeTakenInMinutes));
-            ClassicAssert.That(ex.Message, Does.Contain("Time taken must be greater than zero."));
-            ClassicAssert.AreEqual("timeTakenInMinutes", ex.ParamName);
+            var ex = Assert.Throws<ArgumentException>(() => OefenschermMethods.CalculateTypingSpeed(wordCount, timeTakenInMinutes));
+            Assert.That(ex.Message, Does.Contain("Time taken must be greater than zero."));
+            Assert.AreEqual("timeTakenInMinutes", ex.ParamName);
         }
     }
 }

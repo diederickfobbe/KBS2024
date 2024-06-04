@@ -1,82 +1,90 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="User_Interface.Schermen.ProfielScherm">
-    <VerticalStackLayout Padding="20" Spacing="10">
+             x:Class="User_Interface.Schermen.ProfielScherm"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True">
 
-        <!-- Gebruikersnaam -->
-        <Label x:Name="UserNameLabel"
-               FontSize="24"
-               HorizontalOptions="Center" />
+    <ContentPage.Content>
+        <Grid Style="{StaticResource SelecterenOefeningGrid}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <!-- Lijn onder de naam -->
-        <BoxView HeightRequest="1"
-                 Color="white"
-                 HorizontalOptions="FillAndExpand" />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <!-- Boxen voor statistieken -->
-        <HorizontalStackLayout Spacing="10"
-                               HorizontalOptions="Center"
-                              >
+            <Label Grid.ColumnSpan="2" Text="Profiel" Style="{StaticResource GradientLabelStyle}"/>
 
-         
-            <Frame Padding="10" 
-                   HasShadow="True"
-                   CornerRadius="5">
-                <VerticalStackLayout>
-                    <Label Text="Gemiddelde WPM" 
-                           FontAttributes="Bold"
-                           HorizontalOptions="Center" />
-                    <Label x:Name="AverageWpmLabel" 
-                           HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Frame>
+            <!-- SideBar -->
+            <Grid VerticalOptions="FillAndExpand" Grid.Row="1" Style="{StaticResource SideBarGrid}" Grid.RowSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-            <!-- Witte lijn tussen de boxen -->
-            <BoxView WidthRequest="1"
-                     Color="Grey"
-                     VerticalOptions="FillAndExpand" />
+                <ImageButton Clicked="onHomeButtonClicked" Style="{StaticResource ImageButtonHome}"/>
+                <ImageButton Grid.Row="1" Clicked="onLeaderboardButtonClicked" Style="{StaticResource ImageButtonPodium}"/>
+                <ImageButton Grid.Row="2" Clicked="onProfielButtonClicked" Style="{StaticResource ImageButtonUser}"/>
+                <ImageButton VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="3" Style="{StaticResource ImageButtonLogOut}"/>
+            </Grid>
 
-            <!-- Gemiddelde Accuratie -->
-            <Frame Padding="10" 
-                   HasShadow="True"
-                   CornerRadius="5">
-                <VerticalStackLayout>
-                    <Label Text="Gemiddelde Accuratie" 
-                           FontAttributes="Bold"
-                           HorizontalOptions="Center" />
-                    <Label x:Name="AverageAccuracyLabel" 
-                           HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Frame>
+            <!-- Main Profile Content -->
+            <VerticalStackLayout Grid.Row="1" Grid.Column="1" Padding="20" Spacing="10">
+                <!-- Gebruikersnaam -->
+                <Label x:Name="UserNameLabel"
+                       FontSize="24"
+                       HorizontalOptions="Center" />
 
-            <!-- Witte lijn tussen de boxen -->
-            <BoxView WidthRequest="1"
-                     
-                     VerticalOptions="FillAndExpand" />
+                <!-- Lijn onder de naam -->
+                <BoxView HeightRequest="1"
+                         Color="white"
+                         HorizontalOptions="FillAndExpand" />
 
-            <!-- Aantal Gemaakte Oefeningen -->
-            <Frame Padding="10" 
-                   HasShadow="True"
-                   CornerRadius="5">
-                <VerticalStackLayout>
-                    <Label Text="Gemaakte Oefeningen" 
-                           FontAttributes="Bold"
-                           HorizontalOptions="Center" />
-                    <Label x:Name="ExercisesCountLabel" 
-                           HorizontalOptions="Center" />
-                </VerticalStackLayout>
-            </Frame>
-        </HorizontalStackLayout>
+                <!-- Boxen voor statistieken -->
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Frame Padding="10" HasShadow="True" CornerRadius="5">
+                        <VerticalStackLayout>
+                            <Label Text="Gemiddelde WPM" FontAttributes="Bold" HorizontalOptions="Center" />
+                            <Label x:Name="AverageWpmLabel" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Frame>
 
-        <Label x:Name="CompletedExercisesLabel"
-               FontAttributes="Bold"
-               FontSize="20" 
-            HorizontalOptions="Center"
-                              Text="De laatst gemaakte oefeningen: 
-"/>
-                
+                    <!-- Witte lijn tussen de boxen -->
+                    <BoxView WidthRequest="1" Color="Grey" VerticalOptions="FillAndExpand" />
 
+                    <!-- Gemiddelde Accuratie -->
+                    <Frame Padding="10" HasShadow="True" CornerRadius="5">
+                        <VerticalStackLayout>
+                            <Label Text="Gemiddelde Accuratie" FontAttributes="Bold" HorizontalOptions="Center" />
+                            <Label x:Name="AverageAccuracyLabel" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Frame>
 
-    </VerticalStackLayout>
+                    <!-- Witte lijn tussen de boxen -->
+                    <BoxView WidthRequest="1" VerticalOptions="FillAndExpand" />
+
+                    <!-- Aantal Gemaakte Oefeningen -->
+                    <Frame Padding="10" HasShadow="True" CornerRadius="5">
+                        <VerticalStackLayout>
+                            <Label Text="Gemaakte Oefeningen" FontAttributes="Bold" HorizontalOptions="Center" />
+                            <Label x:Name="ExercisesCountLabel" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </HorizontalStackLayout>
+
+                <Label x:Name="CompletedExercisesLabel"
+                       FontAttributes="Bold"
+                       FontSize="20"
+                       HorizontalOptions="Center"
+                       Text="De laatst gemaakte oefeningen:"/>
+            </VerticalStackLayout>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

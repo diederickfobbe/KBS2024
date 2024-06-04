@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using Business_Logic;
 using SwiftKey_Logic;
-using NUnit.Framework.Legacy;
+using NUnit.Framework;
 
 [TestFixture]
 public class WordCountTests
@@ -16,7 +16,7 @@ public class WordCountTests
         var count = OefenschermMethods.GetWordCount(text);
 
         // ClassicClassicAssert
-        ClassicAssert.AreEqual(6, count);
+        Assert.AreEqual(6, count);
     }
 
     [Test]
@@ -29,7 +29,7 @@ public class WordCountTests
         var count = OefenschermMethods.GetWordCount(text);
 
         // ClassicClassicAssert
-        ClassicAssert.AreEqual(6, count);
+        Assert.AreEqual(6, count);
     }
 
     [Test]
@@ -42,7 +42,7 @@ public class WordCountTests
         var count = OefenschermMethods.GetWordCount(text);
 
         // ClassicClassicAssert
-        ClassicAssert.AreEqual(6, count);
+        Assert.AreEqual(6, count);
     }
 
     [Test]
@@ -55,7 +55,7 @@ public class WordCountTests
         var count = OefenschermMethods.GetWordCount(text);
 
         // ClassicClassicAssert
-        ClassicAssert.AreEqual(0, count);
+        Assert.AreEqual(0, count);
     }
 
     [Test]
@@ -68,7 +68,7 @@ public class WordCountTests
         var count = OefenschermMethods.GetWordCount(text);
 
         // ClassicAssert
-        ClassicAssert.AreEqual(0, count);
+        Assert.AreEqual(0, count);
         
     }
 
@@ -79,8 +79,8 @@ public class WordCountTests
         string text = null;
 
         // Act & ClassicAssert
-        var ex = ClassicAssert.Throws<System.ArgumentNullException>(() => OefenschermMethods.GetWordCount(text));
-        ClassicAssert.That(ex.ParamName, Is.EqualTo("text"));
+        var ex = Assert.Throws<System.ArgumentNullException>(() => OefenschermMethods.GetWordCount(text));
+        Assert.That(ex.ParamName, Is.EqualTo("text"));
     }
 }
 

@@ -4,11 +4,8 @@ using Business_Logic;
 using Data_Access;
 using Plugin.Maui.Audio;
 
-
-
-
-//using Android.OS;
 using SwiftKey_Logic;
+using User_Interface.Schermen;
 
 
 namespace User_Interface
@@ -127,10 +124,9 @@ namespace User_Interface
             }
 
             // Proceed with navigation
-            await Navigation.PushAsync(new Resultscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
+            await Navigation.PushAsync(new Resultaatscherm(user, typingSpeed, TimerLabel.Text, accuracy, enteredText, targetText));
             stopwatch.Reset();
         }
-
 
 
         private List<Label> labelList = new List<Label>();

@@ -1,8 +1,3 @@
-using NUnit.Framework;
-using NUnit.Framework;
-using Business_Logic;
-using SwiftKey_Logic;
-using NUnit.Framework.Legacy;
 using SwiftKey_Logic;
 
 
@@ -23,7 +18,7 @@ public class AccuracyTests
         double accuracy = OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText);
 
         // ClassicAssert
-        ClassicAssert.AreEqual(100.0, accuracy);
+        Assert.AreEqual(100.0, accuracy);
     }
 
     [Test]
@@ -38,7 +33,7 @@ public class AccuracyTests
         double accuracy = OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText);
 
         // ClassicAssert
-        ClassicAssert.AreEqual(0.0, accuracy);
+        Assert.AreEqual(0.0, accuracy);
     }
 
     [Test]
@@ -53,7 +48,7 @@ public class AccuracyTests
         double accuracy = OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText);
 
         // ClassicAssert
-        ClassicAssert.AreEqual(83.33, Math.Round(accuracy, 2));
+        Assert.AreEqual(83.33, Math.Round(accuracy, 2));
     }
 
     [Test]
@@ -67,8 +62,8 @@ public class AccuracyTests
         // Act
         double accuracy = OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText);
 
-        // ClassicAssert
-        ClassicAssert.AreEqual(0.0, accuracy);
+        // Classi   cAssert
+        Assert.AreEqual(0.0, accuracy);
     }
 
     [Test]
@@ -83,7 +78,7 @@ public class AccuracyTests
         double accuracy = OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText);
 
         // ClassicAssert
-        ClassicAssert.AreEqual(0.0, accuracy);
+        Assert.AreEqual(0.0, accuracy);
     }
 
     [Test]
@@ -95,8 +90,8 @@ public class AccuracyTests
         int targetWordCount = 7;  // Mismatch with actual words in target text
 
         // Act & ClassicAssert
-        var ex = ClassicAssert.Throws<System.ArgumentException>(() => OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText));
-        ClassicAssert.That(ex.Message, Is.EqualTo("Target word count does not match the actual number of words in target text."));
+        var ex = Assert.Throws<System.ArgumentException>(() => OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText));
+        Assert.That(ex.Message, Is.EqualTo("Target word count does not match the actual number of words in target text."));
     }
 }
 

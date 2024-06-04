@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\swiftKey",
+    "\\swiftKey\\SwiftKey_DataAccess"
   ],
+  "SelectedNode": "\\swiftKey\\SwiftKey_DataAccess\\LevelHandler.cs",
   "PreviewInSolutionExplorer": false
 }

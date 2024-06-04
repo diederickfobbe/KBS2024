@@ -14,35 +14,7 @@ x64/
 [Bb]in/
 [Oo]bj/
 
-# MSTest test Results
-[Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
 
-*_i.c
-*_p.c
-*_i.h
-*.ilk
-*.meta
-*.obj
-*.pch
-*.pdb
-*.pgc
-*.pgd
-*.rsp
-*.sbr
-*.tlb
-*.tli
-*.tlh
-*.tmp
-*.tmp_proj
-*.log
-*.vspscc
-*.vssscc
-.builds
-*.pidb
-*.log
-*.svclog
-*.scc
 
 # Visual C++ cache files
 ipch/
@@ -132,3 +104,4 @@ $RECYCLE.BIN/
 
 _NCrunch*
 *.cache
+.vs/VSWorkspaceState.json
