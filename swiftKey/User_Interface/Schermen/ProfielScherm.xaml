@@ -37,7 +37,7 @@
             </Grid>
             <ScrollView Grid.Row="1" Grid.Column="1" >
             <!-- Main Profile Content -->
-            <VerticalStackLayout BackgroundColor="White" Margin="30,30,0,0" Grid.Row="1" Grid.Column="1" Padding="20" Spacing="10">
+            <VerticalStackLayout Margin="30,30,0,0" Grid.Row="1" Grid.Column="1" Padding="20" Spacing="10">
                 <!-- Gebruikersnaam -->
                 <Label x:Name="UserNameLabel"
                        FontSize="24"
