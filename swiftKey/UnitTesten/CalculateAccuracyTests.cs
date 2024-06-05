@@ -72,7 +72,7 @@ public class AccuracyTests
         // Arrange
         string enteredText = "Hello, world! This is a test.";
         string targetText = "";
-        int targetWordCount = 0; // Target word count should ideally match target text words count
+        int targetWordCount = 0;
 
         // Act
         double accuracy = OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText);
@@ -87,7 +87,7 @@ public class AccuracyTests
         // Arrange
         string enteredText = "Hello, world! This is a test.";
         string targetText = "Hello, world! This is a test.";
-        int targetWordCount = 7;  // Mismatch with actual words in target text
+        int targetWordCount = 7;
 
         // Act & ClassicAssert
         var ex = Assert.Throws<System.ArgumentException>(() => OefenschermMethods.CalculateAccuracy(enteredText, targetWordCount, targetText));

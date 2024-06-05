@@ -9,7 +9,7 @@ namespace User_Interface.Schermen
     {
         private LeaderboardHandler leaderboardHandler;
         private User user;
-        private int SelectedLevelID; // Field to store the selected level ID
+        private int SelectedLevelID;
 
 
 
@@ -77,31 +77,23 @@ namespace User_Interface.Schermen
 
         private void InitializePickers()
         {
-            // Fetch level IDs from the database
             var levelIDs = leaderboardHandler.GetLevelIDs();
 
-            // Convert level IDs to strings
             var levelOptions = levelIDs.ConvertAll(id => id.ToString());
 
-            // Insert "All levels" as the first item
             levelOptions.Insert(0, "All levels");
 
-            // Populate the LevelPicker with the retrieved level options
             LevelPicker.ItemsSource = levelOptions;
 
-            // By default, select "All levels"
             LevelPicker.SelectedIndex = 0;
         }
 
         private void LevelPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Get the selected level option
             string selectedOption = (string)LevelPicker.SelectedItem;
 
-            // If "All levels" is selected, set SelectedLevelID to -1
             SelectedLevelID = selectedOption == "All levels" ? -1 : int.Parse(selectedOption);
 
-            // Fetch and display the leaderboard for the selected level
             DisplayLeaderboard();
         }
 
@@ -113,7 +105,6 @@ namespace User_Interface.Schermen
 
         private async void onLeaderboardButtonClicked(object sender, EventArgs e)
         {
-            // Already on the leaderboard page, do nothing
             await DisplayAlert("Info", "You are already on the leaderboard page.", "OK");
         }
 

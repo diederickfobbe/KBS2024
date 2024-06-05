@@ -41,7 +41,7 @@ namespace Data_Access
                 // SQL connectie setup
                 var builder = new SqlConnectionStringBuilder
                 {
-                    DataSource = $"127.0.0.1,{port.BoundPort}", // Use the dynamically assigned port
+                    DataSource = $"127.0.0.1,{port.BoundPort}",
                     UserID = sqlUsername,
                     Password = sqlPassword,
                     InitialCatalog = initialCatalog

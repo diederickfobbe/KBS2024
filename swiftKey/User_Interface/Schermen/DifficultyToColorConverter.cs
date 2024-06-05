@@ -20,7 +20,7 @@ namespace User_Interface.Converters
                     case "easy":
                         return Colors.Green;
                     default:
-                        return Colors.Gray; // Default color if no match found
+                        return Colors.Gray; // Default kleur als er geen match is
                 }
             }
             return Colors.Gray;

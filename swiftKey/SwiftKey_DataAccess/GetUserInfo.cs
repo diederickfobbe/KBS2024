@@ -21,22 +21,19 @@ namespace Data_Access
                 {
                     try
                     {
-
-                        // Select query to get the hashed password based on email address
-                        /*string selectQuery = "SELECT password FROM Users WHERE email = @email";*/
-                        // Select query to get the hashed password based on email address
+                        // Selecteer de query om zo het gehashde wachtwoord te pakken op basis van het emailadres
                         string selectQuery = "SELECT username FROM Users WHERE CAST(email AS NVARCHAR(MAX)) = @email";
 
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
-                            // Add parameter to the query
+                            // Voeg een parameter toe aan de query
                             cmd.Parameters.AddWithValue("@email", email);
 
-                            // Execute the query and get the hashed password
+                            // Voer de query uit en pak het gehashde wachtwoord
                             object result = cmd.ExecuteScalar();
 
-                            // Check if the result is not null
+                            // Check of result niet null is
                             if (result != null)
                             {
 
@@ -46,7 +43,7 @@ namespace Data_Access
                             }
                             else
                             {
-                                return null; // Email address not found
+                                return null; // Email address niet gevonden
                             }
                         }
                     }
@@ -70,13 +67,13 @@ namespace Data_Access
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
-                            // Add parameter to the query
+                            // Voeg een parameter toe aan de query
                             cmd.Parameters.AddWithValue("@email", email);
 
-                            // Execute the query and get the hashed password
+                            // Voer de query uit en pak het gehashde wachtwoord
                             object result = cmd.ExecuteScalar();
 
-                            // Check if the result is not null
+                            // Check of result niet null is
                             if (result != null)
                             {
 
@@ -86,7 +83,7 @@ namespace Data_Access
                             }
                             else
                             {
-                                return 0; // Email address not found
+                                return 0; // Email address niet gevonden
                             }
                         }
                     }
@@ -111,20 +108,20 @@ namespace Data_Access
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
-                            // Add parameter to the query
+                            // Voeg een parameter toe aan de query
                             cmd.Parameters.AddWithValue("@id", id);
 
-                            // Execute the query and get the average
+                            // Voer de query uit en neem het gemiddelde
                             object result = cmd.ExecuteScalar();
 
-                            // Check if the result is not null
+                            // Check of result niet null is
                             if (result != null && result != DBNull.Value)
                             {
                                 return Convert.ToInt32(result);
                             }
                             else
                             {
-                                return 0; // No WPM values found
+                                return 0; // Geen WPM values gevonden
                             }
                         }
                     }
@@ -150,20 +147,20 @@ namespace Data_Access
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
-                            // Add parameter to the query
+                            // Voeg een parameter toe aan de query
                             cmd.Parameters.AddWithValue("@id", id);
 
-                            // Execute the query and get the average
+                            // Voer de query uit en neem het gemiddelde
                             object result = cmd.ExecuteScalar();
 
-                            // Check if the result is not null
+                            // Check of result niet null is
                             if (result != null && result != DBNull.Value)
                             {
                                 return Convert.ToDouble(result);
                             }
                             else
                             {
-                                return 0; // No accuracy values found
+                                return 0; // Geen accuracy values gevonden
                             }
                         }
                     }
@@ -187,20 +184,20 @@ namespace Data_Access
 
                         using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                         {
-                            // Add parameter to the query
+                            // Voeg een parameter toe aan de query
                             cmd.Parameters.AddWithValue("@id", id);
 
-                            // Execute the query and get the count
+                            // Voer de query uit en pak het aantal gemaakte oefeningen
                             object result = cmd.ExecuteScalar();
 
-                            // Check if the result is not null
+                            // Check of result niet null is
                             if (result != null)
                             {
                                 return Convert.ToInt32(result);
                             }
                             else
                             {
-                                return 0; // No exercises found for the user
+                                return 0; // Geen oefeningen gevonden voor de gebruiker
                             }
                         }
                     }
@@ -265,33 +262,5 @@ namespace Data_Access
             }
             return voltooideLevels;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

@@ -27,7 +27,7 @@ public class OefenschermMethods {
         {
             if (targetWordCount != 0)
                 throw new ArgumentException("Target word count does not match the actual number of words in target text.");
-            return 0.0; // Explicitly handle empty target text and zero target words.
+            return 0.0;
         }
 
         var targetWords = targetText.Split(new char[] { ' ', '.', ',', '!', '?' }, StringSplitOptions.RemoveEmptyEntries);
@@ -37,15 +37,12 @@ public class OefenschermMethods {
         if (string.IsNullOrEmpty(enteredText))
             return 0.0;
 
-        // Normalize the words by making them lowercase to ensure case-insensitive comparison
         var normalizedTargetWords = targetWords.Select(word => word.ToLowerInvariant()).ToList();
         var normalizedEnteredWords = enteredText.Split(new char[] { ' ', '.', ',', '!', '?' }, StringSplitOptions.RemoveEmptyEntries)
             .Select(word => word.ToLowerInvariant()).ToList();
 
-        // Count correct words as the intersection of both sets, considering all unique correct entries
         int correctWords = normalizedTargetWords.Intersect(normalizedEnteredWords).Count();
 
-        // Ensure that division by zero is not possible
         if (targetWordCount == 0)
             return 0.0;
 

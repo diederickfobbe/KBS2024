@@ -224,7 +224,6 @@ namespace User_Interface.Schermen
         {
             try
             {
-                // Check if the tapped item is an Oefening object
                 if (e.Item is Oefening selectedOefening)
                 {
                     string levelName = selectedOefening.Name.Replace("Level ", ""); // level naam ophalen
@@ -249,7 +248,7 @@ namespace User_Interface.Schermen
             }
             finally
             {
-                // Reset het selected item
+                // Reset het selecteerde item
                 ((ListView)sender).SelectedItem = null;
             }
         }
@@ -258,7 +257,7 @@ namespace User_Interface.Schermen
         {
             try
             {
-                //Als er geen levels zijn of de levels leeg zijn, toon dan een label en verberg de ListView
+                // Als er geen levels zijn of de levels leeg zijn, toon dan een label en verberg de ListView
                 if (levels == null || levels.Count == 0)
                 {
                     NoLevelsLabel.IsVisible = true;

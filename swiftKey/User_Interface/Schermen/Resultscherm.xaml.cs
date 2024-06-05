@@ -14,7 +14,6 @@ namespace User_Interface
 		{
 			InitializeComponent();
             this.user = user;
-            //
             asignResults(user.Id, typeSpeed,  timeTaken,  accuracy, ResultaatschermMethods.calculateMistakes( enteredText,  targetText));
 
         }

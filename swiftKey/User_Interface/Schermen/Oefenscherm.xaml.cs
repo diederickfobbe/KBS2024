@@ -40,7 +40,7 @@ namespace User_Interface
         private bool UpdateTimer()
         {
             TimerLabel.Text = stopwatch.Elapsed.ToString(@"hh\:mm\:ss");
-            return true; // Return true to keep the timer running.
+            return true;
         }
         
         private async void TextInputEntry_TextChanged(object sender, TextChangedEventArgs e)

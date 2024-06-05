@@ -15,11 +15,11 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
-                <!-- Row for the buttons -->
+                <!-- Row for de buttons -->
                 <RowDefinition Height="Auto"/>
-                <!-- Row for the picker -->
+                <!-- Row for de picker -->
                 <RowDefinition Height="*"/>
-                <!-- Row for the levels -->
+                <!-- Row for de levels -->
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
