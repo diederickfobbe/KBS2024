@@ -6,10 +6,9 @@
              NavigationPage.HasNavigationBar="True">
 
     <ContentPage.Content>
-        <Grid Style="{StaticResource SelecterenOefeningGrid}">
+        <Grid Style="{StaticResource HeaderGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -21,7 +20,7 @@
             <Label Grid.ColumnSpan="2" Text="Profiel" Style="{StaticResource GradientLabelStyle}"/>
 
             <!-- SideBar -->
-            <Grid VerticalOptions="FillAndExpand" Grid.Row="1" Style="{StaticResource SideBarGrid}" Grid.RowSpan="3">
+            <Grid VerticalOptions="FillAndExpand" Grid.Row="1" Style="{StaticResource SideBarGrid}" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -36,9 +35,9 @@
                 <ImageButton Grid.Row="3" Clicked="onBrowseButtonClicked" Style="{StaticResource ImageButtonBrowse}"/>
                 <ImageButton VerticalOptions="End" Clicked="onLogoutButtonClicked" Grid.Row="4" Style="{StaticResource ImageButtonLogOut}"/>
             </Grid>
-
+            <ScrollView Grid.Row="1" Grid.Column="1" >
             <!-- Main Profile Content -->
-            <VerticalStackLayout Grid.Row="1" Grid.Column="1" Padding="20" Spacing="10">
+            <VerticalStackLayout BackgroundColor="White" Margin="30,30,0,0" Grid.Row="1" Grid.Column="1" Padding="20" Spacing="10">
                 <!-- Gebruikersnaam -->
                 <Label x:Name="UserNameLabel"
                        FontSize="24"
@@ -81,12 +80,12 @@
                     </Frame>
                 </HorizontalStackLayout>
 
-                <Label x:Name="CompletedExercisesLabel"
-                       FontAttributes="Bold"
-                       FontSize="20"
-                       HorizontalOptions="Center"
-                       Text="De laatst gemaakte oefeningen:"/>
+                <Label x:Name="CompletedExercisesLabel" Text="De laatst gemaakte oefeningen:" FontSize="20" FontAttributes="Bold"/>
+                <VerticalStackLayout x:Name="CompletedExercisesStack"  HorizontalOptions="FillAndExpand" Spacing="10"/>
+                
+
             </VerticalStackLayout>
+        </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

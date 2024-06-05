@@ -212,7 +212,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="SelecterenOefeningGrid" TargetType="Grid">
+    <Style x:Key="HeaderGrid" TargetType="Grid">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource OffWhite}, Dark={StaticResource Gray600}}" />
     </Style>
 
@@ -227,8 +227,14 @@
     <Style x:Key="SelecterenOefeningListView" TargetType="ListView">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Gray900}}" />
     </Style>
-    
-    
+
+    <Style x:Key="ProfielLabel" TargetType="Label">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource OffWhite}, Dark={StaticResource OffBlack}}"/>
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Fill"/>
+    </Style>
 
     <Style x:Key="GradientLabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="White" />

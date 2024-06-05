@@ -4,7 +4,7 @@
              NavigationPage.HasBackButton="True"
              NavigationPage.HasNavigationBar="True">
     <ContentPage.Content>
-        <Grid Style="{StaticResource SelecterenOefeningGrid}">
+        <Grid Style="{StaticResource HeaderGrid}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>

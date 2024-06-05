@@ -7,7 +7,7 @@
         <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
     </Shell.BackButtonBehavior>
 
-    <Grid Style="{StaticResource SelecterenOefeningGrid}">
+    <Grid Style="{StaticResource HeaderGrid}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
@@ -16,7 +16,7 @@
         <Label Text="swiftkey" Grid.Row="0" Style="{StaticResource GradientLabelStyle}"/>
 
         <ScrollView Grid.Row="1">
-            <Grid Padding="10" RowSpacing="15" VerticalOptions="FillAndExpand">
+            <Grid Padding="10" RowSpacing="15" VerticalOptions="CenterAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>

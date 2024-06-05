@@ -20,21 +20,29 @@ namespace User_Interface.Schermen
             // Controleer of de gebruiker niet null is om NullReferenceException te voorkomen
             if (user != null)
             {
+
                 user.RefreshStats();
                 UserNameLabel.Text = "Welkom " + user.Username + "!";
                 AverageWpmLabel.Text = user.AverageWpm.ToString();
                 AverageAccuracyLabel.Text = $"{user.AverageAccuracy}%";
                 ExercisesCountLabel.Text = user.ExercisesCount.ToString();
 
+
                 foreach (Level exercise in user.gemaakteOefeningen)
                 {
-                    CompletedExercisesLabel.Text += "\n";
-                    CompletedExercisesLabel.Text += "Level: " + exercise.LevelId.ToString() + "         ";
-                    CompletedExercisesLabel.Text += "Datum: " + exercise.CompletionDate.ToString() + "         ";
-                    CompletedExercisesLabel.Text += "Woorden per minuut: " + exercise.Wpm.ToString() + "         ";
-                    CompletedExercisesLabel.Text += "Accuracy: " + exercise.Accuracy.ToString() + "         ";
-                    CompletedExercisesLabel.Text += "Score: " + exercise.Score.ToString() + "\n\n";
+                    Label letterLabel = new Label
+                    {    
+                    };
+                    letterLabel.SetDynamicResource(Button.StyleProperty, "ProfielLabel");
+                    letterLabel.Text += "\n";
+                    letterLabel.Text += "Level: " + exercise.LevelId.ToString() + "         ";
+                    letterLabel.Text += "Datum: " + exercise.CompletionDate.ToString() + "         ";
+                    letterLabel.Text += "Woorden per minuut: " + exercise.Wpm.ToString() + "         ";
+                    letterLabel.Text += "Accuracy: " + exercise.Accuracy.ToString() + "         ";
+                    letterLabel.Text += "Score: " + exercise.Score.ToString() + "\n\n";
+                    CompletedExercisesStack.Children.Add(letterLabel);
                 }
+
             }
             else
             {

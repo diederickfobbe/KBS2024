@@ -4,7 +4,7 @@
              xmlns:userInterface="clr-namespace:User_Interface"
              x:Class="User_Interface.Oefenscherm">
 
-    <Grid Style="{StaticResource SelecterenOefeningGrid}">
+    <Grid Style="{StaticResource HeaderGrid}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
@@ -21,15 +21,17 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
+            
             <Label x:Name="TimerLabel" Text="00:00:00" HorizontalOptions="Center" FontSize="25" TextColor="Orange" Grid.Row="1"/>
+            
             <Label x:Name="InstructionsLabel" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold" Grid.Row="2"/>
-            <FlexLayout x:Name="Sentence" Grid.Row="3" Wrap="Wrap" HorizontalOptions="Center" AlignContent="Stretch">
-
-            </FlexLayout>
+            
+            <FlexLayout x:Name="Sentence" Grid.Row="3" Wrap="Wrap" HorizontalOptions="Center" AlignContent="Stretch"/>
 
             <Entry x:Name="TextInputEntry"  Loaded="OnEntryLoaded" Placeholder="Type de tekst hier en klik enter als je klaar bent."
                    HorizontalOptions="CenterAndExpand" Completed="TextInputEntry_Completed"
                    FontSize="15" WidthRequest="500" HeightRequest="50" Grid.Row="4" />
+            
             <Label x:Name="ResultsLabel" Text="" HorizontalOptions="Center" FontSize="15" TextColor="#007ACC" Grid.Row="5"/>
         </Grid>
     </Grid>
